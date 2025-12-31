@@ -5,6 +5,17 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+
+// cau hinh firebase
+
+//FirebaseApp.Create(new AppOptions
+//{
+//    Credential = GoogleCredential.FromFile(
+//        builder.Configuration["Firebase:CredentialPath"]
+//    )
+//});
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

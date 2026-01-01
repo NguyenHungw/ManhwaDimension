@@ -117,8 +117,7 @@ artifacts/
 .vs/
 bin/ 
 obj/
-Properties/
-launchSettings.json
+
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 

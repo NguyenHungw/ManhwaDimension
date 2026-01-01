@@ -175,6 +175,10 @@ ipch/
 *.vspx
 *.sap
 
+# Firebase
+firebase-key.json
+
+
 # Visual Studio Trace Files
 *.e2e
 

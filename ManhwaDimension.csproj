@@ -44,4 +44,10 @@
     <PackageReference Include="System.Text.Json" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Admin\" />
+    <Folder Include="Controllers\Client\" />
+    <Folder Include="Controllers\Core\" />
+  </ItemGroup>
+
 </Project>

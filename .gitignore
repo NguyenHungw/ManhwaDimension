@@ -176,6 +176,7 @@ ipch/
 
 # Firebase
 firebase-key.json
+appsettings.json
 *.json
 
 

@@ -48,6 +48,7 @@
     <Folder Include="Controllers\Admin\" />
     <Folder Include="Controllers\Client\" />
     <Folder Include="Controllers\Core\" />
+    <Folder Include="ULT\DTParameters\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using ManhwaDimension.Models.Response;
+using System.Net;
 using System.Net.Mail;
 
 namespace ManhwaDimension.ULT.Email
@@ -18,15 +19,15 @@ namespace ManhwaDimension.ULT.Email
         //private static string headerEmail = @"
 
         //";
-        public static GeneStoryResponse SendEmail(string recipients, string subject, string body)
+        public static ManhwaDimensionResponse SendEmail(string recipients, string subject, string body)
         {
             //var novaticResponse = SendEmailOffice365(recipients, subject, body);
             var novaticResponse = SendEmailOffice365(recipients, subject, body);
             return novaticResponse;
         }
-        public static GeneStoryResponse SendEmailOffice365(string recipients, string subject, string body)
+        public static ManhwaDimensionResponse SendEmailOffice365(string recipients, string subject, string body)
         {
-            var novaticResponse = GeneStoryResponse.SUCCESS();
+            var novaticResponse = ManhwaDimensionResponse.SUCCESS();
 
             string emailUsername = EMAIL_CREDENTIAL_NAME_OFFICE365;
             string emailPassword = EMAIL_CREDENTIAL_PASSWORD_OFFICE365;
@@ -81,15 +82,15 @@ namespace ManhwaDimension.ULT.Email
             }
             catch (Exception e)
             {
-                //novaticResponse = GeneStoryResponse.BAD_REQUEST(e);
+                //novaticResponse = ManhwaDimensionResponse.BAD_REQUEST(e);
             }
 
 
             return novaticResponse;
         }
-        //public static GeneStoryResponse SendEmailGmail(string recipients, string subject, string body)
+        //public static ManhwaDimensionResponse SendEmailGmail(string recipients, string subject, string body)
         //{
-        //    var novaticResponse = GeneStoryResponse.SUCCESS();
+        //    var novaticResponse = ManhwaDimensionResponse.SUCCESS();
         //    string emailUsername = EMAIL_CREDENTIAL_NAME;
         //    string emailPassword = EMAIL_CREDENTIAL_PASSWORD;
         //    string senderName = EMAIL_SENDER_NAME;
@@ -159,7 +160,7 @@ namespace ManhwaDimension.ULT.Email
         //    }
         //    catch (Exception e)
         //    {
-        //        // novaticResponse = GeneStoryResponse.BAD_REQUEST(e);
+        //        // novaticResponse = ManhwaDimensionResponse.BAD_REQUEST(e);
         //        throw;
         //    }
         //    return novaticResponse;

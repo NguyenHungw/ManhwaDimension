@@ -5,19 +5,19 @@ namespace ManhwaDimension.Util
 {
     //public class SMSUtil
     //{
-    //    public static GeneStoryResponse SendSMS(string PhoneNumber, string SMSContent)
+    //    public static ManhwaDimensionResponse SendSMS(string PhoneNumber, string SMSContent)
     //    {
     //        return STSendSMS(PhoneNumber, SMSContent);
     //    }
 
-    //    public static GeneStoryResponse SendSMSThreading(string PhoneNumber, string SMSContent)
+    //    public static ManhwaDimensionResponse SendSMSThreading(string PhoneNumber, string SMSContent)
     //    {
     //        return STSendSMSThreading(PhoneNumber, SMSContent);
     //    }
 
-    //    public static GeneStoryResponse STSendSMS(string PhoneNumber, string SMSContent)
+    //    public static ManhwaDimensionResponse STSendSMS(string PhoneNumber, string SMSContent)
     //    {
-    //        var novaticResponse = GeneStoryResponse.BAD_REQUEST();
+    //        var novaticResponse = ManhwaDimensionResponse.BAD_REQUEST();
 
     //        //Validate phone number 
     //        PhoneNumber = StandardizePhoneNumber(PhoneNumber);
@@ -42,23 +42,23 @@ namespace ManhwaDimension.Util
     //            var responseStatusCode = jsonResponse["status"].ToString();
     //            if (responseStatusCode == "1")
     //            {
-    //                novaticResponse = GeneStoryResponse.SUCCESS(response.Content);
+    //                novaticResponse = ManhwaDimensionResponse.SUCCESS(response.Content);
     //            }
     //            else
     //            {
-    //                novaticResponse = GeneStoryResponse.BAD_REQUEST(jsonResponse);
+    //                novaticResponse = ManhwaDimensionResponse.BAD_REQUEST(jsonResponse);
     //            }
     //        }
     //        catch (Exception e)
     //        {
-    //            novaticResponse = GeneStoryResponse.BAD_REQUEST(e);
+    //            novaticResponse = ManhwaDimensionResponse.BAD_REQUEST(e);
     //            //throw;
     //        }
     //        return novaticResponse;
     //    }
-    //    public static GeneStoryResponse STSendSMSThreading(string PhoneNumber, string SMSContent)
+    //    public static ManhwaDimensionResponse STSendSMSThreading(string PhoneNumber, string SMSContent)
     //    {
-    //        var novaticResponse = GeneStoryResponse.SUCCESS();
+    //        var novaticResponse = ManhwaDimensionResponse.SUCCESS();
     //        new Thread(() =>
     //        {
     //            //Validate phone number 
@@ -84,16 +84,16 @@ namespace ManhwaDimension.Util
     //                var responseStatusCode = jsonResponse["status"].ToString();
     //                if (responseStatusCode == "1")
     //                {
-    //                    novaticResponse = GeneStoryResponse.SUCCESS(response.Content);
+    //                    novaticResponse = ManhwaDimensionResponse.SUCCESS(response.Content);
     //                }
     //                else
     //                {
-    //                    novaticResponse = GeneStoryResponse.BAD_REQUEST(jsonResponse);
+    //                    novaticResponse = ManhwaDimensionResponse.BAD_REQUEST(jsonResponse);
     //                }
     //            }
     //            catch (Exception e)
     //            {
-    //                novaticResponse = GeneStoryResponse.BAD_REQUEST(e);
+    //                novaticResponse = ManhwaDimensionResponse.BAD_REQUEST(e);
     //                //throw;
     //            }
     //        }).Start();

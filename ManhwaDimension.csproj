@@ -45,9 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Admin\" />
-    <Folder Include="Controllers\Client\" />
-    <Folder Include="Controllers\Core\" />
+    <Folder Include="Controllers\ManhwaDimension\" />
     <Folder Include="ULT\DTParameters\" />
   </ItemGroup>
 

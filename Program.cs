@@ -1,11 +1,33 @@
+using ManhwaDimension.Models;
+using ManhwaDimension.ULT.Email;
+using ManhwaDimension.Util;
+using Microsoft.EntityFrameworkCore;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services
+       .AddInfrastructure(builder.Configuration)
+       .AddInfrastructureServices(builder.Configuration)
+       //.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"))
+       .AddSignalR();
 // ===== Swagger config =====
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<BookwormDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(10),
+                errorNumbersToAdd: null);
+        }
+    ));
+
 // ==========================
 
 var app = builder.Build();

@@ -4,12 +4,12 @@
     {
         T Id { get; set; }
         bool Active { get; set; }
-        DateTime CreatedTime { get; set; }
+        DateTime CreatedAt { get; set; }
     }
     public interface IEntityBase
     {
         long Id { get; set; }
         bool Active { get; set; }
-        DateTime CreatedTime { get; set; }
+        DateTime CreatedAt { get; set; }
     }
 }

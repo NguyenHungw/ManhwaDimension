@@ -10,10 +10,10 @@ namespace ManhwaDimension.Service
         {
             repository = _repository;
         }
-        public async Task Add(T obj)
+        public virtual async Task Add(T obj)
         {
             obj.Active = true;
-            obj.CreatedTime = DateTime.Now;
+            obj.CreatedAt = DateTime.Now;
             await repository.Add(obj);
         }
 
@@ -22,7 +22,7 @@ namespace ManhwaDimension.Service
             return repository.Count();
         }
 
-        public async Task Delete(T obj)
+        public virtual async Task Delete(T obj)
         {
             obj.Active = false;
             await repository.Delete(obj);
@@ -53,7 +53,7 @@ namespace ManhwaDimension.Service
             return await repository.Search(keyword);
         }
 
-        public async Task Update(T obj)
+        public virtual async Task Update(T obj)
         {
             await repository.Update(obj);
         }

@@ -46,7 +46,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\ManhwaDimension\" />
-    <Folder Include="ULT\DTParameters\" />
   </ItemGroup>
 
 </Project>

@@ -5,15 +5,12 @@
         Task<List<TModel>> List();
         Task<List<TModel>> Search(string keyword);
         Task<List<TModel>> ListPaging(int pageIndex, int pageSize);
-        Task<List<TModel>> Detail(long id);
-        Task Add(TModel model);
-        Task Delete(long id);
-
-        Task Update(TModel model);
-
-        Task<long> DeletePermanetly(long id);
+        Task<TModel> Detail(long id);
+        Task Add(TModel obj);
+        Task Update(TModel obj);
+        Task Delete(TModel obj);
+        Task<long> DeletePermanently(long id);
         int Count();
-
 
     }
 }

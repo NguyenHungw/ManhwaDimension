@@ -1,5 +1,6 @@
 ﻿using ManhwaDimension.Models;
 using ManhwaDimension.Repository.Interface;
+using ManhwaDimension.ULT.Entities;
 using ManhwaDimension.Util.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -51,7 +52,7 @@ namespace ManhwaDimension.Repository
         {
             if (db != null)
             {
-                return await db.Set<T>().AsNoTracking().FirstOrDefaultAsync(x => x.Active && x.Id == id);
+               return await db.Set<T>().AsNoTracking().FirstOrDefaultAsync(x => x.Active && x.Id == id);
             }
             return null;
         }
@@ -85,16 +86,30 @@ namespace ManhwaDimension.Repository
             return new List<T>();
         }
 
+        //public async Task<List<T>> Search(string keyword)
+        //{
+        //    if (db != null)
+        //    {
+        //        return await db.Set<T>()
+        //                       .Where(x => x.ToString().ToLower().Trim().Contains(keyword.ToLower().Trim()) && x.Active)
+        //                       .ToListAsync();
+        //    }
+        //    return new List<T>();
+        //}
         public async Task<List<T>> Search(string keyword)
         {
             if (db != null)
             {
+                var lower = keyword.ToLower().Trim();
+
                 return await db.Set<T>()
-                               .Where(x => x.ToString().ToLower().Trim().Contains(keyword.ToLower().Trim()) && x.Active)
+                               .Where(x => x.Active &&
+                                           x.Name.ToLower().Contains(lower))
                                .ToListAsync();
             }
             return new List<T>();
         }
+
 
         public async Task Update(T obj)
         {

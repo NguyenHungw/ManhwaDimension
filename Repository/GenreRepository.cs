@@ -12,6 +12,7 @@ namespace ManhwaDimension.Repository
     {
         public GenreRepository(BookwormDbContext _db) : base(_db)
         {
+
         }
 
         public async Task<DTResult<Genre>> ListServerSide(GenreDTParameters parameters)
@@ -28,8 +29,6 @@ namespace ManhwaDimension.Repository
             }
             //1. Join
             var query = from row in db.Genres
-
-
                         where row.Active
 
                         select new
@@ -49,7 +48,6 @@ EF.Functions.Collate(c.row.Name.ToString().ToLower(), SQLParams.Latin_General).C
 EF.Functions.Collate(c.row.Slug.ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
 EF.Functions.Collate(c.row.CreatedAt.ToString().ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
 EF.Functions.Collate(c.row.Active.ToString().ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General))
-
 
                 );
             }

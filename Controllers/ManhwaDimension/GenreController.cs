@@ -44,13 +44,14 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
         [Route("api/Detail/{Id}")]
         public async Task<IActionResult> Detail(long Id)
         {
-            if (Id == null)
+            if (Id == null || Id ==0)
             {
                 return BadRequest();
             }
             try
             {
                 var dataList = await service.Detail(Id);
+                
                 if (dataList == null)
                 {
                     return NotFound();

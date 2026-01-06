@@ -43,9 +43,16 @@ namespace ManhwaDimension.Repository
             }
         }
 
-        public Task<long> DeletePermanently(long id)
+        public async Task<int> DeletePermanently(int id)
         {
-            throw new NotImplementedException();
+            var entity = await db.Set<T>().FindAsync(id);
+            if (entity == null)
+                return 0;
+
+            db.Set<T>().Remove(entity);
+            await db.SaveChangesAsync();
+
+            return id;
         }
 
         public async Task<T> Detail(long id)

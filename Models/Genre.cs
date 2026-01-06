@@ -19,7 +19,5 @@ namespace ManhwaDimension.Models
         public bool Active { get; set; }
 
         public virtual ICollection<Comic> Comics { get; set; }
-        long IEntityBase.Id { get => Id; set => throw new NotImplementedException(); }
-        DateTime IEntityBase.CreatedAt { get => throw new NotImplementedException(); set => CreatedAt = value; }
     }
 }

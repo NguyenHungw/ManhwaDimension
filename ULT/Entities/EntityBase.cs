@@ -5,6 +5,6 @@
         public TKey Id { get; set; }
         public bool Active { get; set; }
         public string Name { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
     }
 }

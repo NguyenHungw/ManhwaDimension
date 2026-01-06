@@ -1,9 +1,11 @@
-﻿using System;
+﻿using ManhwaDimension.Util.Entities;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ManhwaDimension.Models
 {
-    public partial class Tag
+    public partial class Tag : IEntityBase
     {
         public Tag()
         {
@@ -16,5 +18,6 @@ namespace ManhwaDimension.Models
         public DateTimeOffset CreatedAt { get; set; }
 
         public virtual ICollection<Comic> Comics { get; set; }
+        public bool Active { get;set; }
     }
 }

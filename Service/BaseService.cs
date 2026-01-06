@@ -28,7 +28,7 @@ namespace ManhwaDimension.Service
             await repository.Delete(obj);
         }
 
-        public async Task<long> DeletePermanently(long id)
+        public async Task<int> DeletePermanently(int id)
         {
             return await repository.DeletePermanently(id);
         }

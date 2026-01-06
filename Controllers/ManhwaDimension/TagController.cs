@@ -6,23 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ManhwaDimension.Controllers.ManhwaDimension
 {
-    public class GenreController : Controller
+    public class TagController : Controller
     {
-        IGenreService service;
-        public GenreController(IGenreService _service)
+        ITagService service;
+        public TagController(ITagService _service)
         {
             service = _service;
         }
 
-        [HttpGet]
-        [Route("admin/List")]
-        public async Task<IActionResult> AdminListServerSide()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //[Route("admin/List")]
+        //public async Task<IActionResult> AdminListServerSide()
+        //{
+        //    return View();
+        //}
 
         [HttpGet]
-        [Route("api/List")]
+        [Route("api/Tag/List")]
         public async Task<IActionResult> List()
         {
             try
@@ -41,17 +41,17 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
             }
         }
         [HttpGet]
-        [Route("api/Detail/{Id}")]
-        public async Task<IActionResult> Detail(int Id)
+        [Route("api/Tag/Detail/{Id}")]
+        public async Task<IActionResult> Detail(long Id)
         {
-            if (Id == null || Id ==0)
+            if (Id == null || Id == 0)
             {
                 return BadRequest();
             }
             try
             {
                 var dataList = await service.Detail(Id);
-                
+
                 if (dataList == null)
                 {
                     return NotFound();
@@ -65,7 +65,7 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
             }
         }
         [HttpGet]
-        [Route("api/Search")]
+        [Route("api/Tag/Search")]
         public async Task<IActionResult> Search(string keyword)
         {
             try
@@ -86,7 +86,7 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
 
 
         [HttpGet]
-        [Route("api/ListPaging")]
+        [Route("api/Tag/ListPaging")]
         public async Task<IActionResult> ListPaging(int pageIndex, int pageSize)
         {
             if (pageIndex < 0 || pageSize < 0) return BadRequest();
@@ -108,8 +108,8 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
             }
         }
         [HttpPost]
-        [Route("api/add")]
-        public async Task<IActionResult> Add([FromBody] Genre model)
+        [Route("api/Tag/add")]
+        public async Task<IActionResult> Add([FromBody] Tag model)
         {
             if (ModelState.IsValid)
             {
@@ -128,8 +128,8 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
             return BadRequest();
         }
         [HttpPut]
-        [Route("api/update")]
-        public async Task<IActionResult> Update([FromBody] Genre model)
+        [Route("api/Tag/update")]
+        public async Task<IActionResult> Update([FromBody] Tag model)
         {
             if (ModelState.IsValid)
             {
@@ -151,8 +151,23 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
             }
             return BadRequest();
         }
+
+        [HttpPost]
+        [Route("api/Tag/ListServerSide")]
+        public async Task<IActionResult> ListServerSide([FromBody] TagDTParameters parameters)
+        {
+            try
+            {
+                var data = await service.ListServerSide(parameters);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         [HttpDelete]
-        [Route("api/DeletePermanently")]
+        [Route("api/Tag/DeletePermanently")]
         public async Task<IActionResult> Delete(int id)
         {
             if (ModelState.IsValid)
@@ -174,21 +189,6 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
                 }
             }
             return BadRequest();
-        }
-
-        [HttpPost]
-        [Route("api/ListServerSide")]
-        public async Task<IActionResult> ListServerSide([FromBody] GenreDTParameters parameters)
-        {
-            try
-            {
-                var data = await service.ListServerSide(parameters);
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
         }
     }
 }

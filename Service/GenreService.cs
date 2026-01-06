@@ -22,8 +22,7 @@ namespace ManhwaDimension.Service
         public override async Task Add(Genre genre)
         {
             genre.Slug = StringExtension.ConvertToSlug(genre.Name);
-            genre.CreatedAt = DateTime.Now;
-            genre.Active = true;
+    
             await repositoryGenre.Add(genre);
 
         }

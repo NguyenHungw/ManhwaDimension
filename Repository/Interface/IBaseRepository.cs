@@ -11,7 +11,7 @@ namespace ManhwaDimension.Repository.Interface
         Task<T> Add(T entity);
         Task Update(T entity);
         Task Delete(T entity);
-        Task<long> DeletePermanently(long id);
+        Task<int> DeletePermanently(int id);
         int Count();
     }
 }

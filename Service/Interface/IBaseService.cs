@@ -9,7 +9,7 @@
         Task Add(TModel obj);
         Task Update(TModel obj);
         Task Delete(TModel obj);
-        Task<long> DeletePermanently(long id);
+        Task<int> DeletePermanently(int id);
         int Count();
 
     }

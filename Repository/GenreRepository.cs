@@ -42,14 +42,23 @@ namespace ManhwaDimension.Repository
             {
                 searchAll = searchAll.ToLower();
                 query = query.Where(c =>
-                    EF.Functions.Collate(c.row.Id.ToString().ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
-EF.Functions.Collate(c.row.Id.ToString().ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
-EF.Functions.Collate(c.row.Name.ToString().ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
-EF.Functions.Collate(c.row.Slug.ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
-EF.Functions.Collate(c.row.CreatedAt.ToString().ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
-EF.Functions.Collate(c.row.Active.ToString().ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General))
+       EF.Functions.Collate(c.row.Name.ToLower(), SQLParams.Latin_General)
+           .Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
+       EF.Functions.Collate(c.row.Slug.ToLower(), SQLParams.Latin_General)
+           .Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General))
+   );
 
-                );
+                // Search Id riêng
+                if (int.TryParse(searchAll, out int id))
+                {
+                    query = query.Where(c => c.row.Id == id);
+                }
+
+                // Search Active riêng
+                if (bool.TryParse(searchAll, out bool active))
+                {
+                    query = query.Where(c => c.row.Active == active);
+                }
             }
             foreach (var item in parameters.Columns)
             {

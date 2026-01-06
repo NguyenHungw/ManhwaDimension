@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ManhwaDimension.Util.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace ManhwaDimension.Models
 {
-    public partial class Author
+    public partial class Author : IEntityBase
     {
         public Author()
         {
@@ -18,6 +19,7 @@ namespace ManhwaDimension.Models
         public string? Website { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset? UpdatedAt { get; set; }
+        public bool Active { get; set; }
 
         public virtual ICollection<Comic> Comics { get; set; }
         public virtual ICollection<Subscription> Subscriptions { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace ManhwaDimension.ULT
 {
-    public class AuthorDTParameters : DTParameters
+    public class GenreDTParameters : DTParameters
     {
         public string SearchAll {  get; set; }
     }

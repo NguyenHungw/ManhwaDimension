@@ -8,14 +8,14 @@ using System.Globalization;
 
 namespace ManhwaDimension.Repository
 {
-    public class TagRepository : BaseRepository<Tag>, ITagRepository
+    public class AuthorRepository : BaseRepository<Author>, IAuthorRepository
     {
-        public TagRepository(BookwormDbContext _db) : base(_db)
+        public AuthorRepository(BookwormDbContext _db) : base(_db)
         {
 
         }
 
-        public async Task<DTResult<Tag>> ListServerSide(TagDTParameters parameters)
+        public async Task<DTResult<Author>> ListServerSide(AuthorDTParameters parameters)
         {
             //0. Options
             string searchAll = parameters.SearchAll.Trim();//Trim text
@@ -28,7 +28,7 @@ namespace ManhwaDimension.Repository
                 orderDirectionASC = parameters.Order[0].Dir == DTOrderDir.ASC;
             }
             //1. Join
-            var query = from row in db.Tags
+            var query = from row in db.Authors
                         where row.Active
 
                         select new
@@ -42,10 +42,12 @@ namespace ManhwaDimension.Repository
             {
                 searchAll = searchAll.ToLower();
                 query = query.Where(c =>
-       EF.Functions.Collate(c.row.Name.ToLower(), SQLParams.Latin_General)
-           .Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
-       EF.Functions.Collate(c.row.Slug.ToLower(), SQLParams.Latin_General)
-           .Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General))
+       EF.Functions.Collate(c.row.Name.ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
+       EF.Functions.Collate(c.row.Slug.ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
+       EF.Functions.Collate(c.row.Bio.ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
+       EF.Functions.Collate(c.row.Website.ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General))
+
+
    );
 
                 // Search Id riêng
@@ -60,7 +62,6 @@ namespace ManhwaDimension.Repository
                     query = query.Where(c => c.row.Active == active);
                 }
             }
-
             foreach (var item in parameters.Columns)
             {
                 var fillter = item.Search.Value.Trim();
@@ -77,7 +78,7 @@ namespace ManhwaDimension.Repository
                         case "slug":
                             query = query.Where(c => c.row.Slug.ToString().Trim().Contains(fillter));
                             break;
-                        case "createdTime":
+                        case "createdAt":
                             if (fillter.Contains(" - "))
                             {
                                 var dates = fillter.Split(" - ");
@@ -99,7 +100,7 @@ namespace ManhwaDimension.Repository
             }
 
             //3.Query second
-            var query2 = query.Select(c => new Tag()
+            var query2 = query.Select(c => new Author()
             {
                 Id = c.row.Id,
                 Name = c.row.Name,
@@ -108,10 +109,10 @@ namespace ManhwaDimension.Repository
                 Active = c.row.Active,
             });
             //4. Sort
-            query2 = query2.OrderByDynamic<Tag>(orderCritirea, orderDirectionASC ? LinqExtensions.Order.Asc : LinqExtensions.Order.Desc);
+            query2 = query2.OrderByDynamic<Author>(orderCritirea, orderDirectionASC ? LinqExtensions.Order.Asc : LinqExtensions.Order.Desc);
             recordFiltered = await query2.CountAsync();
             //5. Return data
-            return new DTResult<Tag>()
+            return new DTResult<Author>()
             {
                 data = await query2.Skip(parameters.Start).Take(parameters.Length).ToListAsync(),
                 draw = parameters.Draw,

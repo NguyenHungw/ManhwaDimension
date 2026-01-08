@@ -39,7 +39,8 @@ namespace ManhwaDimension.Util
             services.AddScoped<IGenreService, GenreService> ();
             services.AddScoped<ITagRepository, TagRepository>();
             services.AddScoped<ITagService, TagService>();
-
+            services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+            services.AddScoped<ISubscriptionService, SubscriptionService>();
             // Đăng ký HttpClient để gọi API bên ngoài
             services.AddHttpClient();
 

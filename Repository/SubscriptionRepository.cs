@@ -4,14 +4,98 @@ using ManhwaDimension.Service.Interface;
 using ManhwaDimension.ULT;
 using ManhwaDimension.Util;
 using Microsoft.EntityFrameworkCore;
+using NPOI.SS.Formula.Functions;
 using System.Globalization;
 
 namespace ManhwaDimension.Repository
 {
-    public class SubscriptionRepository : BaseRepository<Subscription>, ISubscriptionRepository
+    public class SubscriptionRepository : ISubscriptionRepository
     {
-        public SubscriptionRepository(BookwormDbContext _db) : base(_db)
+        private readonly BookwormDbContext db;
+
+        public SubscriptionRepository(BookwormDbContext _db)
         {
+            db = _db;
+        }
+
+        public async Task<Subscription> Add(Subscription entity)
+        {
+            if (db != null)
+            {
+                await db.Set<Subscription>().AddAsync(entity);
+                await db.SaveChangesAsync();
+                return entity;
+            }
+            return null;
+        }
+
+        public int Count()
+        {
+            if (db != null)
+            {
+                return db.Set<Subscription>().Where(x => x.Active).Count();
+            }
+            return 0;
+        }
+
+        public async Task Delete(Subscription entity)
+        {
+            if (db != null)
+            {
+                db.Set<Subscription>().Attach(entity);
+                db.Entry(entity).Property(x => x.Active).IsModified = true;
+                await db.SaveChangesAsync();
+            }
+        }
+
+        public async Task<int> DeletePermanently(int id)
+        {
+            var entity = await db.Set<Subscription>().FindAsync(id);
+            if (entity == null)
+                return 0;
+
+            db.Set<Subscription>().Remove(entity);
+            await db.SaveChangesAsync();
+
+            return id;
+        }
+
+        public async Task<Subscription> Detail(long id)
+        {
+            if (db != null)
+            {
+                return await db.Set<Subscription>().AsNoTracking().FirstOrDefaultAsync(x => x.Active && x.Id == id);
+            }
+            return null;
+        }
+
+        public async Task<List<Subscription>> List()
+        {
+            if (db != null)
+            {
+                return await db.Set<Subscription>()
+                    .AsNoTracking()
+                    .Where(x => x.Active)
+                    .OrderByDescending(x => x.Id)
+                    .ToListAsync();
+            }
+            return new List<Subscription>();
+        }
+
+        public async Task<List<Subscription>> ListPaging(int pageIndex, int pageSize)
+        {
+            int offSet = 0;
+            offSet = (pageIndex - 1) * pageSize;
+            if (db != null)
+            {
+                return await db.Set<Subscription>()
+                    .AsNoTracking()
+                    .Where(x => x.Active)
+                    .OrderByDescending(x => x.Id)
+                    .Skip(offSet).Take(pageSize)
+                    .ToListAsync();
+            }
+            return new List<Subscription>();
         }
 
         public async Task<DTResult<Subscription>> ListServerSide(SubscriptionDTParameters parameters)
@@ -41,8 +125,8 @@ namespace ManhwaDimension.Repository
             {
                 searchAll = searchAll.ToLower();
                 query = query.Where(c =>
-       EF.Functions.Collate(c.row.Type.ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)) ||
-       //EF.Functions.Collate(c.row.Slug.ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)));
+       EF.Functions.Collate(c.row.Type.ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)));
+                //EF.Functions.Collate(c.row.Slug.ToLower(), SQLParams.Latin_General).Contains(EF.Functions.Collate(searchAll, SQLParams.Latin_General)));
 
                 // Search Id riêng
                 if (int.TryParse(searchAll, out int id))
@@ -124,6 +208,16 @@ namespace ManhwaDimension.Repository
                 recordsFiltered = recordFiltered,
                 recordsTotal = recordTotal
             };
+        }
+
+        public Task<List<Subscription>> Search(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Update(Subscription entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

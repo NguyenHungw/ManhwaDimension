@@ -4,11 +4,13 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>03d0247b-515c-4201-a2b6-75d34cfbeddf</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="AWSSDK.S3" Version="4.0.16.4" />
     <PackageReference Include="Handlebars.Net" Version="2.1.6" />
     <PackageReference Include="itext7" Version="7.2.6" />
     <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.3.0" />

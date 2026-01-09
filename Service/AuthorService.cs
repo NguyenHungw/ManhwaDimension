@@ -9,8 +9,8 @@ namespace ManhwaDimension.Service
 {
     public class AuthorService : BaseService<Author>, IAuthorService
     {
-        IAuthorService repositorAuthor;
-        public AuthorService(IBaseRepository<Author> _repository, IAuthorService _repositorAuthor) : base(_repository)
+        IAuthorRepository repositorAuthor;
+        public AuthorService(IBaseRepository<Author> _repository, IAuthorRepository _repositorAuthor) : base(_repository)
         {
             repositorAuthor = _repositorAuthor;
         }

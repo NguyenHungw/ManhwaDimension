@@ -1,5 +1,8 @@
+﻿using Amazon;
+using Amazon.S3;
 using ManhwaDimension.Models;
 using ManhwaDimension.ULT.Email;
+using ManhwaDimension.ULT.Extentions;
 using ManhwaDimension.Util;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -28,6 +31,8 @@ builder.Services.AddDbContext<BookwormDbContext>(options =>
         }
     ));
 
+
+
 // ==========================
 
 var app = builder.Build();
@@ -48,7 +53,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-        c.RoutePrefix = "swagger"; // v�o /swagger
+        c.RoutePrefix = "swagger"; // vào /swagger
     });
 }
 else

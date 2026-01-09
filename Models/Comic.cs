@@ -31,6 +31,8 @@ namespace ManhwaDimension.Models
         public DateTimeOffset? DeletedAt { get; set; }
         public byte[] RowVersion { get; set; } = null!;
 
+        public bool Active { get; set; }
+
         public virtual Author Author { get; set; } = null!;
         public virtual ICollection<Bookmark> Bookmarks { get; set; }
         public virtual ICollection<Chapter> Chapters { get; set; }

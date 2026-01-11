@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-    <PackageReference Include="AWSSDK.S3" Version="4.0.16.4" />
+    <PackageReference Include="AWSSDK.S3" Version="4.0.17" />
     <PackageReference Include="Handlebars.Net" Version="2.1.6" />
     <PackageReference Include="itext7" Version="7.2.6" />
     <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.3.0" />

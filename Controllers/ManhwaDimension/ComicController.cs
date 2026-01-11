@@ -1,4 +1,5 @@
 ﻿using ManhwaDimension.Models;
+using ManhwaDimension.Models.DTO.Comic;
 using ManhwaDimension.Models.Response;
 using ManhwaDimension.Service.Interface;
 using ManhwaDimension.ULT;
@@ -109,7 +110,7 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
         }
         [HttpPost]
         [Route("api/Comic/add")]
-        public async Task<IActionResult> Add(IFormFile file,[FromForm] Comic model)
+        public async Task<IActionResult> Add(IFormFile file,[FromForm] ComicDTO model)
         {
 
             if (ModelState.IsValid)
@@ -117,8 +118,8 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
                 try
                 {
                     
-                    await service.AddComicIMG(model,file);
-                    var manhwaDimensionResponse = ManhwaDimensionResponse.CREATED(model);
+                    var result = await service.AddComicIMG(model,file);
+                    var manhwaDimensionResponse = ManhwaDimensionResponse.CREATED(result);
                     return Created("", manhwaDimensionResponse);
                 }
                 catch (Exception ex)

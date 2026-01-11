@@ -7,6 +7,9 @@ using ManhwaDimension.Util;
 using Microsoft.EntityFrameworkCore;
 using System;
 
+using ManhwaDimension.Util.Extentions;
+using ManhwaDimension;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,6 +20,8 @@ builder.Services
        //.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"))
        .AddSignalR();
 // ===== Swagger config =====
+// Add config AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BookwormDbContext>(options =>

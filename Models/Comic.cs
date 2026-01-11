@@ -18,7 +18,7 @@ namespace ManhwaDimension.Models
 
         public int Id { get; set; }
         public string Title { get; set; } = null!;
-        public string Slug { get; set; } = null!;
+        public string? Slug { get; set; } = null!;
         public string? ShortDescription { get; set; }
         public string? LongDescription { get; set; }
         public string? CoverImageUrl { get; set; }

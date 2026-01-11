@@ -60,6 +60,7 @@ namespace ManhwaDimension.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             modelBuilder.Entity<AdsCampaign>(entity =>
             {
                 entity.Property(e => e.Advertiser).HasMaxLength(200);

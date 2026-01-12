@@ -67,8 +67,9 @@ namespace ManhwaDimension.Service
                 var fileTransferUtility = new TransferUtility(_s3Client);
                 await fileTransferUtility.UploadAsync(uploadRequest);
 
+                var publicID = "6aaba3617e9a4545a46c0dfafd796c16";
                 // URL đúng cho R2 public bucket
-                return $"https://pub-{_accountId}.r2.dev/{fileName}";
+                return $"https://pub-{publicID}.r2.dev/{fileName}";
             }
             catch (AmazonS3Exception e)
             {

@@ -10,5 +10,7 @@ namespace ManhwaDimension.Service.Interface
     {
         Task<DTResult<Comic>> ListServerSide(ComicDTParameters parameters);
         Task<Comic> AddComicIMG (ComicDTO comic, IFormFile imgFile);
+        Task DeleteFileAsync(string fileName);  // Thêm method này
+        Task<Stream> DownloadFileAsync(string fileName);  // Optional - nếu cần
     }
 }

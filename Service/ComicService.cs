@@ -78,6 +78,107 @@ namespace ManhwaDimension.Service
                 throw  new Exception("Error adding comic with image: " + ex.Message, ex);
             }
         }
+        public async Task<Comic> UpdateComicIMG(long id, ComicDTO comicDTO, IFormFile file)
+        {
+            try
+            {
+                // Lấy comic hiện tại từ DB
+                var existingComic = await _comicRepository.Detail(id);
+                if (existingComic == null)
+                    throw new Exception("Comic not found");
+
+                // Lưu URL ảnh cũ để xóa sau
+                var oldImageUrl = existingComic.CoverImageUrl;
+
+                // Map dữ liệu mới (giữ nguyên các trường không update)
+                _mapper.Map(comicDTO, existingComic);
+
+                // Upload ảnh mới nếu có
+                if (file != null)
+                {
+                    var allowExtension = new List<string> { ".jpg", ".jpeg", ".png", ".gif", ".webp" };
+                    var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+
+                    if (!allowExtension.Contains(extension))
+                        throw new Exception("Invalid file extension. Allowed extensions are: " + string.Join(", ", allowExtension));
+
+                    if (file.Length > 5 * 1024 * 1024)
+                        throw new Exception("File size exceeds the 5MB limit.");
+
+                    var fileName = $"Comics/{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+
+                    using (var stream = file.OpenReadStream())
+                    {
+                        existingComic.CoverImageUrl = await _cloudflareR2Client.UploadFileAsync(stream, fileName);
+                    }
+
+                    // Xóa ảnh cũ từ R2 nếu upload thành công
+                    if (!string.IsNullOrEmpty(oldImageUrl))
+                    {
+                        try
+                        {
+                            await _cloudflareR2Client.DeleteFileAsync(ExtractFileNameFromUrl(oldImageUrl));
+                        }
+                        catch (Exception ex)
+                        {
+                            // Log lỗi nhưng không throw để không ảnh hưởng đến update
+                            Console.WriteLine($"Failed to delete old image: {ex.Message}");
+                        }
+                    }
+                }
+
+                // Cập nhật DB
+                await _comicRepository.Update(existingComic);
+
+                return existingComic;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error updating comic with image: " + ex.Message, ex);
+            }
+        }
+
+        public async Task DeleteComic(long id)
+        {
+            try
+            {
+                var comic = await _comicRepository.Detail(id);
+                if (comic == null)
+                    throw new Exception("Comic not found");
+
+                // Xóa ảnh từ R2 trước
+                if (!string.IsNullOrEmpty(comic.CoverImageUrl))
+                {
+                    try
+                    {
+                        await _cloudflareR2Client.DeleteFileAsync(ExtractFileNameFromUrl(comic.CoverImageUrl));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Failed to delete image from R2: {ex.Message}");
+                        // Tiếp tục xóa trong DB ngay cả khi xóa R2 thất bại
+                    }
+                }
+
+                // Xóa khỏi DB
+                await _comicRepository.Delete(comic);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error deleting comic: " + ex.Message, ex);
+            }
+        }
+
+        // Helper method để extract filename từ URL
+        private string ExtractFileNameFromUrl(string url)
+        {
+            // Ví dụ URL: https://your-bucket.r2.cloudflarestorage.com/Comics/abc-123.jpg
+            // Return: Comics/abc-123.jpg
+
+            var uri = new Uri(url);
+            return uri.AbsolutePath.TrimStart('/');
+        }
+
         public int Count()
         {
             return _comicRepository.Count();
@@ -124,6 +225,16 @@ namespace ManhwaDimension.Service
         }
 
         public Task Add(Comic obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteFileAsync(string fileName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Stream> DownloadFileAsync(string fileName)
         {
             throw new NotImplementedException();
         }

@@ -9,22 +9,22 @@ namespace ManhwaDimension
     {
         public MappingProfile()
         {
-            CreateMap<ComicDTO, Comic>()
+            CreateMap<ComicDTO, Comic>();
             // Slug từ Title
-            .ForMember(dest => dest.Slug,
-                opt => opt.MapFrom(src => StringExtension.ConvertToSlug(src.Title)))
+            //.ForMember(dest => dest.Slug,
+            //    opt => opt.MapFrom(src => StringExtension.ConvertToSlug(src.Title)))
 
-            // CreatedAt, UpdatedAt
-            .ForMember(dest => dest.CreatedAt,
-                opt => opt.MapFrom(src => DateTime.Now))
-            .ForMember(dest => dest.UpdatedAt,
-                opt => opt.MapFrom(src => DateTime.Now))
+            //// CreatedAt, UpdatedAt
+            //.ForMember(dest => dest.CreatedAt,
+            //    opt => opt.MapFrom(src => DateTime.Now))
+            //.ForMember(dest => dest.UpdatedAt,
+            //    opt => opt.MapFrom(src => DateTime.Now))
 
-            // CoverImageUrl set sau
-            .ForMember(dest => dest.CoverImageUrl, opt => opt.Ignore())
+            //// CoverImageUrl set sau
+            //.ForMember(dest => dest.CoverImageUrl, opt => opt.Ignore())
 
-            // Id tự tạo
-            .ForMember(dest => dest.Id, opt => opt.Ignore());
+            //// Id tự tạo
+            //.ForMember(dest => dest.Id, opt => opt.Ignore());
 
             // Nếu DTO không có field này, set mặc định
             //.ForMember(dest => dest.IsDeleted,

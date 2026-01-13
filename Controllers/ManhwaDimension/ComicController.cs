@@ -137,7 +137,7 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
             if (ModelState.IsValid)
             {
                 try
-                {
+                { 
                     await service.Update(model);
                     var manhwaDimensionResponse = ManhwaDimensionResponse.CREATED(model);
                     return Ok(manhwaDimensionResponse);

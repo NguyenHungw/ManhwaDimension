@@ -5,9 +5,9 @@ using ManhwaDimension.ULT;
 
 namespace ManhwaDimension.Repository.Interface
 {
-    public interface IRoleRightRepository : IBaseRepository<RoleMenu>
+    public interface IRoleRightRepository : IBaseRepository<RoleRight>
     {
-        Task<DTResult<RoleMenuViewModel>> ListServerSide(RoleMenuDTParameters parameters);
+        Task<DTResult<RoleRightViewModel>> ListServerSide(RoleRightDTParameters parameters);
     
 
     }

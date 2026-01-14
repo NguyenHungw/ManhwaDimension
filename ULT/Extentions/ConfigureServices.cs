@@ -52,6 +52,8 @@ namespace ManhwaDimension.Util
             services.AddScoped<IAuthorService, AuthorService>();    
             services.AddScoped<IComicRepository, ComicRepository>();    
             services.AddScoped<IComicService, ComicService>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRoleService, RoleService>();
 
             //services.Configure<CloudflareR2ClientOptions>(configuration.GetSection("CloudflareR2"));
             // Program.cs (.NET 6+)

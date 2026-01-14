@@ -35,6 +35,21 @@
         {
             return date.ToString("dd/MM/yyyy");
         }
+
+        // Custom DateTimeOffset
+
+        public static string ToCustomStringOffset(this DateTimeOffset date)
+        {
+            return date.ToString("dd/MM/yyyy HH:mm:ss");
+        }
+        public static string ToCustomStringNullOffset(this DateTimeOffset? date)
+        {
+            return date.HasValue ? date.Value.ToString("dd/MM/yyyy HH:mm:ss") : string.Empty;
+        }
+        public static string ToDateStringOffset(this DateTimeOffset date)
+        {
+            return date.ToString("dd/MM/yyyy");
+        }
     }
 
 }

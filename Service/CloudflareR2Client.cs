@@ -92,5 +92,15 @@ namespace ManhwaDimension.Service
                 return false;
             }
         }
+
+        public Task DeleteFileAsync(string v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteComic(long id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

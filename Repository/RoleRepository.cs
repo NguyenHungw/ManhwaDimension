@@ -3,7 +3,9 @@ using ManhwaDimension.Repository.Interface;
 using ManhwaDimension.ULT;
 using ManhwaDimension.Util;
 using Microsoft.EntityFrameworkCore;
+using NPOI.SS.Formula.Functions;
 using System.Globalization;
+using System.Threading.Tasks;
 
 namespace ManhwaDimension.Repository
 {
@@ -115,5 +117,35 @@ EF.Functions.Collate(c.row.CreatedAt.ToCustomStringNull().ToLower(), SQLParams.L
                 recordsTotal = recordTotal
             };
         }
+
+        public int GetMaxRoleId()
+        {
+            return db.Roles.Max(r => (int)r.Id); // Lấy ID lớn nhất từ bảng Roles
+        }
+
+        public async Task<int> CheckDuplicatedRole<T>(T idOrName)
+        {
+            if (idOrName is int id)
+            {
+                // Kiểm tra nếu `id` trùng với Id trong cơ sở dữ liệu
+                bool exists = await db.Roles
+                                      .AnyAsync(r => r.Id.Equals(id));
+                return exists ? 1 : 0;
+            }
+            else if (idOrName is string name)
+            {
+                // Kiểm tra nếu `name` trùng với Name trong cơ sở dữ liệu
+                bool exists = await db.Roles
+                                      .AnyAsync(r => r.Name.Equals(name));
+                return exists ? 1 : 0;
+            }
+            else
+            {
+                // Trường hợp không phải int hoặc string, có thể trả về 0 hoặc xử lý theo cách khác
+                return 0;
+            }
+        }
+
+
     }
 }

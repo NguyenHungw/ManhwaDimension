@@ -1,4 +1,5 @@
 ﻿using ManhwaDimension.Models;
+using ManhwaDimension.Models.DTO.Comic;
 using ManhwaDimension.Models.Response;
 using ManhwaDimension.Service.Interface;
 using ManhwaDimension.ULT;
@@ -109,7 +110,7 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
         }
         [HttpPost]
         [Route("api/Role/add")]
-        public async Task<IActionResult> Add([FromBody] Role model)
+        public async Task<IActionResult> Add([FromBody] RoleDTO model)
         {
             if (ModelState.IsValid)
             {

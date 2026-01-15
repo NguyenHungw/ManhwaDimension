@@ -1,0 +1,41 @@
+﻿@{ Layout = null; }
+<script>
+    setTimeout(function () {
+        $(".page-loader").addClass('hide');
+    }, 500);
+</script>
+<!--begin::Javascript-->
+<script>var hostUrl = "/admin/assets/index.html";</script>
+
+<!--begin::Global Javascript Bundle(mandatory for all pages)-->
+<script src="/admin/assets/plugins/global/plugins.bundle.js" asp-append-version="true"></script>
+<script src="/admin/assets/js/scripts.bundle.js" asp-append-version="true"></script>
+<!--end::Global Javascript Bundle-->
+<!--begin::Vendors Javascript(used for this page only)-->
+<script src="/admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+<script src="/admin/cdn.amcharts.com/lib/5/index.js"></script>
+<script src="/admin/cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="/admin/cdn.amcharts.com/lib/5/percent.js"></script>
+<script src="/admin/cdn.amcharts.com/lib/5/radar.js"></script>
+<script src="/admin/cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="/admin/cdn.amcharts.com/lib/5/map.js"></script>
+<script src="/admin/cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+<script src="/admin/cdn.amcharts.com/lib/5/geodata/continentsLow.js"></script>
+<script src="/admin/cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
+<script src="/admin/cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
+<script src="/admin/cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
+<script src="/admin/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<!--end::Vendors Javascript-->
+<!--begin::Custom Javascript(used for this page only)-->
+<script src="/admin/assets/js/widgets.bundle.js"></script>
+<script src="/admin/assets/js/custom/widgets.js"></script>
+<script src="/admin/assets/js/custom/apps/chat/chat.js"></script>
+<script src="/admin/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="/admin/assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="/admin/assets/js/custom/utilities/modals/new-target.js"></script>
+<script src="/admin/assets/js/custom/utilities/modals/users-search.js"></script>
+<script src="/assets/js/pages/_layout.js" asp-append-version="true" ></script>
+<!--end::Custom Javascript-->
+<!--end::Javascript-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>

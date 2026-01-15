@@ -1,0 +1,487 @@
+﻿@{
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+    ViewData["Title"] = "Dashboard - GENESTORY";
+}
+@* <style>
+
+    .card .card-body {
+        background-color: #FFFFFF33;
+    }
+
+
+    .search-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+        gap: 10px;
+    }
+
+    .right-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #FFFFFF99;
+        border-radius: 4px;
+    }
+
+
+
+    .input-wrapper {
+        position: relative;
+        height: 42px;
+        display: flex;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+    }
+
+    .search-input {
+        backdrop-filter: none;
+        width: 100%;
+        padding: 5px 40px 5px 40px; /* sửa 10px thành 40px */
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 0.3);
+        color: #000;
+    }
+
+
+    .svg-box {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        /* phần CSS mới */
+        padding: 5px;
+        display: flex;
+        background-color: #FCC960;
+        justify-content: center;
+        pointer-events: none;
+        border-radius: 3px;
+    }
+
+    .left-buttons-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        border: 1px solid #fff;
+        padding: 2px;
+        border-radius: 6px;
+        background-color: #FFFFFF99;
+    }
+
+    .menu-btn {
+        flex: 1;
+        margin: 0 2px;
+        padding: 6px 0;
+        border-radius: 4px;
+        cursor: pointer;
+        width:150px;
+        height: 36px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: black;
+    }
+
+        .menu-btn:hover {
+            background-color: #FCC960;
+        }
+
+        .menu-btn.active {
+            background-color: #FCC960;
+        }
+
+    #kt_app_content_container {
+        /* padding-top: 10px; */
+        /* padding-bottom: 30px; */
+        padding: 1.25rem;
+    }
+    /* Mobile + Tablet */
+    @@media (max-width: 991px) {
+
+        .left-buttons-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #fff;
+            padding: 2px;
+            border-radius: 6px;
+            background-color: #FFFFFF99;
+            width: 58%;
+        }
+
+
+        .search-container {
+            flex-direction: column; /* Đẩy nhóm bên phải xuống dòng */
+            align-items: stretch !important;
+            gap: 20px !important; /* Tăng khoảng cách giữa 2 nhóm */
+        }
+
+        .right-controls {
+            width: 58%; /* Chiếm toàn bộ chiều ngang */
+            justify-content: space-between;
+        }
+
+            .right-controls .input-wrapper {
+                flex-grow: 1;
+            }
+
+            .right-controls .search-input {
+                width: 100%; /* Input rộng 100% */
+            }
+    }
+
+        @@media (max-width: 575.98px) {
+            /* XS: mobile rất nhỏ */
+            .right-controls {
+                width: 100%; /* Chiếm toàn bộ chiều ngang */
+                justify-content: space-between;
+            }
+
+            .left-buttons-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border: 1px solid #fff;
+                padding: 2px;
+                border-radius: 6px;
+                background-color: #FFFFFF99;
+                width: 100%;
+            }
+
+        }
+</style>
+<!-- Custom SVG Map -->
+<!--begin::Content-->
+<div class="d-flex flex-column flex-column-fluid" id="kt_app_content">
+    <!--begin::Content container-->
+    <div class="app-container container-xxl w-100 mw-unset" id="kt_app_content_container" style="position: relative; z-index:1">
+        @Html.Partial("~/Views/Client/FrontEnd/Dashboard/_Dashboard_Map.cshtml")
+        <div class="search-container">
+            D:\BackEnd\ManhwaDimension\ManhwaDimension\Views\Shared\Clients\FrontEnd\Dashboard\_Dashboard_Map.cshtml
+
+            <div class="left-buttons-wrapper">
+                <a href="@Url.Action("DashBoard", "Admin")" class="menu-btn @(ViewBag.ActiveTab == "dashboard" ? "active" : "")">Tổng quan</a>
+                <a href="@Url.Action("Biometric", "Admin")" class="menu-btn @(ViewBag.ActiveTab == "biometric" ? "active" : "")">Quản lý sinh trắc học</a>
+                <a href="@Url.Action("FamilyTree", "Admin")" class="menu-btn @(ViewBag.ActiveTab == "familytree" ? "active" : "")">Cây phả hệ</a>
+            </div>
+
+            <div class="right-controls">
+
+                <div class="input-wrapper">
+
+                    <img src="~/images/genestory/logos/search-normal.png" class="search-icon" />
+
+                    <input type="text" class="search-input" placeholder="Tìm kiếm" />
+
+                    <div class="svg-box">
+                        <!-- SVG giữ nguyên -->
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.00008 2.73333C7.66871 2.73333 7.40008 3.00196 7.40008 3.33333C7.40008 3.6647 7.66871 3.93333 8.00008 3.93333L8.00008 3.33333L8.00008 2.73333ZM13.3334 3.93333C13.6648 3.93333 13.9334 3.6647 13.9334 3.33333C13.9334 3.00196 13.6648 2.73333 13.3334 2.73333L13.3334 3.33333L13.3334 3.93333ZM8.00008 12.0667C7.66871 12.0667 7.40008 12.3353 7.40008 12.6667C7.40008 12.998 7.66871 13.2667 8.00008 13.2667V12.6667V12.0667ZM13.3334 13.2667C13.6648 13.2667 13.9334 12.998 13.9334 12.6667C13.9334 12.3353 13.6648 12.0667 13.3334 12.0667V12.6667V13.2667ZM8.00008 8.6C8.33145 8.6 8.60008 8.33137 8.60008 8C8.60008 7.66863 8.33145 7.4 8.00008 7.4L8.00008 8L8.00008 8.6ZM2.66675 7.4C2.33538 7.4 2.06675 7.66863 2.06675 8C2.06675 8.33137 2.33538 8.6 2.66675 8.6L2.66675 8L2.66675 7.4ZM8.00008 3.33333L8.00008 3.93333L13.3334 3.93333L13.3334 3.33333L13.3334 2.73333L8.00008 2.73333L8.00008 3.33333ZM8.00008 12.6667V13.2667H13.3334V12.6667V12.0667H8.00008V12.6667ZM8.00008 8L8.00008 7.4L2.66675 7.4L2.66675 8L2.66675 8.6L8.00008 8.6L8.00008 8ZM2.66675 3.33333H2.06675C2.06675 4.40108 2.93233 5.26667 4.00008 5.26667V4.66667V4.06667C3.59507 4.06667 3.26675 3.73834 3.26675 3.33333H2.66675ZM4.00008 4.66667V5.26667C5.06783 5.26667 5.93341 4.40108 5.93341 3.33333H5.33341H4.73341C4.73341 3.73834 4.40509 4.06667 4.00008 4.06667V4.66667ZM5.33341 3.33333H5.93341C5.93341 2.26558 5.06783 1.4 4.00008 1.4V2V2.6C4.40509 2.6 4.73341 2.92832 4.73341 3.33333H5.33341ZM4.00008 2V1.4C2.93233 1.4 2.06675 2.26558 2.06675 3.33333H2.66675H3.26675C3.26675 2.92832 3.59507 2.6 4.00008 2.6V2ZM2.66675 12.6667H2.06675C2.06675 13.7344 2.93233 14.6 4.00008 14.6V14V13.4C3.59507 13.4 3.26675 13.0717 3.26675 12.6667H2.66675ZM4.00008 14V14.6C5.06783 14.6 5.93341 13.7344 5.93341 12.6667H5.33341H4.73341C4.73341 13.0717 4.40509 13.4 4.00008 13.4V14ZM5.33341 12.6667H5.93341C5.93341 11.5989 5.06783 10.7333 4.00008 10.7333V11.3333V11.9333C4.40509 11.9333 4.73341 12.2617 4.73341 12.6667H5.33341ZM4.00008 11.3333V10.7333C2.93233 10.7333 2.06675 11.5989 2.06675 12.6667H2.66675H3.26675C3.26675 12.2617 3.59507 11.9333 4.00008 11.9333V11.3333ZM13.3334 8L13.9334 8C13.9334 6.93225 13.0678 6.06667 12.0001 6.06667L12.0001 6.66667L12.0001 7.26667C12.4051 7.26667 12.7334 7.59499 12.7334 8L13.3334 8ZM12.0001 6.66667L12.0001 6.06667C10.9323 6.06667 10.0667 6.93225 10.0667 8L10.6667 8L11.2667 8C11.2667 7.59499 11.5951 7.26667 12.0001 7.26667L12.0001 6.66667ZM10.6667 8L10.0667 8C10.0667 9.06775 10.9323 9.93333 12.0001 9.93333L12.0001 9.33333L12.0001 8.73333C11.5951 8.73333 11.2667 8.40501 11.2667 8L10.6667 8ZM12.0001 9.33333L12.0001 9.93333C13.0678 9.93333 13.9334 9.06775 13.9334 8L13.3334 8L12.7334 8C12.7334 8.40501 12.4051 8.73333 12.0001 8.73333L12.0001 9.33333Z" fill="black" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--begin::Dashboard Layout-->
+        <div class="row" style="pointer-events:none">
+            <!--begin::Left Column - Dashboard Content-->
+            <div class="col-sm-7" style="pointer-events:auto">
+                <!--begin::Metric Cards-->
+                <div class="row g-4 mb-6">
+                    <div class="col-md-4">
+                        <div class="card h-100 d-flex justify-content-center px-6 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="d-flex gap-3 align-items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                                                <path opacity="0.4" d="M9 2.5C6.38 2.5 4.25 4.63 4.25 7.25C4.25 9.82 6.26 11.9 8.88 11.99C8.96 11.98 9.04 11.98 9.1 11.99C9.12 11.99 9.13 11.99 9.15 11.99C9.16 11.99 9.16 11.99 9.17 11.99C11.73 11.9 13.74 9.82 13.75 7.25C13.75 4.63 11.62 2.5 9 2.5Z" fill="#DA9200" />
+                                                <path d="M14.08 14.6499C11.29 12.7899 6.73996 12.7899 3.92996 14.6499C2.65996 15.4999 1.95996 16.6499 1.95996 17.8799C1.95996 19.1099 2.65996 20.2499 3.91996 21.0899C5.31996 22.0299 7.15996 22.4999 8.99996 22.4999C10.84 22.4999 12.68 22.0299 14.08 21.0899C15.34 20.2399 16.04 19.0999 16.04 17.8599C16.03 16.6299 15.34 15.4899 14.08 14.6499Z" fill="#DA9200" />
+                                                <path opacity="0.4" d="M19.9901 7.8401C20.1501 9.7801 18.7701 11.4801 16.8601 11.7101C16.8501 11.7101 16.8501 11.7101 16.8401 11.7101H16.8101C16.7501 11.7101 16.6901 11.7101 16.6401 11.7301C15.6701 11.7801 14.7801 11.4701 14.1101 10.9001C15.1401 9.9801 15.7301 8.6001 15.6101 7.1001C15.5401 6.2901 15.2601 5.5501 14.8401 4.9201C15.2201 4.7301 15.6601 4.6101 16.1101 4.5701C18.0701 4.4001 19.8201 5.8601 19.9901 7.8401Z" fill="#DA9200" />
+                                                <path d="M21.99 17.0899C21.91 18.0599 21.29 18.8999 20.25 19.4699C19.25 20.0199 17.99 20.2799 16.74 20.2499C17.46 19.5999 17.88 18.7899 17.96 17.9299C18.06 16.6899 17.47 15.4999 16.29 14.5499C15.62 14.0199 14.84 13.5999 13.99 13.2899C16.2 12.6499 18.98 13.0799 20.69 14.4599C21.61 15.1999 22.08 16.1299 21.99 17.0899Z" fill="#DA9200" />
+                                            </svg>
+                                            <div class="fs-2 fw-bold text-gray-800">
+                                                <span class="fs-1 fw-bolder lh-base">10.5</span>
+                                                <span class="fs-7 fw-normal lh-base">triệu</span>
+                                            </div>
+                                        </div>
+                                        <a class="hover-scale" href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <path d="M4 12L12 4M12 4H6M12 4V10" stroke="#DA9200" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <img src="~/images/genestory/logos/question circle.png" />
+                                        </a>
+                                    </div>
+                                    <div class="fs-6 fw-normal lh-base text-black min-h-40px">Tổng số người đã phân tích sinh trắc học</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 justify-content-center px-6 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="d-flex gap-3 align-items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                                                <path opacity="0.4" d="M20.5 10.69H17.61C15.24 10.69 13.31 8.76 13.31 6.39V3.5C13.31 2.95 12.86 2.5 12.31 2.5H8.07C4.99 2.5 2.5 4.5 2.5 8.07V16.93C2.5 20.5 4.99 22.5 8.07 22.5H15.93C19.01 22.5 21.5 20.5 21.5 16.93V11.69C21.5 11.14 21.05 10.69 20.5 10.69Z" fill="#DA9200" />
+                                                <path d="M15.7999 2.70999C15.3899 2.29999 14.6799 2.57999 14.6799 3.14999V6.63999C14.6799 8.09999 15.9199 9.30999 17.4299 9.30999C18.3799 9.31999 19.6999 9.31999 20.8299 9.31999C21.3999 9.31999 21.6999 8.64999 21.2999 8.24999C19.8599 6.79999 17.2799 4.18999 15.7999 2.70999Z" fill="#DA9200" />
+                                                <path d="M13.5 14.25H7.5C7.09 14.25 6.75 13.91 6.75 13.5C6.75 13.09 7.09 12.75 7.5 12.75H13.5C13.91 12.75 14.25 13.09 14.25 13.5C14.25 13.91 13.91 14.25 13.5 14.25Z" fill="#DA9200" />
+                                                <path d="M11.5 18.25H7.5C7.09 18.25 6.75 17.91 6.75 17.5C6.75 17.09 7.09 16.75 7.5 16.75H11.5C11.91 16.75 12.25 17.09 12.25 17.5C12.25 17.91 11.91 18.25 11.5 18.25Z" fill="#DA9200" />
+                                            </svg>
+                                            <div class="fs-2 fw-bold text-gray-800">
+                                                <span class="fs-1 fw-bolder lh-base">15.2</span>
+                                                <span class="fs-7 fw-normal lh-base">triệu</span>
+                                            </div>
+                                        </div>
+                                        <a class="hover-scale" href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <path d="M4 12L12 4M12 4H6M12 4V10" stroke="#DA9200" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <img src="~/images/genestory/logos/question circle.png" />
+
+                                        </a>
+                                    </div>
+                                    <div class="fs-6 fw-normal lh-base text-black min-h-40px">Hồ sơ được đưa lên để quản lý trên hệ thống</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 justify-content-center px-6 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="d-flex gap-3 align-items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                                                <path opacity="0.4" d="M18 14.25C18 18.53 14.53 22 10.25 22C5.97 22 2.5 18.53 2.5 14.25C2.5 9.97 5.97 6.5 10.25 6.5C12.12 6.5 13.83 7.16 15.17 8.27H15.18C15.57 8.59 15.92 8.94 16.23 9.33C17.34 10.67 18 12.38 18 14.25Z" fill="#DA9200" />
+                                                <path d="M22.25 3V9.5C22.25 9.91 21.91 10.25 21.5 10.25C21.09 10.25 20.75 9.91 20.75 9.5V4.81L16.23 9.33C15.92 8.94 15.57 8.59 15.18 8.27L19.69 3.75H15C14.59 3.75 14.25 3.41 14.25 3C14.25 2.59 14.59 2.25 15 2.25H21.5C21.6 2.25 21.69 2.27 21.79 2.31C21.97 2.38 22.12 2.53 22.19 2.71C22.23 2.81 22.25 2.9 22.25 3Z" fill="#DA9200" />
+                                            </svg>
+                                            <div class="fs-2 fw-bold text-gray-800">
+                                                <span class="fs-1 fw-bolder lh-base">27.5</span>
+                                            </div>
+                                        </div>
+                                        <a class="hover-scale" href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <path d="M4 12L12 4M12 4H6M12 4V10" stroke="#DA9200" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <img src="~/images/genestory/logos/question circle.png" />
+
+                                        </a>
+                                    </div>
+                                    <div class="fs-6 fw-normal lh-base text-black min-h-40px">Tuổi trung bình của người được phân tích</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 justify-content-center px-6 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="d-flex gap-3 align-items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                                                <path opacity="0.4" d="M8.56004 3.83984V18.1698C8.22004 18.1798 7.88004 18.2598 7.63004 18.4098L5.28004 19.7498C3.64004 20.6898 2.29004 19.9098 2.29004 18.0098V8.27984C2.29004 7.64984 2.74004 6.86984 3.30004 6.54984L7.63004 4.06984C7.88004 3.92984 8.22004 3.84984 8.56004 3.83984Z" fill="#DA9200" />
+                                                <path d="M15.7301 6.82994V21.1599C15.3801 21.1699 15.0401 21.1099 14.7701 20.9799L9.52006 18.3499C9.25006 18.2199 8.91006 18.1599 8.56006 18.1699V3.83994C8.91006 3.82994 9.25006 3.88994 9.52006 4.01994L14.7701 6.64994C15.0401 6.77994 15.3801 6.83994 15.7301 6.82994Z" fill="#DA9200" />
+                                                <path opacity="0.4" d="M22 6.99006V16.7201C22 17.3501 21.55 18.1301 20.99 18.4501L16.66 20.9301C16.41 21.0701 16.07 21.1501 15.73 21.1601V6.83006C16.07 6.82006 16.41 6.74006 16.66 6.59006L19.01 5.25006C20.65 4.31006 22 5.09006 22 6.99006Z" fill="#DA9200" />
+                                            </svg>
+                                            <div class="fs-2 fw-bold text-gray-800">
+                                                <span class="fs-1 fw-bolder lh-base">58</span>
+                                            </div>
+                                        </div>
+                                        <a class="hover-scale" href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <path d="M4 12L12 4M12 4H6M12 4V10" stroke="#DA9200" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <img src="~/images/genestory/logos/question circle.png" />
+
+                                        </a>
+                                    </div>
+                                    <div class="fs-6 fw-normal lh-base text-black min-h-40px">Số tỉnh/thành có dữ liệu</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 justify-content-center px-6 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="d-flex gap-3 align-items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                                                <path opacity="0.4" d="M21.0799 9.08003V15.92C21.0799 17.04 20.4799 18.08 19.5099 18.65L13.5699 22.08C12.5999 22.64 11.3999 22.64 10.4199 22.08L4.47991 18.65C3.50991 18.09 2.90991 17.05 2.90991 15.92V9.08003C2.90991 7.96003 3.50991 6.91999 4.47991 6.34999L10.4199 2.92C11.3899 2.36 12.5899 2.36 13.5699 2.92L19.5099 6.34999C20.4799 6.91999 21.0799 7.95003 21.0799 9.08003Z" fill="#DA9200" />
+                                                <path d="M11.9999 12.4998C13.2867 12.4998 14.3299 11.4566 14.3299 10.1698C14.3299 8.88298 13.2867 7.83984 11.9999 7.83984C10.7131 7.83984 9.66992 8.88298 9.66992 10.1698C9.66992 11.4566 10.7131 12.4998 11.9999 12.4998Z" fill="#DA9200" />
+                                                <path d="M14.6799 17.1599C15.4899 17.1599 15.9599 16.2599 15.5099 15.5899C14.8299 14.5799 13.5099 13.8999 11.9999 13.8999C10.4899 13.8999 9.16992 14.5799 8.48992 15.5899C8.03992 16.2599 8.50992 17.1599 9.31992 17.1599H14.6799Z" fill="#DA9200" />
+                                            </svg>
+                                            <div class="fs-2 fw-bold text-gray-800">
+                                                <span class="fs-1 fw-bolder lh-base">45</span>
+                                            </div>
+                                        </div>
+                                        <a class="hover-scale" href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <path d="M4 12L12 4M12 4H6M12 4V10" stroke="#DA9200" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <img src="~/images/genestory/logos/question circle.png" />
+
+                                        </a>
+                                    </div>
+                                    <div class="fs-6 fw-normal lh-base text-black min-h-40px">Số dòng họ có dữ liệu sinh trắc học</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 justify-content-center px-6 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="d-flex gap-3 align-items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                                                <path opacity="0.4" d="M22 8.31V15.66C21.71 15.52 21.39 15.42 21.03 15.36L20.72 15.31L20.46 14.77C19.91 13.65 19.01 13 18 13C16.99 13 16.09 13.65 15.54 14.77L15.27 15.31L14.97 15.36C13.78 15.56 12.92 16.22 12.61 17.16C12.31 18.11 12.62 19.15 13.47 20.01L13.78 20.32L13.75 20.44C13.55 21.33 13.63 22.01 13.82 22.5H7.81C4.17 22.5 2 20.33 2 16.69V8.31C2 4.67 4.17 2.5 7.81 2.5H16.19C19.83 2.5 22 4.67 22 8.31Z" fill="#DA9200" />
+                                                <path d="M19.1199 15.4399L19.4399 16.0899C19.5999 16.4099 20.0099 16.7099 20.3499 16.7699L20.7799 16.8399C22.0899 17.0599 22.3899 18.0199 21.4599 18.9599L21.0599 19.3599C20.7899 19.6299 20.6499 20.1499 20.7299 20.5299L20.7799 20.7699C21.1399 22.3499 20.2999 22.9599 18.9299 22.1299L18.6399 21.9499C18.2899 21.7399 17.7099 21.7399 17.3599 21.9499L17.0699 22.1299C15.6899 22.9599 14.8599 22.3499 15.2199 20.7699L15.2699 20.5299C15.3499 20.1599 15.2099 19.6299 14.9399 19.3599L14.5399 18.9599C13.6099 18.0099 13.9099 17.0599 15.2199 16.8399L15.6499 16.7699C15.9999 16.7099 16.3999 16.4099 16.5599 16.0899L16.8799 15.4399C17.4999 14.1899 18.4999 14.1899 19.1199 15.4399Z" fill="#DA9200" />
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1294 8.41704C16.4568 8.67081 16.5164 9.14192 16.2627 9.4693L13.9482 12.455C13.3533 13.2073 12.2565 13.3445 11.4913 12.7533L11.4861 12.7492L9.65952 11.3119C9.54667 11.2262 9.38927 11.2475 9.30358 11.3581C9.3035 11.3582 9.30366 11.358 9.30358 11.3581L6.92405 14.4475C6.6713 14.7756 6.20037 14.8367 5.87222 14.584C5.54406 14.3312 5.48293 13.8603 5.73569 13.5321L8.11641 10.4412C8.71032 9.67263 9.81153 9.53371 10.5785 10.1263L10.5837 10.1304L12.4103 11.5677C12.5243 11.6543 12.685 11.632 12.7701 11.5265L15.0771 8.55031C15.3309 8.22293 15.802 8.16327 16.1294 8.41704Z" fill="#DA9200" />
+                                            </svg>
+                                            <div class="fs-2 fw-bold text-gray-800">
+                                                <span class="fs-1 fw-bolder lh-base">5</span>
+                                            </div>
+                                        </div>
+                                        <a class="hover-scale" href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <path d="M4 12L12 4M12 4H6M12 4V10" stroke="#DA9200" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <img src="~/images/genestory/logos/question circle.png" />
+
+                                        </a>
+                                    </div>
+                                    <div class="fs-6 fw-normal lh-base text-black min-h-40px">Số cấp quan hệ được ghi nhận trong hệ thống</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Metric Cards-->
+                <div>
+                    <h3 class="mb-6 fs-2 fst-normal fw-medium lh-base">Thống kê cơ sở dữ liệu</h3>
+                </div>
+                <!--begin::Charts Row-->
+                <div class="row g-4 mb-6">
+                    <!--begin::Gender Pie Chart-->
+                    <div class="col-xl-6 col-md-12">
+                        <div class="card h-100">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div style="width: 200px; height: 200px; margin-right: 20px; position: relative;">
+                                        <canvas id="genderChart" width="200" height="200" style="position: absolute; top: 0; left: 0;"></canvas>
+                                        <canvas id="genderOverlay" width="200" height="200" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+                                    </div>
+                                    <div class="legend-container">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="legend-color" style="background: linear-gradient(81deg, #007bff 5.54%, #0056b3 50%); margin-right: 8px;"></div>
+                                            <span class="legend-text">Nữ</span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="legend-color" style="background: linear-gradient(211deg, #FEAC52 5.54%, #FEAC52 50%); margin-right: 8px;"></div>
+                                            <span class="legend-text">Nam</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fs-5 fst-normal fw-bold lh-base">
+                                        Tỉ lệ giới tính của hồ sơ đã được phân tích
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Gender Pie Chart-->
+                    <!--begin::DNA Sample Pie Chart-->
+                    <div class="col-xl-6 col-md-12">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div style="width: 200px; height: 200px; margin-right: 20px; position: relative;">
+                                        <canvas id="dnaChart" width="200" height="200" style="position: absolute; top: 0; left: 0;"></canvas>
+                                        <canvas id="dnaOverlay" width="200" height="200" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+                                    </div>
+                                    <div class="legend-container">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="legend-color" style="background: linear-gradient(81deg, #509FE3 5.54%, #4174D1 50%); margin-right: 8px;"></div>
+                                            <span class="legend-text">Mẫu máu</span>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="legend-color" style="background: linear-gradient(235deg, #FEAC52 13.06%, #F95638 79.35%); margin-right: 8px;"></div>
+                                            <span class="legend-text">Mẫu tóc</span>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="legend-color" style="background: linear-gradient(308deg, #A071EF 20.76%, #6B4EBE 89.6%); margin-right: 8px;"></div>
+                                            <span class="legend-text">Mẫu nước bọt</span>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-2">
+                                            <div class="legend-color" style="background: linear-gradient(127deg, #3D9C6F 8.34%, #69EC9F 89.68%); margin-right: 8px;"></div>
+                                            <span class="legend-text">Mẫu tế bào</span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="legend-color" style="background: linear-gradient(142deg, #CE3853 0.3%, #E45585 75.3%); margin-right: 8px;"></div>
+                                            <span class="legend-text">Mẫu khác</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="fs-5 fst-normal fw-bold lh-base">
+                                        Tỉ lệ loại mẫu ADN lưu trữ trên hệ thống
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::DNA Sample Pie Chart-->
+                </div>
+                <!--end::Charts Row-->
+                <!--begin::Age Distribution Bar Chart-->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="d-flex p-6">
+                                <h3 class="card-title">Biểu đồ phân bố độ tuổi người dân đã phân tích sinh trắc học</h3>
+                            </div>
+                            <div class="card-body">
+                                <div style="height: 400px;">
+                                    <canvas id="ageChart" width="800" height="400"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Age Distribution Bar Chart-->
+            </div>
+            <!--end::Left Column-->
+        </div>
+        <!--end::Dashboard Layout-->
+    </div>
+    <!--end::Content container-->
+</div>
+<!--end::Content-->
+@section Styles {
+    <link href="~/client/pages/dashboard/css/dashboard.css" rel="stylesheet" />
+
+}
+@section Scripts {
+    <script>
+         const dashboardData = @Html.Raw(Json.Serialize(ViewBag.DashboardData));
+    </script>
+    <script src="~/client/pages/dashboard/js/dashboard.js" asp-append-version="true"></script>
+} *@

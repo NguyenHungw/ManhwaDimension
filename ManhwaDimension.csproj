@@ -46,4 +46,8 @@
     <PackageReference Include="System.Text.Json" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Shared\Clients\FrontEnd\Dashboard\" />
+  </ItemGroup>
+
 </Project>

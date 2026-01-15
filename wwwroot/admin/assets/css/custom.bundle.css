@@ -1,0 +1,79 @@
+﻿
+
+@media (min-width: 992px) {
+    [data-kt-app-header-fixed=true][data-kt-app-sidebar-fixed=true][data-kt-app-sidebar-push-header=true] .app-header, [data-kt-app-header-fixed=true][data-kt-app-sidebar-sticky=on][data-kt-app-sidebar-push-header=true] .app-header {
+        left: 0 !important;
+    }
+}
+@media (min-width: 992px) {
+    .app-container {
+        padding-left: 80px !important;
+        padding-right: 80px !important;
+    }
+}
+.fs-16px {
+    font-size: 16px !important;
+}
+.card-padding {
+    padding: 14px 20px !important;
+}
+.text-orange-gradient {
+    background: linear-gradient(235deg, #FEAC52 13.06%, #F95638 79.35%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.border-1-primary {
+    border: 1px solid var(--Theme-Primary-Light, #5A99FF) !important;
+}
+#kt_app_main {
+    background-image: url(/images/genestory/logos/bg-page.png);
+    background-size: 120% 100%;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.card-custom {
+    border-radius: 10px;
+    border: 1px solid #FFF !important;
+    background: rgba(255, 255, 255, 0.40);
+    backdrop-filter: blur(2.5px);
+}
+.p-7px {
+    padding: 7px !important;
+}
+.g-4px {
+    gap: 4px !important;
+}
+.fs-26px {
+    font-size: 26px !important;
+}
+.fs-18px {
+    font-size: 18px !important;
+}
+.fs-14px {
+    font-size: 14px !important;
+}
+.fs-12px {
+    font-size: 12px !important;
+}
+.btn-primary-gradient {
+    background: linear-gradient(81deg, #509FE3 5.54%, #4174D1 50%);
+    color: var(--bs-primary-inverse);
+}
+.bg-orange-gradient {
+    background: linear-gradient(235deg, #FEAC52 13.06%, #F95638 79.35%);
+    color: var(--bs-primary-inverse);
+}
+.bg-green-gradient {
+    background: linear-gradient(127deg, #3D9C6F 8.34%, #69EC9F 89.68%);
+    color: var(--bs-primary-inverse);
+}
+.bg-red-gradient {
+    background: var(--Gradient-Red, linear-gradient(142deg, #CE3853 0.3%, #E45585 75.3%));
+    color: var(--bs-primary-inverse);
+}
+@media (max-width: 991px) {
+    #kt_app_main {
+        overflow-y: scroll;
+    }
+}

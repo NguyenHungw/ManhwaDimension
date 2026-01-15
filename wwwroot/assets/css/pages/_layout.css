@@ -1,0 +1,856 @@
+﻿/*
+    Author: TUNGTD
+    Created: 03/08/2023
+    Description: Layout styleSheet
+*/
+.app-header {
+    background-color: #f5f8fa !important;
+}
+
+.app-header {
+    background-color: #f5f8fa !important;
+}
+
+.spin {
+    animation: spinner 3s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.swal2-html-container .list-error {
+    text-align: left;
+}
+
+.cke_dialog_image_url .cke_dialog_ui_hbox_last a {
+    display: block !important;
+}
+
+.cke_dialog_body .cke_dialog_tabs a:nth-child(4) {
+    display: none;
+}
+
+.cke_dialog_contents .cke_dialog_contents_body div:nth-child(4) {
+    display: none;
+}
+
+/******************************************* Loading css */
+#loading {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0 0 0 / 70%);
+    visibility: hidden;
+}
+
+    #loading.show {
+        visibility: visible;
+    }
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+    .lds-ring div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border: 8px solid #2f57ef;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #2f57ef transparent transparent transparent;
+    }
+
+        .lds-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+
+        .lds-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+
+        .lds-ring div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.page-loader {
+    transition: all linear .2s;
+}
+
+    .page-loader.hide {
+        visibility: hidden;
+    }
+
+.select2-container .select2-selection {
+    background-color: var(--bs-body-bg) !important;
+    border-color: var(--bs-gray-300) !important;
+    min-height: 43.6px;
+}
+
+.table-pointer {
+    cursor: pointer;
+}
+
+.input-number::-webkit-inner-spin-button, .input-number::-webkit-outer-spin-button { /*hidden arrow input number*/
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+
+.input-number {
+    -moz-appearance: textfield !important;
+}
+/*======================== column datatable =====================*/
+.column-index {
+    text-align: center !important;
+    width: 60px !important;
+    max-width: 60px !important;
+    min-width: 60px !important;
+}
+
+.column-date {
+    text-align: center !important;
+    width: 170px !important;
+    max-width: 170px !important;
+    min-width: 170px !important;
+}
+
+.column-dateTime {
+    text-align: center !important;
+    width: 200px !important;
+    max-width: 200px !important;
+    min-width: 200px !important;
+}
+
+.column-action-2 {
+    text-align: center !important;
+    width: 80px !important;
+    max-width: 80px !important;
+    min-width: 80px !important;
+}
+
+.column-action-3 {
+    text-align: center !important;
+    width: 100px !important;
+    max-width: 100px !important;
+    min-width: 100px !important;
+}
+
+.column-approve {
+    text-align: center !important;
+    width: 140px !important;
+    max-width: 140px !important;
+    min-width: 140px !important;
+}
+.column-price{
+    text-align: right !important;
+    width : 150px !important;
+    max-width : 150px !important;
+    min-width: 150px !important;
+}
+.input-color-height {
+    height: 3rem !important
+}
+
+.column-color {
+    text-align: center !important;
+    width: 100px !important;
+    max-width: 100px !important;
+    min-width: 100px !important;
+}
+
+.input-color-height {
+    height: 3rem !important
+}
+
+#candidateModal .form-select:disabled, #candidateModal .select2-container .select2-selection, #companyModal .form-select:disabled, #companyModal .select2-container .select2-selection, #jobModal .form-select:disabled, #jobModal .select2-container .select2-selection, #orderModal .form-select:disabled, #orderModal .select2-container .select2-selection {
+    background-color: var(--bs-gray-200) !important;
+    border-color: var(--bs-gray-300) !important;
+    opacity: 1 !important;
+    cursor: unset !important;
+}
+#companyModal [readonly], #candidateModal [readonly] {
+    background-color: var(--bs-gray-200) !important;
+    border-color: var(--bs-gray-300) !important;
+    opacity: 1 !important;
+}
+.form-control:disabled {
+    color: var(--bs-gray-700) !important;
+}
+[type=checkbox]{
+    cursor: pointer;
+}
+[disabled]{
+    cursor: not-allowed;
+}
+
+.input-group-pass .btn_show_pass{
+    display: none;
+}
+.input-group-pass:focus .btn_show_pass {
+    display: block;
+}
+.input-group-pass:hover .btn_show_pass {
+    display: block;
+}
+.modal .form-control[readonly] {
+    background-color: var(--bs-gray-200) !important;
+    border-color: var(--bs-gray-300) !important;
+    opacity: 1 !important;
+}
+.form-control[disabled] {
+    background-color: var(--bs-gray-200) !important;
+    border-color: var(--bs-gray-300) !important;
+    opacity: 1 !important;
+    cursor: unset !important;
+}
+.user_info_photo{
+    object-fit: cover;
+}
+}
+/*set backdrop cho modal nhỏ*/
+.mini-modal-backdrop {
+    background: #0000004d;
+}
+
+.bg-warning-custom-gradient {
+    background: var(--Main-Linear, linear-gradient(90deg, #594724 6%, #FCC960 94.14%)) !important;
+}
+.bg-warning-custom {
+    background: linear-gradient(90deg, rgba(252, 201, 96, 0.25) 6%, rgba(252, 201, 96, 0.25) 94.14%), #FFF;
+}
+.border-radius-custom {
+    border-radius: 20px 4px 20px 20px !important;
+}
+.w-32px {
+    width: 32px !important;
+}
+.h-32px {
+    height: 32px !important;
+}
+.p-8px {
+    padding: 8px !important;
+}
+.p-10px {
+    padding: 10px !important;
+}
+.p-16px {
+    padding: 16px !important;
+}
+.table-custom thead tr th {
+    background-color: #FCC960 !important;
+    color: #1A1A1A !important;
+    font-size: 14px;
+    font-weight: 600 !important;
+    vertical-align: middle;
+}
+.table-custom thead th, .table-custom tbody td {
+    border: 0 !important;
+    border-right: 1px solid #C3DDDC !important;
+    border-bottom: 1px solid #C3DDDC !important;
+}
+.table-custom tbody td {
+    vertical-align: middle !important;
+    padding: 0.75rem 0.75rem !important;
+}
+.table-custom.table tbody tr:nth-child(odd) {
+    background-color: #d5f0ef !important;
+}
+.table-custom.table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.40) !important;
+}
+.bg-primary-custom {
+    background: #4278D2 !important;
+}
+
+.page-link.active, .active > .page-link {
+    background-color: var(--Main-Second, #FCC960) !important;
+    border-radius: 6px !important;
+    border:0 !important;
+}
+.page-link {
+    border-radius: 6px !important;
+    border: 1px solid var(--Gradient-Blue-2, rgba(0, 0, 0, 0.20)) !important;
+    background: var(--Main-White, #FFF) !important;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05) !important;
+    padding: 0 !important;
+}
+
+
+
+.chat-container {
+    position: fixed;
+    cursor: pointer;
+    z-index: 1055;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8%;
+    height: 14%;
+    bottom: 0;
+    right: 0;
+    transition: color 0.2s ease;
+    border-radius: 0.475rem;
+}
+
+    .chat-container img {
+        width: 70%;
+        height: 70%;
+        object-fit: contain;
+        object-position: right center;
+    }
+
+.genestory-chat.drawer {
+    width: 360px !important;
+    max-width: 92vw;
+    height: 512px;
+    max-height: 80vh;
+    position: fixed;
+    right: 24px !important;
+    bottom: 90px !important;
+    top: auto !important;
+    left: auto !important;
+    z-index: 1105;
+    border-radius: 16px;
+    overflow: hidden;
+    Hidden by default to enable smooth transition opacity: 0;
+    transform: translateY(12px) scale(0.98);
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 200ms ease, transform 220ms ease, visibility 0s linear 200ms;
+    /* Mobile lớn */
+}
+
+
+/* --- Mobile phổ biến --- */
+@media (max-width: 576px) {
+    /* CSS cho điện thoại */
+
+    .chat-container {
+        position: fixed;
+        cursor: pointer;
+        z-index: 1055;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 22%;
+        height: 14%;
+        bottom: 0;
+        right: 0;
+        transition: color 0.2s ease;
+        border-radius: 0.475rem;
+    }
+        .chat-container img {
+            width: 80%;
+            height: 50%;
+            object-fit: contain;
+            object-position: right center;
+        }
+
+
+        .genestory-chat.drawer {
+            width: 360px !important;
+            max-width: 92vw;
+            height: 520px;
+            max-height: 80vh;
+            position: fixed;
+            right: 14px !important;
+            bottom: 10% !important;
+            top: auto !important;
+            left: auto !important;
+            z-index: 1105;
+            border-radius: 16px;
+            overflow: hidden;
+                 Hidden by default to enable smooth transition 
+                opacity: 0;
+            transform: translateY(12px) scale(0.98);
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 200ms ease, transform 220ms ease, visibility 0s linear 200ms;
+        }
+    }
+
+
+
+/* ========== XS: < 576px ========== */
+@media (max-width: 575.98px) {
+    /* Mobile rất nhỏ */
+}
+
+/* ========== SM: 576px → 767.98px ========== */
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+    .chat-container {
+        position: fixed;
+        cursor: pointer;
+        z-index: 1055;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        height: 14%;
+        bottom: 0;
+        right: 0;
+        transition: color 0.2s ease;
+        border-radius: 0.475rem;
+    }
+
+        .chat-container img {
+            width: 60%;
+            height: 50%;
+            object-fit: contain;
+            object-position: right center;
+        }
+
+    .genestory-chat.drawer {
+        width: 360px !important;
+        max-width: 92vw;
+        height: 520px;
+        max-height: 80vh;
+        position: fixed;
+        right: 24px !important;
+        bottom: 10% !important;
+        top: auto !important;
+        left: auto !important;
+        z-index: 1105;
+        border-radius: 16px;
+        overflow: hidden;
+        Hidden by default to enable smooth transition opacity: 0;
+        transform: translateY(12px) scale(0.98);
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 200ms ease, transform 220ms ease, visibility 0s linear 200ms;
+        /* Mobile lớn */
+    }
+}
+
+/* ========== MD: 768px → 991.98px ========== */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .chat-container {
+        position: fixed;
+        cursor: pointer;
+        z-index: 1055;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 22%;
+        height: 14%;
+        bottom: 0;
+        right: 0;
+        transition: color 0.2s ease;
+        border-radius: 0.475rem;
+    }
+
+        .chat-container img {
+            width: 60%;
+            height: 50%;
+            object-fit: contain;
+            object-position: right center;
+        }
+
+    .genestory-chat.drawer {
+        width: 360px !important;
+        max-width: 92vw;
+        height: 520px;
+        max-height: 80vh;
+        position: fixed;
+        right: 24px !important;
+        bottom: 10% !important;
+        top: auto !important;
+        left: auto !important;
+        z-index: 1105;
+        border-radius: 16px;
+        overflow: hidden;
+        Hidden by default to enable smooth transition opacity: 0;
+        transform: translateY(12px) scale(0.98);
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 200ms ease, transform 220ms ease, visibility 0s linear 200ms;
+        /* Mobile lớn */
+    }
+    /* Tablet nhỏ */
+}
+
+/* ========== LG: 992px → 1199.98px ========== */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .chat-container {
+        position: fixed;
+        cursor: pointer;
+        z-index: 1055;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 22%;
+        height: 14%;
+        bottom: 0;
+        right: 0;
+        transition: color 0.2s ease;
+        border-radius: 0.475rem;
+    }
+
+        .chat-container img {
+            width: 60%;
+            height: 50%;
+            object-fit: contain;
+            object-position: right center;
+        }
+
+    .genestory-chat.drawer {
+        width: 360px !important;
+        max-width: 92vw;
+        height: 470px;
+        max-height: 80vh;
+        position: fixed;
+        right: 24px !important;
+        bottom: 10% !important;
+        top: auto !important;
+        left: auto !important;
+        z-index: 1105;
+        border-radius: 16px;
+        overflow: hidden;
+        Hidden by default to enable smooth transition opacity: 0;
+        transform: translateY(12px) scale(0.98);
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 200ms ease, transform 220ms ease, visibility 0s linear 200ms;
+        /* Mobile lớn */
+    }
+    /* Tablet lớn / laptop nhỏ */
+}
+
+
+
+
+
+
+/* Scoped overrides for Genestory chat only - no impact on Metronic core */
+.genestory-chat.drawer.drawer-on {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/*.genestory-chat.drawer {
+    width: 360px !important;
+    max-width: 92vw;
+    height: 520px;
+    max-height: 80vh;
+    position: fixed;
+    right: 24px !important;
+    bottom: 240px !important;
+    top: auto !important;
+    left: auto !important;
+    z-index: 1105;
+    border-radius: 16px;
+    overflow: hidden;*/
+    /* Hidden by default to enable smooth transition */
+    /*opacity: 0;
+    transform: translateY(12px) scale(0.98);
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 200ms ease, transform 220ms ease, visibility 0s linear 200ms;
+}*/
+
+.genestory-chat .card {
+    border-radius: 16px;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.06);
+    border-left: 1px solid #ECECF2;
+    height: 100%;
+}
+
+.genestory-chat [data-kt-element="messages"] {
+    padding: 8px 12px;
+    height: auto !important;
+}
+
+.genestory-chat .border-radius-custom {
+    border-radius: 14px;
+}
+
+.genestory-chat .mw-lg-400px {
+    max-width: 420px;
+}
+
+.genestory-chat .p-10px {
+    padding: 10px;
+}
+
+.genestory-chat .p-16px {
+    padding: 16px;
+}
+
+.genestory-chat .p-8px {
+    padding: 8px;
+}
+
+.genestory-chat .h-30px {
+    height: 30px;
+}
+
+/* My bubble (right) */
+/* Footer input */
+.genestory-chat textarea.form-control {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    resize: none;
+    background: transparent;
+}
+
+.genestory-chat .border-1 {
+    border-width: 1px !important;
+}
+
+.genestory-chat .rounded-4 {
+    border-radius: 12px !important;
+}
+
+.genestory-chat #kt_drawer_chat_messenger_header {
+    padding: 10px 12px;
+    border-bottom: 0;
+}
+
+.genestory-chat #kt_drawer_chat_messenger {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.genestory-chat #kt_drawer_chat_messenger_body {
+    padding: 0 8px;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overflow-x: hidden
+}
+
+.genestory-chat #kt_drawer_chat_messenger_footer {
+    margin-top: auto;
+}
+
+    .genestory-chat #kt_drawer_chat_messenger_footer .border {
+        background: #FFFFFF;
+        border-color: #E9E9EF !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+.genestory-chat .chat-toolbar {
+    align-items: center;
+}
+
+
+.py-16px {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+}
+@keyframes typingBounce {
+    0% {
+        transform: translateY(0);
+        opacity: .4;
+    }
+
+    50% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: .4;
+    }
+}
+
+.typing-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.typing-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #98a2b3;
+    display: inline-block;
+    animation: typingBounce 1s infinite ease-in-out;
+}
+
+    .typing-dot:nth-child(2) {
+        animation-delay: .15s;
+    }
+
+    .typing-dot:nth-child(3) {
+        animation-delay: .3s;
+    }
+/* Skeleton shimmer */
+@keyframes shimmer {
+    0% {
+        background-position: -200px 0;
+    }
+
+    100% {
+        background-position: 200px 0;
+    }
+}
+
+.skeleton-line {
+    height: 10px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.06) 25%, rgba(0,0,0,0.12) 37%, rgba(0,0,0,0.06) 63%);
+    background-size: 400px 100%;
+    animation: shimmer 1.2s infinite linear;
+}
+
+    .skeleton-line.w-50 {
+        width: 50%;
+    }
+
+    .skeleton-line.w-75 {
+        width: 75%;
+    }
+
+    .skeleton-line.w-100 {
+        width: 100%;
+    }
+/* Toolbar like states */
+@keyframes likedPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.message-toolbar [data-action-click="like"] {
+    position: relative;
+}
+
+    .message-toolbar [data-action-click="like"].is-active {
+        color: #0ea5e9;
+    }
+
+        .message-toolbar [data-action-click="like"].is-active svg path {
+            stroke: #0ea5e9 !important;
+            fill: none !important;
+            vector-effect: non-scaling-stroke;
+        }
+
+    .message-toolbar [data-action-click="like"].liked-bounce {
+        animation: likedPulse .3s ease-in-out;
+    }
+
+    .message-toolbar [data-action-click="like"]:hover svg path {
+        stroke: #2563eb !important;
+    }
+/* Common toolbar hover/active feedback */
+.message-toolbar [data-action-click] {
+    transition: transform .12s ease, color .12s ease, opacity .12s ease;
+}
+
+    .message-toolbar [data-action-click]:hover {
+        transform: translateY(-1px) scale(1.05);
+    }
+
+    .message-toolbar [data-action-click]:active {
+        transform: scale(0.97);
+    }
+
+    .message-toolbar [data-action-click]:hover svg path,
+    .message-toolbar [data-action-click]:hover svg circle {
+        stroke: #2563eb !important;
+    }
+/* Loading spin via data-state */
+@keyframes spinOnceKeyframes {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.message-toolbar [data-action-click][data-state="loading"] svg {
+    animation: spinOnceKeyframes .8s linear infinite;
+    transform-origin: center;
+}
+/* Badge feedback via data-badge */
+.message-toolbar [data-action-click]::after {
+    content: attr(data-badge);
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: rgba(0,0,0,.78);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .15s ease, transform .15s ease;
+}
+
+.message-toolbar [data-action-click][data-state="copied"]::after,
+.message-toolbar [data-action-click][data-state="shared"]::after,
+.message-toolbar [data-action-click][data-state="liked"]::after,
+.message-toolbar [data-action-click][data-state="unliked"]::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+.bg-warning-gradient {
+    background: var(--Main-Linear, linear-gradient(81deg, #f1ba48 3.26%, #f0c163 100%)) !important;
+    box-shadow: 4px 10px 20px 0 rgba(37, 47, 74, 0.10) !important;
+    color: var(--bs-primary-inverse);
+}
+.bg-dark-custom {
+    background: #101828 !important;
+    color: var(--bs-primary-inverse);
+    border-radius: 33554400px !important;
+}
+.bg-dark-custom:hover {
+    background: #0b1526 !important;
+    color: var(--bs-primary-inverse);
+}
+.btn.bg-dark-custom:focus-within {
+    color: white !important
+}

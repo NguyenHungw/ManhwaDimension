@@ -1,0 +1,182 @@
+﻿.figma-risk-widget {
+    padding: 40px 0px 0px 0px;
+    border-radius: 8px;
+    position: relative;
+    width: 100%;
+    margin: 20px auto 0px;
+}
+
+.risk-bar-container {
+    position: relative;
+    height: 8px;
+    margin-bottom: 10px;
+}
+
+.risk-progress-bar {
+    display: flex;
+    height: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.segment {
+    height: 100%;
+}
+
+.green-segment {
+    width: 33.333333%;
+    border-radius: 5px;
+    background: var(--Gradient-Green, linear-gradient(127deg, #3D9C6F 8.34%, #69EC9F 89.68%));
+}
+
+.orange-segment {
+    width: 33.333333%;
+    border-radius: 5px;
+    background: var(--Gradient-Orange, linear-gradient(235deg, #FEAC52 13.06%, #F95638 79.35%));
+}
+
+.red-segment {
+    width: 33.333333%;
+    border-radius: 5px;
+    background: var(--Gradient-Red, linear-gradient(142deg, #CE3853 0.3%, #E45585 75.3%));
+}
+
+/* Value indicator với pin và circle */
+.value-indicator {
+    position: absolute;
+    top: -40px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+/* Circle trên thanh */
+.value-circle {
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(235deg, #FEAC52 13.06%, #F95638 79.35%);
+    border: 2px solid white;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.value-pin {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.value-pin span {
+  position: absolute;
+  top: 6px;
+  font-size:12px;
+  font-weight: 600;
+  color: white;
+}
+/* Container cho thresholds */
+.thresholds {
+    position: relative;
+    height: 30px;
+}
+
+.threshold-item {
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tick-mark {
+    width: 2px;
+    height: 8px;
+    background-color: white;
+    margin-bottom: 8px;
+}
+
+.threshold-text {
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.green-text {
+    color: #28a745;
+}
+
+.orange-text {
+    color: #ffc107;
+}
+.red-text {
+    color: #CE3853;
+}
+
+.main-content-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-content-row > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content-row .card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content-row .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Independent scrolling for left and right columns */
+.content-wrapper {
+    display: flex;
+    height: calc(100vh - 100px); /* Adjust based on header height */
+}
+
+/* Left sidebar - independent scroll */
+.sidebar-column {
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Right main content - independent scroll */
+.main-column {
+    height: 100%;
+    overflow-y: auto;
+    padding-left: 10px;
+}
+
+    /* Hide scrollbar but keep scroll functionality */
+    .sidebar-column::-webkit-scrollbar,
+    .main-column::-webkit-scrollbar {
+        display: none;
+    }
+
+.sidebar-column,
+.main-column {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+
+
+/* Mobile - No scroll layout */
+@media (max-width: 991px) {
+    /* Remove scroll on mobile */
+    .sidebar-column,
+    .main-column {
+        overflow-y: visible !important;
+        height: auto !important;
+    }
+}
+
+

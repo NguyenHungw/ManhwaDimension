@@ -1,0 +1,531 @@
+﻿/* Custom styles for Biometric Management Interface */
+
+/* Page padding for Biometric screen */
+/* --- Tùy chỉnh Pagination --- */
+
+/* 1. Style chung cho các nút */
+.pagination .page-link {
+	background-color: #FFFFFF; /* Nền trắng cho tất cả các ô */
+	color: #000000; /* Chữ số màu đen */
+	border: none; /* Bỏ đường viền mặc định nếu có */
+	border-radius: 8px; /* Tùy chọn: bo tròn các góc cho đẹp hơn */
+	margin: 0 4px; /* Tùy chọn: tạo khoảng cách giữa các nút */
+}
+
+/* 2. Style riêng cho nút đang được chọn (active) */
+.pagination .page-item.active .page-link {
+	background-color: #FCC960; /* Nền màu vàng cam cho ô active */
+	color: #000000; /* Giữ chữ số màu đen */
+}
+
+/* 3. Style cho các icon next/previous (nếu cần) */
+.pagination .page-link i {
+	color: #000000;
+}
+
+/* 4. Tùy chọn: Thêm hiệu ứng hover cho các nút */
+.pagination .page-link:hover {
+	background-color: #f1f1f1;
+}
+
+.pagination .page-item.active .page-link:hover {
+	background-color: #FCC960; /* Giữ nguyên màu khi hover nút active */
+}
+
+/* 1. Thiết lập cho toàn bộ bảng */
+#kt_biometric_datatable {
+	border-collapse: separate; /* BẮT BUỘC: Để bo góc có hiệu lực */
+	border-spacing: 0; /* Bỏ khoảng cách giữa các ô */
+	border: 1px solid #FFFFFF; /* Đường viền trắng bao ngoài */
+	border-radius: 10px; /* Bo góc */
+	overflow: hidden; /* Ẩn tràn */
+}
+
+/* 2. Vẽ đường kẻ bên trong bằng RIGHT + BOTTOM để không chồng biên ngoài */
+#kt_biometric_datatable thead th,
+#kt_biometric_datatable tbody td {
+	border: 0; /* reset mọi border trước đó để tránh chồng 2 lần */
+	border-right: 1px solid #C3DDDC;
+	border-bottom: 1px solid #C3DDDC;
+}
+
+/* 3. Loại bỏ đường kẻ ở cột cuối và hàng cuối để không bị đúp với viền ngoài */
+#kt_biometric_datatable thead th:last-child,
+#kt_biometric_datatable tbody td:last-child {
+	border-right: 0;
+}
+#kt_biometric_datatable tbody tr:last-child td {
+	border-bottom: 0;
+}
+
+.biometric-page {
+	padding-left: 80px;
+	padding-right: 80px;
+	background-color: #C1E3E2;
+}
+.biometric-background {
+	background-color: #C1E3E2;
+}
+.card {
+	background-color: transparent;
+	border: none;
+	box-shadow: none !important;
+	
+}
+
+	.card .card-header {
+		border-bottom: 0px solid var(--bs-card-border-color) !important;
+		padding : 0;
+	}
+	/* Navigation Tabs Styling */
+	.btn-group .btn {
+		border-radius: 0;
+		font-weight: 600;
+	}
+.card .card-body {
+   /*padding : 0;*/
+	color: var(--bs-card-color);
+}
+.btn-group .btn:first-child {
+	border-top-left-radius: 0.475rem;
+	border-bottom-left-radius: 0.475rem;
+}
+
+.btn-group .btn:last-child {
+	border-top-right-radius: 0.475rem;
+	border-bottom-right-radius: 0.475rem;
+}
+
+.btn-group .btn.active {
+	background-color: #ffc107;
+	border-color: #ffc107;
+	color: #000;
+	box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Table Header Styling (as requested) */
+#kt_biometric_datatable thead tr th {
+	background-color: #FCC960 !important;
+	color: #1A1A1A !important;
+	font-size: 14px;
+	vertical-align: middle;
+}
+
+/* Keep header rounded look */
+.table.table-rounded thead tr th:first-child {
+	border-top-left-radius: 10px;
+}
+.table.table-rounded thead tr th:last-child {
+	border-top-right-radius: 10px;
+}
+
+/* Body cell default font size */
+#kt_biometric_datatable tbody td {
+	font-size: 14px;
+}
+
+/* DNA code/link styling inside the DNA column */
+.biometric-code {
+	color: #2F80ED; /* link-like blue */
+	font-weight: 600;
+	text-decoration: none;
+}
+.biometric-code:hover {
+	text-decoration: underline;
+}
+
+/* Table row highlight as before */
+.table-active {
+	background-color: rgba(111, 66, 193, 0.1) !important;
+}
+
+.table th.sortable {
+	cursor: pointer;
+	user-select: none;
+}
+
+.table th.sortable:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Status Badge Styling */
+.badge-light-success {
+	background-color: #d1f2eb;
+	color: #00a651;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.475rem;
+	font-weight: 600;
+}
+
+.badge-light-primary {
+	background-color: #e3f2fd;
+	color: #1976d2;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.475rem;
+	font-weight: 600;
+}
+
+.badge-light-warning {
+	background-color: #fff3cd;
+	color: #856404;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.475rem;
+	font-weight: 600;
+}
+
+.badge-light-danger {
+	background-color: #f8d7da;
+	color: #721c24;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.475rem;
+	font-weight: 600;
+}
+
+/* Action Buttons */
+.btn-icon {
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.15s ease;
+}
+
+.btn-icon:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Search Input */
+.form-control-solid {
+	background-color: #f5f8fa;
+	border-color: #e1e3ea;
+	color: #5e6278;
+}
+
+.form-control-solid:focus {
+	background-color: #ffffff;
+	border-color: #ffc107;
+	box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Card Styling */
+.card {
+	border: 0;
+	box-shadow: 0 0.5rem 1.5rem 0.5rem rgba(0, 0, 0, 0.075);
+	border-radius: 0.75rem;
+}
+
+.card-header {
+	background-color: #ffffff;
+	border-bottom: 1px solid #e1e3ea;
+	padding: 1.5rem;
+}
+
+.card-title {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #181c32;
+	margin: 0;
+}
+
+/* Pagination Styling */
+.pagination .page-link {
+	color: #5e6278;
+	border-color: #e1e3ea;
+	padding: 0.75rem 1rem;
+	margin: 0 0.25rem;
+	border-radius: 0.475rem;
+	font-weight: 600;
+}
+
+.pagination .page-item.active .page-link {
+	background-color: #ffc107;
+	border-color: #ffc107;
+	color: #000;
+}
+
+.pagination .page-link:hover {
+	color: #ffc107;
+	background-color: rgba(255, 193, 7, 0.1);
+	border-color: #ffc107;
+}
+
+/* Form Check Styling */
+.form-check-input:checked {
+	background-color: #ffc107;
+	border-color: #ffc107;
+}
+
+.form-check-input:focus {
+	box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199.98px) { /* lg */
+    .biometric-page { padding-left: 40px; padding-right: 40px; }
+}
+@media (max-width: 991.98px) { /* md */
+    .biometric-page { padding-left: 24px; padding-right: 24px; }
+    .client-toolbar { padding-left: 24px; padding-right: 24px; }
+    .client-toolbar .client-tab-btn { padding: 8px 10px; font-size: 14px; }
+}
+@media (max-width: 767.98px) { /* sm */
+    .client-toolbar { gap: 8px; }
+    .client-toolbar .btn-group { flex-direction: column; width: 100%; }
+    .client-toolbar .client-tab-btn { width: 100%; border-radius: 8px; }
+    .biometric-table-responsive { overflow-x: auto; }
+}
+@media (max-width: 575.98px) { /* xs */
+    .offcanvas-create { width: 100vw; }
+}
+
+/* DataTable custom styling */
+/*.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+	display: none;
+}*/
+
+/* Custom scrollbar for table */
+.table-responsive {
+	border-radius: 0.75rem;
+}
+
+.table-responsive::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+	background: #c1c1c1;
+	border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+	background: #a8a8a8;
+}
+
+/* Identifier link & DNA code */
+.identifier-link, .biometric-code {
+	color: #4278D2;
+	font-weight: 600;
+	text-decoration: none;
+}
+.identifier-link:hover, .biometric-code:hover {
+	text-decoration: underline;
+}
+
+/* Sample type color */
+.sample-type {
+	color: var(--Black-PlaceHold, #1A1A1A);
+}
+
+/* Centered columns */
+.col-stt, .col-actions { text-align: center !important; }
+#kt_biometric_datatable tbody td.col-stt { text-align: center !important; }
+
+/* Status badges */
+.status-completed { background: #3D9C6F; color: #FFF; }
+.status-updating { background: #4278D2; color: #FFF; }
+.status-missing   { background: #FF6058; color: #FFF; }
+.status-collected { background: #DA9200; color: #FFF; }
+
+/* Make action icons square */
+.btn-icon { border-radius: 0; }
+
+/* Alternating row backgrounds */
+#kt_biometric_datatable.table tbody tr:nth-child(odd) { background-color: #CDE9E8 !important; }
+#kt_biometric_datatable.table tbody tr:nth-child(even) { background-color: #E2F2F2 !important; }
+
+/* Remove any previous highlight color on rows */
+#kt_biometric_datatable.table tbody tr.table-active { background-color: inherit !important; }
+
+/* Action buttons square with radius 10px and custom backgrounds */
+.btn-icon { border-radius: 10px; width: 32px; height: 32px; }
+.action-view { background: #3D9C6F !important; }
+.action-edit { background: #FEAC52 !important; }
+.action-delete { background: #CE3853 !important; }
+.action-view i, .action-edit i, .action-delete i { color: #FFFFFF !important; }
+
+/* Toolbar left/right padding 80px */
+.client-toolbar { 
+	padding-left: 29px;
+	padding-right: 32px;
+	/*padding-top: 10px;*/ 
+
+}
+@media (max-width: 768px) { .client-toolbar { padding-left: 20px; padding-right: 20px; padding-top: 10px;  }
+	.biometric-page {
+		padding-left: 0px;
+		padding-right:0px;
+	} }
+
+/* Tabs styling in client toolbar (use custom classes, avoid overriding defaults) */
+.client-tab-btn {
+    background-color: #E6F4F3;
+    color: #1A1A1A;
+    border: none;
+    font-weight: 600;
+}
+.client-tab-btn:hover {
+	background-color: #FCC960;
+}
+.client-add-btn {
+	background-color: #FCC960;
+}
+.client-add-btn:hover {
+	background-color: #FCC960;
+}
+.client-toolbar .client-tab-btn.is-active {
+	background-color: #FCC960;
+	border-color: #FCC960;
+	color: #1A1A1A;
+}
+.client-toolbar .client-tab-btn + .client-tab-btn { margin-left: 8px; }
+
+/* Offcanvas create form styles */
+.offcanvas-create {
+    width: 50%;
+    max-width: 100vw;
+    border-left: 0;
+    box-shadow: -0.25rem 0 1.5rem rgba(0,0,0,0.12);
+}
+.offcanvas-create .offcanvas-header {
+    padding: 16px 20px 0 20px;
+}
+.offcanvas-create .offcanvas-body {
+    padding: 12px 20px 20px 20px;
+}
+.offcanvas-create .form-label.required::after {
+    content: " *";
+    color: #ff4d4f;
+}
+.upload-dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 96px;
+    border: 2px dashed #C3DDDC;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #FFFFFF;
+}
+.upload-dropzone #chooseFileBtn { cursor: pointer; }
+
+@media (max-width: 576px) {
+    .offcanvas-create { width: 100vw; }
+	.biometric-page {
+		padding:0px;
+	}
+	
+}
+@media (min-width: 1024px) {
+	.biometric-page {
+		padding-left: 27px;
+		/*padding-left: 0px;*/
+		padding-right: 29px;
+	}
+	
+}
+
+/* css modal*/
+#hoSoModal.offcanvas-end {
+	width: 50% !important;
+}
+
+
+.custom-offcanvas-width {
+	width: 50% !important; /* Adjust as needed */
+}
+
+/* Button dowload*/
+
+.icon-btn {
+	width: 40px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #f3f4f6; /* màu xám nhạt */
+	border-radius: 2px; /* bo góc */
+	border: none;
+	cursor: pointer;
+	transition: 0.2s ease;
+}
+
+	.icon-btn i {
+		font-size: 18px;
+		color: #000; /* màu icon */
+	}
+
+	/* hiệu ứng hover */
+	.icon-btn:hover {
+		background: #e5e7eb; /* hơi đậm hơn khi hover */
+	}
+
+/*end button*/
+/* display mb*/
+.display-data-related span {
+	margin-right:15px;
+	min-width: 50px;
+	max-width: 50px;
+	width: 60px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #f3f4f6; /* màu xám nhạt */
+	border-radius: 2px; /* bo góc */
+	border: none;
+	cursor: pointer;
+	transition: 0.2s ease;
+}
+.file-container {
+	margin-top: 6px;
+	border-bottom: 1px solid #eaeaea;
+}
+.offcanvas.showing, .offcanvas.hiding, .offcanvas.show {
+width:45% !important;
+}
+/*.file-name-related{
+	width:335px;
+	height:85px;
+}*/
+.icon-file-related {
+	text-align: center;
+	align-items: center;
+	min-width: 40px;
+	max-width: 40px;
+	height: 40px;
+	background-color: rgba(229, 37, 42, 0.2);
+	display:flex;
+	justify-content:center;
+	border-radius:3px;
+	margin-right:15px;
+	
+}
+.icon-file-related img {
+	width:24px;
+}
+
+/*display: flex;
+justify-content: center;*/ /* căn giữa ngang */
+/*align-items: center;*/ /* căn giữa dọc */
+
+
+/* off info table*/
+.dataTables_info {
+	display: none !important;
+}
+
+/*End*/

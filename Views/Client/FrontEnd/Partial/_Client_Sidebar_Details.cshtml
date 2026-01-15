@@ -1,0 +1,1380 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<style>
+    .hoicham-label-icon img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .threshold-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 1) class quyết định màu */
+    .bg-orange-gradient {
+        --pin-color: #FEAC52;
+    }
+
+    .bg-green-gradient {
+        --pin-color: #22c55e;
+    }
+
+    .bg-red-gradient {
+        --pin-color: #ef4444;
+    }
+
+    /* 2) áp màu vào SVG */
+    .value-pin {
+        color: var(--pin-color); /* currentColor = SVG màu này */
+    }
+
+    /* path chính */
+    .value-pin svg .pin-shape {
+        fill: currentColor;
+    }
+
+    /* 3) circle sync màu */
+    .value-circle {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--circle-color, #ccc); /* mặc định */
+    }
+
+    /* các class gradient bạn đang dùng ở chỗ khác (nếu có) */
+    .bg-orange-gradient {
+        background: linear-gradient(135deg, #FEAC52, #F95638);
+    }
+
+    .bg-green-gradient {
+        background: linear-gradient(135deg, #34C759, #28A745);
+    }
+
+    .bg-red-gradient {
+        background: linear-gradient(135deg, #FF3B30, #C82333);
+    }
+
+    /* KHI dùng các class này trên SVG:
+                           - tắt background
+                           - dùng chúng để set COLOR -> ăn vào fill="currentColor"
+                        */
+    .pin-svg.bg-orange-gradient {
+        background: none;
+        color: #F95638;
+    }
+
+    .pin-svg.bg-green-gradient {
+        background: none;
+        color: #34C759;
+    }
+
+    .pin-svg.bg-red-gradient {
+        background: none;
+        color: #FF3B30;
+    }
+
+    .bg-green-gradient {
+        background: linear-gradient(#34c759, #28a745);
+    }
+
+    .bg-red-gradient {
+        background: linear-gradient(#ff3b30, #c82333);
+    }
+
+    .bg-orange-gradient {
+        background: linear-gradient(#ff9500, #ff7f00);
+    }
+
+
+    .bg-orange-gradient .pin-shape {
+        fill: #F95638;
+    }
+
+    .bg-green-gradient .pin-shape {
+        fill: #34C759;
+    }
+
+    .bg-red-gradient .pin-shape {
+        fill: #FF3B30;
+    }
+
+    .label-custom {
+        white-space: nowrap;
+        width: 60.66px;
+        min-width: 60.66px;
+        max-width: 60.66px;
+    }
+
+    .figma-risk-widget {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+
+    .custom-desc {
+        height: 88px;
+    }
+
+    .risk-progress-bar {
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 10px;
+        border-radius: 999px;
+        overflow: hidden;
+        background: #f5f5f5; /* nền chung phía sau */
+    }
+
+    .segment {
+        height: 100%;
+        border-right: 1px solid #e0e0e0; /* để đoạn trắng vẫn phân biệt được */
+    }
+
+    @* *@
+    .thresholds {
+        position: relative;
+        margin-top: 8px;
+        height: 35px;
+    }
+
+    .threshold-item {
+        position: absolute;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 11px;
+    }
+
+    .tick-mark {
+        width: 3px;
+        height: 10px;
+        margin: 0 auto 3px;
+        border-radius: 2px;
+    }
+
+    .bg-gray-gradient {
+        /* ví dụ */
+        background: linear-gradient(90deg, #9e9e9e, #bdbdbd);
+        color: #fff;
+    }
+
+    .badge-risk {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .badge-protect {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .disease-card {
+        position: relative;
+    }
+
+    .hoicham-icon {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+    }
+
+
+    @*Hoi cham*@
+    .hoicham-wrapper {
+        position: absolute;
+        display: inline-block;
+        top: 4px;
+        right: 4px;
+    }
+
+    .hoicham-icon img {
+        /* width: 28px; */
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .hoicham-tooltip {
+        position: relative;
+        top: -120px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+        width: 220px;
+        display: none;
+        z-index: 2147483647; /* max */
+    }
+
+    /* Hiện tooltip khi hover icon */
+    .hoicham-wrapper:hover .hoicham-tooltip {
+        display: block;
+    }
+
+    /* Mũi tên nhỏ bên dưới */
+    .hoicham-tooltip::after {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent transparent white transparent;
+    }
+
+    /* Mỗi dòng trong tooltip */
+    .hoicham-tooltip .item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    .hoicham-tooltip .item:last-child {
+        margin-bottom: 0;
+    }
+
+    .color {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        margin-right: 10px;
+    }
+
+    .color.normal {
+        background: #60D992;
+    }
+
+    .color.mid {
+        background: #F46C3A;
+    }
+
+    .color.high {
+        background: #D94477;
+    }
+
+
+    @*Hồ sơ bệnh*@
+    .health-profile-popover .popover-body {
+        padding: 0;
+    }
+
+    .health-profile-popover-content .badge {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .health-profile-popover-content .progress {
+        border-radius: 10px;
+    }
+
+    .health-profile-popover-content .progress-bar {
+        border-radius: 10px;
+    }
+
+    .legend-box {
+        width: 20px;
+        height: 20px;
+        border-radius: 6px;
+        display: inline-block;
+        flex-shrink: 0;
+    }
+
+
+    .bg-success-gradient {
+        background: linear-gradient(127.1deg, #3D9C6F 8.34%, #69EC9F 89.68%);
+    }
+
+    .bg-warning-gradient {
+        background: linear-gradient(234.81deg, #FEAC52 13.06%, #F95638 79.35%);
+    }
+
+    .bg-danger-gradient {
+        background: linear-gradient(142.04deg, #CE3853 0.3%, #E45585 75.3%);
+    }
+
+    .card .card-body {
+        background-color: #FFFFFF66;
+    }
+
+    .label-numberic {
+        width: 100%;
+    }
+
+    .hoicham-label-icon {
+        cursor: pointer;
+    }
+
+    .qrcode {
+        cursor: pointer;
+    }
+</style>
+<div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 sidebar-column">
+    <!--begin::User Profile Card-->
+    <div class="card card-custom mb-5 mb-xl-5">
+        <div class="card-body card-padding">
+            <div class="d-flex flex-column align-items-center gap-2 position-relative">
+                <img class="rounded-circle object-fit-cover h-60px border-1-primary" id="profilePhoto"
+                     src="/images/userdefault.jpg">
+                <span class="fs-16px fw-bold" id="id-name"></span>
+                <a class="profile-link d-flex flex-row align-items-center text-orange-gradient" href="#">
+                    <a href="/danh-sach-ket-qua-thong-ke" class=" active d-flex align-items-center">
+
+                        <span class="fs-12px text-orange-gradient ">Xem hồ sơ</span>
+                        <i class="ki-duotone ki-right text-orange-gradient ">
+                        </i>
+                    </a>
+
+                </a>
+                <div class="position-absolute end-0">
+                    <div class="rounded-2 bg-light d-flex justify-content-center align-items-center p-7px g-4px"
+                         id="dnaQrShortcut">
+
+                        <svg id="dnaQrIcon" class="qrcode" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                             viewBox="0 0 14 14" fill="none" onclick="window.location.href='/qr-code';">
+
+                            <g clip-path="url(#clip0_95_4924)">
+                                <path
+                                    d="M1.1665 9.85833C1.1665 9.09453 1.1665 8.71263 1.33842 8.43208C1.43462 8.2751 1.56661 8.14312 1.72359 8.04692C2.00414 7.875 2.38604 7.875 3.14984 7.875H3.7915C4.89145 7.875 5.44142 7.875 5.78313 8.21671C6.12484 8.55842 6.12484 9.10839 6.12484 10.2083V10.85C6.12484 11.6138 6.12484 11.9957 5.95292 12.2762C5.85672 12.4332 5.72473 12.5652 5.56775 12.6614C5.2872 12.8333 4.9053 12.8333 4.1415 12.8333C2.9958 12.8333 2.42295 12.8333 2.00213 12.5755C1.76666 12.4312 1.56868 12.2332 1.42438 11.9977C1.1665 11.5769 1.1665 11.004 1.1665 9.85833Z"
+                                    stroke="black"/>
+                                <path
+                                    d="M7.875 3.15033C7.875 2.38653 7.875 2.00462 8.04692 1.72408C8.14312 1.5671 8.2751 1.43511 8.43208 1.33891C8.71263 1.16699 9.09453 1.16699 9.85833 1.16699C11.004 1.16699 11.5769 1.16699 11.9977 1.42487C12.2332 1.56917 12.4312 1.76715 12.5755 2.00262C12.8333 2.42344 12.8333 2.99629 12.8333 4.14199C12.8333 4.90579 12.8333 5.28769 12.6614 5.56824C12.5652 5.72522 12.4332 5.85721 12.2762 5.95341C11.9957 6.12533 11.6138 6.12533 10.85 6.12533H10.2083C9.10839 6.12533 8.55842 6.12533 8.21671 5.78362C7.875 5.44191 7.875 4.89194 7.875 3.79199V3.15033Z"
+                                    stroke="black"/>
+                                <path
+                                    d="M9.625 3.64616C9.625 3.3455 9.625 3.19518 9.70031 3.08903C9.72689 3.05158 9.75959 3.01888 9.79704 2.9923C9.90319 2.91699 10.0535 2.91699 10.3542 2.91699C10.6548 2.91699 10.8051 2.91699 10.9113 2.9923C10.9487 3.01888 10.9814 3.05158 11.008 3.08903C11.0833 3.19518 11.0833 3.3455 11.0833 3.64616C11.0833 3.94681 11.0833 4.09714 11.008 4.20328C10.9814 4.24074 10.9487 4.27344 10.9113 4.30001C10.8051 4.37533 10.6548 4.37533 10.3542 4.37533C10.0535 4.37533 9.90319 4.37533 9.79704 4.30001C9.75959 4.27344 9.72689 4.24074 9.70031 4.20328C9.625 4.09714 9.625 3.94681 9.625 3.64616Z"
+                                    fill="black"/>
+                                <path
+                                    d="M7.375 12.8333C7.375 13.1095 7.59886 13.3333 7.875 13.3333C8.15114 13.3333 8.375 13.1095 8.375 12.8333H7.875H7.375ZM8.3935 8.07162L8.67129 8.48735L8.67129 8.48735L8.3935 8.07162ZM8.07162 8.3935L7.65588 8.11572L7.65588 8.11572L8.07162 8.3935ZM11.0833 7.875V7.375H9.91667V7.875V8.375H11.0833V7.875ZM7.875 11.0833H7.375V12.8333H7.875H8.375V11.0833H7.875ZM9.91667 7.875V7.375C9.51744 7.375 9.18038 7.3744 8.9076 7.40214C8.62647 7.43074 8.35869 7.49353 8.11572 7.65588L8.3935 8.07162L8.67129 8.48735C8.72257 8.45309 8.80674 8.41757 9.00881 8.39701C9.21923 8.3756 9.49663 8.375 9.91667 8.375V7.875ZM7.875 9.91667H8.375C8.375 9.49663 8.3756 9.21923 8.39701 9.00881C8.41757 8.80674 8.45309 8.72257 8.48735 8.67129L8.07162 8.3935L7.65588 8.11572C7.49353 8.3587 7.43074 8.62647 7.40214 8.9076C7.3744 9.18038 7.375 9.51744 7.375 9.91667H7.875ZM8.3935 8.07162L8.11572 7.65588C7.93373 7.77748 7.77748 7.93373 7.65588 8.11572L8.07162 8.3935L8.48735 8.67129C8.53599 8.59849 8.59849 8.53599 8.67129 8.48735L8.3935 8.07162Z"
+                                    fill="black"/>
+                                <path
+                                    d="M13.3332 7.875C13.3332 7.59886 13.1093 7.375 12.8332 7.375C12.557 7.375 12.3332 7.59886 12.3332 7.875H12.8332H13.3332ZM12.113 12.7445L12.3043 13.2065H12.3043L12.113 12.7445ZM12.7444 12.1131L12.2824 11.9218V11.9218L12.7444 12.1131ZM9.9165 12.8333V13.3333H11.0832V12.8333V12.3333H9.9165V12.8333ZM12.8332 9.91667H13.3332V7.875H12.8332H12.3332V9.91667H12.8332ZM11.0832 12.8333V13.3333C11.3481 13.3333 11.5719 13.3336 11.7556 13.3211C11.9437 13.3082 12.126 13.2803 12.3043 13.2065L12.113 12.7445L11.9216 12.2826C11.8855 12.2975 11.8247 12.314 11.6875 12.3234C11.5457 12.3331 11.3618 12.3333 11.0832 12.3333V12.8333ZM12.8332 11.0833H12.3332C12.3332 11.362 12.3329 11.5459 12.3232 11.6876C12.3139 11.8249 12.2974 11.8857 12.2824 11.9218L12.7444 12.1131L13.2063 12.3045C13.2801 12.1262 13.3081 11.9439 13.3209 11.7557C13.3334 11.5721 13.3332 11.3483 13.3332 11.0833H12.8332ZM12.113 12.7445L12.3043 13.2065C12.7127 13.0373 13.0371 12.7129 13.2063 12.3045L12.7444 12.1131L12.2824 11.9218C12.2148 12.0851 12.085 12.2149 11.9216 12.2826L12.113 12.7445Z"
+                                    fill="black"/>
+                                <path
+                                    d="M1.1665 4.14199C1.1665 2.99629 1.1665 2.42344 1.42438 2.00262C1.56868 1.76715 1.76666 1.56917 2.00213 1.42487C2.42295 1.16699 2.9958 1.16699 4.1415 1.16699C4.9053 1.16699 5.2872 1.16699 5.56775 1.33891C5.72473 1.43511 5.85672 1.5671 5.95292 1.72408C6.12484 2.00462 6.12484 2.38653 6.12484 3.15033V3.79199C6.12484 4.89194 6.12484 5.44191 5.78313 5.78362C5.44142 6.12533 4.89145 6.12533 3.7915 6.12533H3.14984C2.38604 6.12533 2.00414 6.12533 1.72359 5.95341C1.56661 5.85721 1.43462 5.72522 1.33842 5.56824C1.1665 5.28769 1.1665 4.90579 1.1665 4.14199Z"
+                                    stroke="black"/>
+                                <path
+                                    d="M2.9165 3.64616C2.9165 3.3455 2.9165 3.19518 2.99182 3.08903C3.01839 3.05158 3.05109 3.01888 3.08855 2.9923C3.19469 2.91699 3.34502 2.91699 3.64567 2.91699C3.94632 2.91699 4.09665 2.91699 4.20279 2.9923C4.24025 3.01888 4.27295 3.05158 4.29952 3.08903C4.37484 3.19518 4.37484 3.3455 4.37484 3.64616C4.37484 3.94681 4.37484 4.09714 4.29952 4.20328C4.27295 4.24074 4.24025 4.27344 4.20279 4.30001C4.09665 4.37533 3.94632 4.37533 3.64567 4.37533C3.34502 4.37533 3.19469 4.37533 3.08855 4.30001C3.05109 4.27344 3.01839 4.24074 2.99182 4.20328C2.9165 4.09714 2.9165 3.94681 2.9165 3.64616Z"
+                                    fill="black"/>
+                                <path
+                                    d="M2.9165 10.3542C2.9165 10.0535 2.9165 9.90319 2.99182 9.79704C3.01839 9.75959 3.05109 9.72689 3.08855 9.70031C3.19469 9.625 3.34502 9.625 3.64567 9.625C3.94632 9.625 4.09665 9.625 4.20279 9.70031C4.24025 9.72689 4.27295 9.75959 4.29952 9.79704C4.37484 9.90319 4.37484 10.0535 4.37484 10.3542C4.37484 10.6548 4.37484 10.8051 4.29952 10.9113C4.27295 10.9487 4.24025 10.9814 4.20279 11.008C4.09665 11.0833 3.94632 11.0833 3.64567 11.0833C3.34502 11.0833 3.19469 11.0833 3.08855 11.008C3.05109 10.9814 3.01839 10.9487 2.99182 10.9113C2.9165 10.8051 2.9165 10.6548 2.9165 10.3542Z"
+                                    fill="black"/>
+                                <path
+                                    d="M9.3335 10.3538C9.3335 9.94421 9.3335 9.73939 9.43181 9.59226C9.47436 9.52856 9.52905 9.47388 9.59275 9.43132C9.73988 9.33301 9.94469 9.33301 10.3543 9.33301C10.764 9.33301 10.9688 9.33301 11.1159 9.43132C11.1796 9.47388 11.2343 9.52856 11.2769 9.59226C11.3752 9.73939 11.3752 9.94421 11.3752 10.3538C11.3752 10.7635 11.3752 10.9683 11.2769 11.1154C11.2343 11.1791 11.1796 11.2338 11.1159 11.2764C10.9688 11.3747 10.764 11.3747 10.3543 11.3747C9.94469 11.3747 9.73988 11.3747 9.59275 11.2764C9.52905 11.2338 9.47436 11.1791 9.43181 11.1154C9.3335 10.9683 9.3335 10.7635 9.3335 10.3538Z"
+                                    fill="black"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_95_4924">
+                                    <rect width="14" height="14" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::User Profile Card-->
+    <!--begin::Health Profile-->
+
+    <div class="card card-custom mb-5 mb-xl-5">
+        <div id="card-body-status" class="card-body card-padding">
+            <div class="card p-3 shadow-sm ">
+
+                <div
+                    class="custom-inner-box custom-outer-card rounded-4 p-5 text-center mb-3 d-flex flex-column align-items-center justify-content-center"
+                    style="min-height: 180px;">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path fill="url(#a)" d="M0 0h50v50H0z"/>
+                        <defs>
+                            <pattern id="a" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                <use xlink:href="#b" transform="scale(.00195)"/>
+                            </pattern>
+                            <image id="b" width="512" height="512" preserveAspectRatio="none"
+                                   xlink:href="data:image/png;base64,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"/>
+                        </defs>
+                    </svg>
+
+
+                    <p class="mb-0 fs-6 fw-medium" id="health-profile-status-text">
+                        Hồ sơ sức khoẻ<br>
+                        chưa được đồng bộ
+                    </p>
+                </div>
+
+                <button id="btn-sync-health-profile" class=" btn custom-btn-yellow w-100 rounded-3 py-2">
+                    Đồng bộ dữ liệu
+                </button>
+
+            </div>
+        </div>
+        <div id="card-body-infor" class="card-body card-padding d-none">
+            <div class="d-flex flex-column align-items-center gap-5">
+                <div class="disease-card d-flex flex-column align-items-center w-100 bg-gray-300 py-2 px-5 rounded-2">
+                    <span class="fs-26px text-primary fw-bold" id="disease-risk-percent"
+                          style="padding-bottom: 8px"></span>
+                    <span class="fs-16px text-center"> Xác suất bệnh </span>
+
+                    <span class="fs-16px text-center" id="disease-title">
+
+                    </span>
+                    <div class="hoicham-wrapper">
+
+                        <i class="hoicham-icon fs-12px textcenter">
+                            <img src="assets/media/icons/hoicham.svg" alt=""/>
+                        </i>
+                        <!-- Tooltip / Modal nhỏ -->
+                        @* <div class="hoicham-tooltip">
+                                <div class="item">
+                                    <span class="color normal"><img src="assets/media/icons/nguongbinhthuong.svg" alt="" /></span> Ngưỡng bình thường
+                                </div>
+                                <div class="item">
+                                    <span class="color mid"><img src="assets/media/icons/nguongcancao.svg" alt="" /></span> Ngưỡng cận cao
+                                </div>
+                                <div class="item">
+                                    <span class="color high"><img src="assets/media/icons/nguongcao.svg" alt="" /></span> Ngưỡng cao
+                                </div>
+                            </div> *@
+                    </div>
+                </div>
+                <div class="d-flex flex-column w-100 gap-5">
+                    <a href="#" id="healthProfileBtn"
+                       class="btn btn-primary btn-primary-gradient d-flex flex-row align-items-center justify-content-center gap-1 w-100"
+                       data-bs-toggle="popover"
+                       data-bs-placement="right"
+                       data-bs-html="true"
+                       data-bs-trigger="hover focus"
+                       data-bs-custom-class="health-profile-popover">
+                        <span>Hồ sơ sức khỏe</span>
+                        <i class="ki-duotone ki-information-5 fs-2">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                            <span class="path3"></span>
+                        </i>
+                    </a>
+
+                    <div class="health-container d-flex flex-column gap-1">
+
+                        <div id="metricSection">
+                            <div class="figma-risk-widget">
+                                <div id="metric-list"></div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fs-16px fw-bold">
+                                Đánh giá:
+                            </span>
+
+                        </div>
+                        <a href="#" class="btn btn-success" id="rateRiskLevel"></a>
+
+                        <span>
+                            @* Cải thiện mỡ máu, duy trì giấc ngủ ổn định , api không có data *@
+                        </span>
+                        <a id="toggleMetrics" class="text-primary cursor-pointer">
+                            Thu gọn
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--end::Health Profile-->
+
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        const profile = JSON.parse(localStorage.getItem("profile"));
+        console.log("check profile", profile);
+        if (profile && profile.photo) {
+            document.getElementById("profilePhoto").src = profile.photo;
+        } else {
+            console.log("Không tìm thấy ảnh trong profile");
+        }
+
+        // Ghi ra console URL ảnh
+        const photoUrl = profile?.photo;
+        console.log("photoUrl", photoUrl);
+
+
+        const path = window.location.pathname;
+        const urlParams = new URLSearchParams(location.search);
+
+        // Ưu tiên lấy accountId từ query (trang chi tiết), fallback sang localStorage (trang tổng quan)
+        let accountId = urlParams.get("accountId");
+        if (!accountId) {
+            try {
+                const profileRaw = localStorage.getItem("profile");
+                if (profileRaw) {
+                    const profile = JSON.parse(profileRaw);
+                    accountId = profile?.id || profile?.accountId || null;
+                }
+            } catch (e) {
+                console.warn("Cannot parse profile from localStorage in _Client_Sidebar_Details:", e);
+            }
+        }
+
+
+        if (path.includes("danh-sach-ket-qua-thong-ke")) {
+            if (!accountId) {
+                console.warn("Không tìm được accountId khi load sidebar (tổng quan).");
+                return;
+            }
+            // Truyền diseaseKey = null, để hàm tự chọn bệnh có nguy cơ cao nhất
+            loadSidebarDetails(accountId, null);
+            return;
+        }
+        // Trang tổng quan: lấy bệnh có nguy cơ cao nhất cho sidebar
+        if (path.includes("qr-code")) {
+            if (!accountId) {
+                console.warn("Không tìm được accountId khi load sidebar (tổng quan).");
+                return;
+            }
+            // Truyền diseaseKey = null, để hàm tự chọn bệnh có nguy cơ cao nhất
+            loadSidebarDetails(accountId, null);
+            return;
+        }
+        if (path.includes("dap-ung-thuoc")) {
+            if (!accountId) {
+                console.warn("Không tìm được accountId khi load sidebar (tổng quan).");
+                return;
+            }
+            // Truyền diseaseKey = null, để hàm tự chọn bệnh có nguy cơ cao nhất
+            loadSidebarDetails(accountId, null);
+            return;
+        }
+        if (path.includes("thong-tin-thuoc")) {
+            if (!accountId) {
+                console.warn("Không tìm được accountId khi load sidebar (tổng quan).");
+                return;
+            }
+            // Truyền diseaseKey = null, để hàm tự chọn bệnh có nguy cơ cao nhất
+            loadSidebarDetails(accountId, null);
+            return;
+        }
+        // Trang chi tiết bệnh
+        if (path.includes("ket-qua-thong-ke")) {
+            const diseaseKey = urlParams.get("d");
+            if (!accountId || !diseaseKey) {
+                console.warn("Thiếu accountId hoặc diseaseKey khi load sidebar (chi tiết bệnh).", {
+                    accountId,
+                    diseaseKey
+                });
+                return;
+            }
+            loadSidebarDetails(accountId, diseaseKey);
+        }
+    });
+
+    // Toggle & responsive cho metric-list
+    const toggleBtn = $("#toggleMetrics");
+    const metricSection = $("#metricSection");
+    let metricsCollapsed = false;
+
+    function applyMetricResponsive() {
+        const isSmallScreen = window.innerWidth < 992; // < lg
+
+        if (isSmallScreen) {
+            // Mobile + tablet: ẩn mặc định, cho phép mở rộng
+            metricsCollapsed = true;
+            metricSection.addClass("d-none");
+            toggleBtn.text("Mở rộng");
+        } else {
+            // Desktop: luôn hiển thị
+            metricsCollapsed = false;
+            metricSection.removeClass("d-none");
+            toggleBtn.text("Thu gọn");
+        }
+    }
+
+    // Áp dụng khi load lần đầu
+    applyMetricResponsive();
+
+    // Áp dụng lại khi resize
+    $(window).on("resize", function () {
+        applyMetricResponsive();
+    });
+
+    // Click để mở rộng / thu gọn
+    toggleBtn.on("click", function (e) {
+        e.preventDefault();
+        metricsCollapsed = !metricsCollapsed;
+        metricSection.toggleClass("d-none", metricsCollapsed);
+        toggleBtn.text(metricsCollapsed ? "Mở rộng" : "Thu gọn");
+    });
+
+
+    function loadSidebarDetails(accountId, diseaseKey) {
+
+        const apiCall = $.ajax({
+            url: `/profile/api/statistics/${accountId}`,
+            method: "GET",
+            dataType: "json"
+        });
+
+
+        const mappingCall = $.ajax({
+            url: "/js/disease_metric_mapping.json",
+            method: "GET",
+            dataType: "json"
+        });
+
+        $.when(apiCall, mappingCall).done((apiRes, mappingRes) => {
+
+            const api = apiRes[0] || {};
+            const mapping = mappingRes[0] || {};
+
+            const resources = api.resources || {};
+            const scores = resources.scores || [];
+            const metricCards = resources.metricCards || [];
+            const riskMarkers = resources.riskMarkers || [];
+
+            //window.userImage.src = '/images/userdefault.jpg';
+            if (window.userImage) {
+
+                const photoUrl = resources.profile?.avatar;
+                console.log("photo", photoUrl);
+                window.userImage.src = photoUrl || '/images/userdefault.jpg';
+
+            }
+
+            const chartData = resources;
+
+            $(document).trigger('initRiskChart', chartData);
+
+
+            // Nếu không truyền diseaseKey (trang tổng quan) -> chọn bệnh có nguy cơ cao nhất
+            if (!diseaseKey) {
+                if (!scores.length) {
+                    console.warn("Không có scores để xác định bệnh nguy cơ cao nhất.");
+                    return;
+                }
+
+                const riskPriority = {
+                    poor: 3,       // Nguy cơ cao
+                    moderate: 2,   // Nguy cơ trung bình
+                    good: 1        // Nguy cơ thấp
+                };
+
+                const topScore = scores.slice().sort((a, b) => {
+                    const aLevel = (a.riskLevel || '').toLowerCase();
+                    const bLevel = (b.riskLevel || '').toLowerCase();
+                    const aPri = riskPriority[aLevel] || 0;
+                    const bPri = riskPriority[bLevel] || 0;
+
+                    // Ưu tiên riskLevel: poor > moderate > good
+                    if (aPri !== bPri) return bPri - aPri;
+
+                    // Nếu cùng level thì sort theo scoreValue giảm dần
+                    const aScore = typeof a.scoreValue === 'number' ? a.scoreValue : 0;
+                    const bScore = typeof b.scoreValue === 'number' ? b.scoreValue : 0;
+                    return bScore - aScore;
+                })[0];
+
+                diseaseKey = topScore?.diseaseKey;
+            }
+
+
+            // mapping name giữ nguyên
+            const diseaseInfo = mapping[diseaseKey];
+
+            if (!diseaseInfo) {
+                console.warn("Không tìm thấy diseaseInfo", diseaseKey);
+                return;
+            }
+
+            // Set tên bệnh
+            $("#disease-title").text(diseaseInfo.name || "");
+            $("#ten-benh").text(diseaseInfo.name || "");
+            $("#ten-static").text(diseaseInfo.name || "");
+            $("#id-name").text(resources.profile.accountName || "")
+
+
+            const scoreItem = scores.find(s => s.diseaseKey === diseaseKey);
+            const riskScore = scoreItem ? Number(scoreItem.scoreValue) || 0 : 0;
+            const riskPercent = convertScoreToPercent(riskScore);
+
+            const labelRiskLevel = scoreItem.riskLevel;
+            console.log("Risk level:", labelRiskLevel);
+
+            // Map gradient màu
+            const mapGradient = {
+                good: "bg-success-gradient",
+                moderate: "bg-success-gradient",
+                poor: "bg-warning-gradient",
+                high: "bg-danger-gradient",
+                bad: "bg-danger-gradient"
+            };
+
+            // Map tiếng Việt
+            const riskLevelText = {
+                good: "Tốt",
+                moderate: "Trung bình",
+                poor: "Kém",
+                high: "Cao",
+                bad: "Xấu"
+            };
+
+            // Lấy class gradient, fallback nếu không khớp key
+            const gradientClass = mapGradient[labelRiskLevel] || "bg-secondary-gradient";
+
+            // Gán màu
+            document.getElementById("rateRiskLevel").classList.add(gradientClass);
+
+            // Gán chữ tiếng Việt
+            document.getElementById("rateRiskLevel").textContent = riskLevelText[labelRiskLevel] || "Không xác định";
+
+
+            var url = new URL(window.location.href);
+            if ("/ket-qua-thong-ke" != url.pathname) {
+                $(".disease-card").addClass("d-none");
+            }
+
+            $("#disease-risk-percent").text(riskPercent + "%");
+
+            // Render metric theo mapping
+            $("#metric-list").empty();
+            (diseaseInfo.metrics || []).forEach(code => {
+                renderMetricByKey(code, metricCards);
+            });
+
+            // Set màu risk level dựa vào riskScore
+            const riskLevel =
+                riskScore >= 7 ? "red" :
+                    riskScore >= 4 ? "orange" :
+                        "green";
+
+            if (window.setRiskLevel) {
+                window.setRiskLevel(riskLevel);
+            }
+
+            let clinicalPercent = 0;
+
+            if (scoreItem) {
+                const scoreName = (scoreItem.name || '').trim().toLowerCase();
+
+                //  match đúng clinical theo tên bệnh
+                let clinicalMarker = riskMarkers.find(m =>
+                    (m.type || '').toLowerCase() === 'clinical' &&
+                    (m.label || '').trim().toLowerCase() === scoreName
+                );
+
+                // nếu không tìm được mà chỉ có 1 clinical trong riskMarkers thì dùng luôn nó
+                if (!clinicalMarker) {
+                    const clinicalList = riskMarkers.filter(m =>
+                        (m.type || '').toLowerCase() === 'clinical'
+                    );
+                    if (clinicalList.length === 1) {
+                        clinicalMarker = clinicalList[0];
+                    }
+                }
+
+                if (clinicalMarker) {
+                    const clinicalScore = Number(clinicalMarker.value) || 0;
+                    clinicalPercent = convertScoreToPercent(clinicalScore);
+                }
+            }
+
+            // Nếu có phần trăm nguy cơ lâm sàng riêng muốn show:
+            if (clinicalPercent > 0) {
+                $("#clinical-risk-percent").text(clinicalPercent + "%");
+            }
+
+            if (window.setRiskBar) {
+                const markers = [];
+
+                // marker di truyền
+                markers.push({
+                    value: riskPercent,
+                    label: riskPercent + '%',
+                    type: 1002 // map trong setRiskBar để ra màu vàng
+                });
+
+                // marker lâm sàng
+                if (clinicalPercent > 0) {
+                    markers.push({
+                        value: clinicalPercent,
+                        label: clinicalPercent + '%',
+                        type: 1001 // map trong setRiskBar để ra màu xanh
+                    });
+                }
+
+                console.log('setRiskBar markers = ', markers);
+
+                window.setRiskBar(
+                    {greenEnd: 8, orangeEnd: 16}, // ngưỡng đang dùng
+                    markers
+                );
+            }
+
+        }).fail(err => {
+            console.error("loadSidebarDetails AJAX error:", err);
+        });
+    }
+
+    // Tìm card theo metricKey rồi render
+    function renderMetricByKey(metricKey, metricCards) {
+        const card = metricCards.find(m => m.metricKey === metricKey);
+        if (!card) return;
+
+        renderMetricFromApi(card);
+    }
+
+    //  mapMetricToUI và append vào #metric-list
+    function renderMetricFromApi(card) {
+        const html = mapMetricToUI(card);
+        if (!html) return;
+
+        $("#metric-list").append(html);
+    }
+
+
+    function convertScoreToPercent(score) {
+        switch (score) {
+            case 0:
+                return 3;
+            case 1:
+                return 7;
+            case 2:
+                return 11;
+            case 3:
+                return 15;
+            case 4:
+                return 22;
+            case 5:
+                return 30;
+            case 6:
+                return 40;
+            case 7:
+                return 55;
+            case 8:
+                return 70;
+            case 9:
+                return 85;
+            case 10:
+                return 95;
+            default:
+                return 0;
+        }
+    }
+
+    function mapMetricToUI(card) {
+        if (!card) return "";
+
+        const name = card.name || card.metricKey || "";
+        const valueRaw = card.valueNumeric ?? card.valueText ?? "";
+        const unit = card.unit ?? "";
+        const rangeLow = card.rangeLow ?? "∞";
+        const rangeHigh = card.rangeHigh ?? "∞";
+        const desc = card.description ?? "";
+        const statusLabel = card.statusLabel ?? "";
+
+        const statusLevel = (card.statusLevel || "").toLowerCase().trim();
+
+        // làm tròn tới số gần nhất
+        const numericValue = Math.round(Number(valueRaw) || 0);
+
+        const thresholdsRaw = card.thresholds || [];
+
+        if (!thresholdsRaw.length) {
+            // không có threshold thì tuỳ bạn
+            return "";
+        }
+
+        const isNumber = (v) => typeof v === "number" && !isNaN(v);
+
+        // Hàm lấy giá trị dùng để sort trên trục số
+        function getSortValue(t) {
+            const min = t.minValue;
+            const max = t.maxValue;
+
+            // khoảng có cả min & max (ví dụ: 135–145) -> lấy tâm
+            if (isNumber(min) && isNumber(max)) {
+                return (min + max) / 2;
+            }
+
+            // chỉ có max (ví dụ: < 135) -> đặt nó nằm TRƯỚC max
+            if (!isNumber(min) && isNumber(max)) {
+                return max - 1e6; // số rất nhỏ hơn max
+            }
+
+            // chỉ có min (ví dụ: > 145) -> đặt nó nằm SAU min
+            if (isNumber(min) && !isNumber(max)) {
+                return min + 1e6; // số rất lớn hơn min
+            }
+
+            // không có min/max -> cho về 0
+            return 0;
+        }
+
+        const thresholds = thresholdsRaw.slice().sort((a, b) => {
+            const va = getSortValue(a);
+            const vb = getSortValue(b);
+
+            if (va !== vb) return va - vb;
+
+            // nếu vô tình trùng sortValue thì mới dùng priority làm tie-break
+            const pa = a.priority ?? 999;
+            const pb = b.priority ?? 999;
+            return pa - pb;
+        });
+
+
+        const n = thresholds.length;
+        const segmentWidth = 100 / n;
+
+        // === tìm threshold active theo numericValue ===
+        // === tìm threshold active theo numericValue ===
+        let activeIndex = 0;
+        const activeThreshold = thresholds.find((t, idx) => {
+            const min = isNumber(t.minValue) ? t.minValue : -Infinity;
+            const max = isNumber(t.maxValue) ? t.maxValue : Infinity;
+
+            const hit = numericValue >= min && numericValue <= max;
+            if (hit) activeIndex = idx;
+            return hit;
+        }) || thresholds[0];
+
+        // =====================
+        // TÍNH LẠI VỊ TRÍ THANH KIM
+        // =====================
+        const segStart = segmentWidth * activeIndex;       // % bắt đầu segment active
+        const segEnd = segmentWidth * (activeIndex + 1); // % kết thúc segment active
+
+        let percent;  // vị trí cuối cùng của thanh kim (0–100)
+
+        let tMin = isNumber(activeThreshold.minValue) ? activeThreshold.minValue : null;
+        let tMax = isNumber(activeThreshold.maxValue) ? activeThreshold.maxValue : null;
+
+        function clamp01(v) {
+            return Math.max(0, Math.min(1, v));
+        }
+
+        if (tMin !== null && tMax !== null) {
+            // ====== có đủ min & max ======
+            if (tMin === tMax) {
+                // 2 giá trị bằng nhau: coi là 1 mức
+                if (numericValue <= tMin) {
+                    percent = segStart;      // nhỏ hơn / bằng -> đầu segment
+                } else {
+                    percent = segEnd;        // lớn hơn -> cuối segment
+                }
+            } else {
+                // nội suy trong [min, max]
+                let ratio = (numericValue - tMin) / (tMax - tMin);
+                ratio = clamp01(ratio);
+                percent = segStart + ratio * segmentWidth;
+            }
+        } else if (tMin === null && tMax !== null) {
+            // ====== chỉ có max, ví dụ: < 500 ======
+            // coi như khoảng [0, max]
+            let ratio = numericValue / (tMax || 1);
+            ratio = clamp01(ratio);
+            percent = segStart + ratio * segmentWidth;
+        } else if (tMin !== null && tMax === null) {
+            // ====== chỉ có min, ví dụ: > 300 ======
+            // nếu <= min thì sát đầu; > min thì dịch dần về cuối
+            let ratio;
+            if (numericValue <= tMin) {
+                ratio = 0;
+            } else {
+                // xấp xỉ: coi khoảng [min, 2*min] là full segment
+                const approxMax = tMin * 2 || (tMin + 1);
+                ratio = (numericValue - tMin) / (approxMax - tMin);
+            }
+            ratio = clamp01(ratio);
+            percent = segStart + ratio * segmentWidth;
+        } else {
+            // không có min & max: giữ giữa segment
+            percent = segStart + segmentWidth * 0.5;
+        }
+
+
+        // màu calss cho label
+        const finalLevel = getLevelFromThreshold(activeThreshold, statusLevel);
+        let colorClass = "";
+        switch (finalLevel) {
+            case "success":
+                colorClass = "bg-green-gradient";
+                break;
+            case "danger":
+                colorClass = "bg-red-gradient";
+                break;
+            case "warning":
+                colorClass = "bg-orange-gradient";
+                break;
+            case "neutral":
+            default:
+                colorClass = "bg-gray-gradient";
+                break;
+        }
+
+        function getLevelFromThreshold(threshold, fallbackStatusLevel) {
+            const type = (threshold.thresholdType || "").toLowerCase();
+            const fallback = (fallbackStatusLevel || "").toLowerCase();
+
+            // dựa trên thresholdType
+            if (/normal|optimal|good|g1|male_normal|approx_normal/.test(type)) {
+                return "success";
+            }
+
+            if (/borderline|near_optimal|prediabetes|g2|g3|g4|g5|moderate|suggestive|gray_zone|suspicious|approx/.test(type)) {
+                return "warning";
+            }
+
+            if (/high|very_high|elevated|hyper|hypo|low|gout|critical/.test(type)) {
+                return "danger";
+            }
+
+            // 2. Nếu thresholdType không cos, fallback về statusLevel từ API
+            if (["success", "warning", "danger", "neutral"].includes(fallback)) {
+                return fallback;
+            }
+
+            // 3. Cuối cùng nữa thì neutral
+            return "neutral";
+        }
+
+
+        //  Lưu lại màu segment cho từng ngưỡng
+
+        // xử lý màu cho thành segment màu hiện tại = > gradient
+        const segmentColors = [];
+        let segmentsHtml = "";
+
+        thresholds.forEach((t, idx) => {
+            const color = t.color || "#ffffff"; // màu gốc của segment
+            segmentColors[idx] = color;
+
+            // làm tối & làm sáng dựa trên màu gốc
+            const darker = shadeColor(color, -0.8);  // tương đương "đen" nhưng theo màu
+            const lighter = shadeColor(color, 0.4);  // tương đương "trắng" nhưng theo màu
+
+            segmentsHtml += `
+                <div class="segment"
+                     style="
+                        width:${segmentWidth}%;
+                        background: linear-gradient(
+                            to right,
+                            ${darker} 0%,      /* trái: màu tối hơn */
+                            ${color} 35%,      /* giữa: màu gốc */
+                            ${color} 55%,      /* giữ màu gốc */
+                            ${lighter} 100%    /* phải: màu sáng hơn */
+                        );
+                     ">
+                </div>
+            `;
+        });
+
+
+        // color dạng "#rrggbb", percent từ -1 → 1
+        function shadeColor(color, percent) {
+            // bỏ dấu #
+            let col = color.replace('#', '');
+            if (col.length === 3) {
+                // chuyển #rgb → #rrggbb
+                col = col.split('').map(ch => ch + ch).join('');
+            }
+
+            const num = parseInt(col, 16);
+            let r = (num >> 16) & 255;
+            let g = (num >> 8) & 255;
+            let b = num & 255;
+
+            // percent > 0: làm sáng, < 0: làm tối
+            r = Math.round(r + (255 - r) * percent);
+            g = Math.round(g + (255 - g) * percent);
+            b = Math.round(b + (255 - b) * percent);
+
+            // clamp
+            r = Math.max(0, Math.min(255, r));
+            g = Math.max(0, Math.min(255, g));
+            b = Math.max(0, Math.min(255, b));
+
+            const toHex = (v) => v.toString(16).padStart(2, '0');
+            return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+        }
+
+
+        let activeSegmentColor = segmentColors[activeIndex];
+
+        // fallback nếu threshold không có màu
+        if (!activeSegmentColor || activeSegmentColor === "#ffffff") {
+            if (statusLevel === "success") activeSegmentColor = "#36bf5f";
+            else if (statusLevel === "danger" || statusLevel === "warning") activeSegmentColor = "#ff4b4b";
+            else activeSegmentColor = "#f9a825"; // cam
+        }
+
+        // dùng lại shadeColor cho label
+        const labelDarker = shadeColor(activeSegmentColor, -0.8); // tối bên trái
+        const labelLighter = shadeColor(activeSegmentColor, 0.4); // sáng bên phải
+
+
+        // helper format text cho từng ngưỡng
+        function formatThresholdText(t) {
+            const min = t.minValue;
+            const max = t.maxValue;
+
+            if (isNumber(min) && isNumber(max)) { // ngưỡng ở giữa
+                return `${max}`;        // Sodium: hiện "145"
+            }
+            if (isNumber(min) && !isNumber(max)) {
+                return `> ${min}`;
+            }
+            if (!isNumber(min) && isNumber(max)) {
+                return `< ${max}`;
+            }
+            // return t.thresholdLabel || "";
+            return t.thresholdLabel || "";
+        }
+
+
+        // block div cho các ngưỡng
+        let thresholdsDynamicHtml = "";
+        thresholds.forEach((t, idx) => {
+            // tâm mỗi ngưỡng thanh kim
+            const left = segmentWidth * (idx + 1);
+
+            const tickColor = segmentColors[idx];
+            const text = formatThresholdText(t);
+
+            thresholdsDynamicHtml += `
+                <div class="threshold-item" style="left:${left}%;">
+                    <div class="tick-mark" style="background:${tickColor};"></div>
+                    <span class="threshold-text">${text}</span>
+                </div>
+            `;
+        });
+        const thresholdsBlockHtml = `
+                <div class="thresholds">
+                    ${thresholdsDynamicHtml}
+                </div>
+                <div class='text-center'>(${unit})</div>
+
+            `;
+
+        return `
+                 <div class="health-container d-flex flex-column gap-1">
+                                                <span class="fw-bold">
+                                                    ${name}
+                                                </span>
+                                                <div class="d-flex flex-row align-items-center gap-2">
+                                                    <div class="label-custom rounded-1 ${colorClass} fs-18px py-1 px-4 text-center"
+                                                     style="
+                                                        background: linear-gradient(
+                                                            to right,
+                                                            ${labelDarker} 0%,
+                                                            ${activeSegmentColor} 35%,
+                                                            ${activeSegmentColor} 55%,
+                                                            ${labelLighter} 100%
+                                                        );
+                                                     ">
+                                                        ${numericValue}
+                                                    </div>
+                                                    <div class="label-numberic d-flex justify-content-between">
+                                                    <span class="fw-bold ">
+                                                        ${statusLabel}
+
+
+                                                    </span>
+                                                        <i class="hoicham-label-icon fs-12px textcenter d-flex  ">
+                                                        <img src="assets/media/icons/hoicham.svg" alt="" />
+                                                    </i>
+                                                    </div>
+
+                                                </div>
+                                                <span class="custom-desc fs-12px">
+                                                ${desc}
+
+                                                </span>
+
+                                                <div class="figma-risk-widget">
+
+                                                    <div class="risk-bar-container">
+                                                        <!-- Thanh tiến trình với 3 đoạn màu -->
+                                                        <div class="risk-progress-bar">
+                                                           ${segmentsHtml}
+                                                        </div>
+
+                                                        <!-- Marker giá trị 210 -->
+                                                        <div class="value-indicator" style="left: ${percent}%;">
+                                                            <div class="value-pin">
+                                                                    <span>${numericValue}</span>
+
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="30"
+                                                                         height="36"
+                                                                         class="pin-svg"
+                                                                         style="color:${activeSegmentColor}
+                                                                         ">
+
+                                                                        <mask id="pin-mask" fill="white">
+                                                                            <path
+                                                                                d="M9.25684 1.14258C12.0005 0.00547218 15.02 -0.291576 17.9326 0.289062C20.8456 0.869857
+                                                                                23.5212 2.30257 25.6191 4.40527C28.4252 7.22692 30 11.045 30 15.0244C29.9999 19.0036 28.425
+                                                                                22.821 25.6191 25.6426L15.6279 35.6338C15.5455 35.7162 15.4475 35.7816 15.3398 35.8262C15.2321
+                                                                                35.8708 15.1166 35.8945 15 35.8945C14.8834 35.8945 14.7679 35.8708 14.6602 35.8262C14.5525
+                                                                                35.7816 14.4545 35.7162 14.3721 35.6338L4.38086 25.6426C2.98492 24.2503 1.87894 22.595 1.12695
+                                                                                20.7725C0.374936 18.9498 -0.00804686 16.9961 0 15.0244C-0.00480055 12.0541 0.872598 9.14896
+                                                                                2.52051 6.67773C4.16841 4.20661 6.513 2.27987 9.25684 1.14258Z"
+                                                                            />
+                                                                        </mask>
+
+                                                                        <path
+                                                                            d="M9.25684 1.14258C12.0005 0.00547 15.02 -0.29157 17.9326 0.28906C20.8456 0.86986 23.5212
+                                                                            2.30257 25.6191 4.40527C28.4252 7.22692 30 11.045 30 15.0244C29.9999 19.0036 28.425 22.821
+                                                                            25.6191 25.6426L15.6279 35.6338C15.5455 35.7162 15.4475 35.7816 15.3398 35.8262C15.2321 35.8708
+                                                                            15.1166 35.8945 15 35.8945C14.8834 35.8945 14.7679 35.8708 14.6602 35.8262C14.5525 35.7816
+                                                                            14.4545 35.7162 14.3721 35.6338L4.38086 25.6426C2.98492 24.2503 1.87894 22.595 1.12695 20.7725
+                                                                            C0.374936 18.9498 -0.00804686 16.9961 0 15.0244C-0.00480055 12.0541 0.872598 9.14896 2.52051
+                                                                            6.67773C4.16841 4.20661 6.513 2.27987 9.25684 1.14258Z"
+                                                                            fill="currentColor"
+                                                                            class="pin-shape"
+                                                                        />
+
+
+
+                                                                        <path d="M9.25684 1.14258L8.6846 -0.238126L8.68456 -0.238107L9.25684 1.14258ZM17.9326
+                                                                                0.289062L18.2249 -1.17668L18.2248 -1.17669L17.9326 0.289062ZM25.6191
+                                                                                4.40527L26.6789 3.35137L26.6772 3.34965L25.6191 4.40527ZM30
+                                                                                15.0244L31.4946 15.0244V15.0244H30ZM25.6191 25.6426L26.676
+                                                                                26.6994L26.6789 26.6965L25.6191 25.6426ZM15.6279 35.6338L14.5711
+                                                                                34.577L14.571 34.577L15.6279 35.6338ZM15.3398 35.8262L15.9118
+                                                                                37.207L15.9121 37.2069L15.3398 35.8262ZM15 35.8945L15
+                                                                                37.3891H15V35.8945ZM14.6602 35.8262L14.0878 37.2068L14.0882
+                                                                                37.207L14.6602 35.8262ZM14.3721 35.6338L15.429 34.577L15.4289
+                                                                                34.577L14.3721 35.6338ZM4.38086 25.6426L5.43769 24.5857L5.43631
+                                                                                24.5844L4.38086 25.6426ZM1.12695 20.7725L-0.254655 21.3425L-0.254652
+                                                                                21.3425L1.12695 20.7725ZM0 15.0244L1.4946 15.0305L1.49459
+                                                                                15.022L0 15.0244ZM2.52051 6.67773L1.27705 5.84852L1.27703
+                                                                                5.84854L2.52051 6.67773ZM9.25684 1.14258L9.82907 2.52328C12.2993
+                                                                                1.49948 15.018 1.23202 17.6404 1.75481L17.9326
+                                                                                0.289062L18.2248 -1.17669C15.022 -1.81518 11.7016 -1.48853
+                                                                                8.6846 -0.238126L9.25684 1.14258ZM17.9326 0.289062L17.6404
+                                                                                1.7548C20.2631 2.27774 22.6723 3.56775 24.5611 5.4609L25.6191
+                                                                                4.40527L26.6772 3.34965C24.3702 1.03739 21.428 -0.538026
+                                                                                18.2249 -1.17668L17.9326 0.289062ZM25.6191 4.40527L24.5594
+                                                                                5.45918C27.0869 8.00068 28.5054 11.4398 28.5054
+                                                                                15.0244H30H31.4946C31.4946 10.6502 29.7636 6.45316
+                                                                                26.6789 3.35137L25.6191 4.40527ZM30 15.0244L28.5054
+                                                                                15.0244C28.5053 18.6087 27.0867 22.0472 24.5594
+                                                                                24.5887L25.6191 25.6426L26.6789 26.6965C29.7633
+                                                                                23.5948 31.4945 19.3986 31.4946 15.0244L30 15.0244ZM25.6191
+                                                                                25.6426L24.5623 24.5857L14.5711 34.577L15.6279
+                                                                                35.6338L16.6848 36.6906L26.676 26.6994L25.6191
+                                                                                25.6426ZM15.6279 35.6338L14.571 34.577C14.6282 34.5198
+                                                                                14.6951 34.4755 14.7676 34.4455L15.3398 35.8262L15.9121
+                                                                                37.2069C16.1999 37.0876 16.4628 36.9126 16.6848
+                                                                                36.6906L15.6279 35.6338ZM15.3398 35.8262L14.7678
+                                                                                34.4454C14.8354 34.4174 14.9139 34.3999 15
+                                                                                34.3999V35.8945V37.3891C15.3193 37.3891 15.6288
+                                                                                37.3242 15.9118 37.207L15.3398 35.8262ZM15
+                                                                                35.8945L15 34.3999C15.0861 34.3999 15.1645
+                                                                                34.4174 15.2322 34.4454L14.6602 35.8262L14.0882
+                                                                                37.207C14.3712 37.3242 14.6807 37.3891 15
+                                                                                37.3891L15 35.8945ZM14.6602 35.8262L15.2325
+                                                                                34.4455C15.3049 34.4755 15.3717 34.5198 15.429
+                                                                                34.577L14.3721 35.6338L13.3152 36.6906C13.5372
+                                                                                36.9126 13.8002 37.0876 14.0878 37.2068L14.6602
+                                                                                35.8262ZM14.3721 35.6338L15.4289 34.577L5.43769
+                                                                                24.5857L4.38086 25.6426L3.32403 26.6994L13.3152
+                                                                                36.6906L14.3721 35.6338ZM4.38086 25.6426L5.43631
+                                                                                24.5844C4.18028 23.3316 3.18517 21.8423 2.50856
+                                                                                20.2024L1.12695 20.7725L-0.254652 21.3425C0.572718
+                                                                                23.3478 1.78955 25.169 3.32541 26.7008L4.38086
+                                                                                25.6426ZM1.12695 20.7725L2.50856 20.2024C1.83194
+                                                                                18.5625 1.48734 16.8046 1.49458 15.0305L0
+                                                                                15.0244L-1.49458 15.0183C-1.50343 17.1876
+                                                                                -1.08207 19.3371 -0.254655 21.3425L1.12695
+                                                                                20.7725ZM0 15.0244L1.49459 15.022C1.49027
+                                                                                12.3477 2.28024 9.73197 3.76398 7.50693L2.52051
+                                                                                6.67773L1.27703 5.84854C-0.535042 8.56595
+                                                                                -1.49987 11.7606 -1.49459 15.0268L0 15.0244ZM2.52051
+                                                                                6.67773L3.76397 7.50695C5.24773 5.28197 7.35876
+                                                                                3.5472 9.82912 2.52326L9.25684 1.14258L8.68456
+                                                                                -0.238107C5.66725 1.01254 3.08909 3.13125 1.27705
+                                                                                5.84852L2.52051 6.67773Z"
+                                                                                fill="white"
+                                                                                mask="url(#pin-mask)"
+                                                                            />
+                                                                    </svg>
+                                                                </div>
+
+
+                                                            <div class="value-circle" style="--circle-color:${activeSegmentColor};"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Threshold labels với tick marks -->
+                                                    ${thresholdsBlockHtml}
+
+                                                    <div class="separator my-3"></div>
+
+
+                                                </div>
+                                            </div>
+            `;
+    }
+
+    // const tooltip = document.querySelector('.hoicham-tooltip');
+    // document.body.appendChild(tooltip);
+
+    $(document).ready(function () {
+        const popoverContent = `
+
+              <div class="health-profile-popover-content p-4" style="min-width: 400px; max-width: 500px;">
+            <div class="health-profile-popover">
+              <div class="d-flex flex-column gap-2 p-1">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="legend-box bg-success-gradient"></span>
+                  <span class="fw-semibold text-gray-800">Ngưỡng bình thường</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="legend-box bg-warning-gradient"></span>
+                  <span class="fw-semibold text-gray-800">Ngưỡng cận cao</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="legend-box bg-danger-gradient"></span>
+                  <span class="fw-semibold text-gray-800">Ngưỡng cao</span>
+                </div>
+              </div>
+          </div>
+              </div>
+            `;
+
+        const popoverTrigger = document.getElementById('healthProfileBtn');
+        if (popoverTrigger) {
+            const popover = new bootstrap.Popover(popoverTrigger, {
+                content: popoverContent,
+                html: true,
+                placement: 'top',
+                trigger: 'click',
+                customClass: 'health-profile-popover'
+            });
+
+            $(document).on('click', function (e) {
+                if (!$(e.target).closest('#healthProfileBtn').length &&
+                    !$(e.target).closest('.popover').length) {
+                    popover.hide();
+                }
+            });
+        }
+    });
+
+</script>
+
+    <script src="~/client/pages/statistical-result/js/list-statistical-results.js" asp-append-version="true"></script>

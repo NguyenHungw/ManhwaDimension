@@ -1,32 +1,22 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿@using ManhwaDimension.ULT;
+@* 
+    Sidebar Configuration - Production Version
+    - This file defines the left sidebar layout for the Production module.
+    - Logic: Renders menu items dynamically from ViewBag.Menu.
+    - Features different styling and menu type filters compared to Hospital version.
 *@
-@using ManhwaDimension.ULT;
 @{
     Layout = null;
     var pageSetting = ViewBag.PageConfigs;
 }
-<div id="kt_app_sidebar" class="app-sidebar  flex-column "
+@* Main Sidebar Structure *@
+<div id="kt_app_sidebar" class="app-sidebar flex-column"
      data-kt-drawer="true" data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="225px" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
 
 
-    <!--begin::Logo-->
+    @* Logo của Sidebar *@
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
-        <!--begin::Logo image-->
-        @*Logo side bar phía bên trái*@
         <a href="/">
-            @* @if (ViewBag.RoleId == SystemConstant.ROLE_HOSPITAL)
-            {
-                <img alt="Logo" src="@pageSetting.LogoUrl" class="h-40px app-sidebar-logo-default" />
-
-                <img alt="Logo" src="@pageSetting.LogoMinimizeUrl" class="h-30px app-sidebar-logo-minimize" />
-            }
-            else
-            {
-                <img alt="Logo" src="/images/genestory/logos/Logo.png" class="h-50px app-sidebar-logo-default" />
-
-                <img alt="Logo" src="/images/genestory/logos/small-log.png" class="h-30px app-sidebar-logo-minimize" />
-            } *@
         </a>
         <!--end::Logo image-->
         <!--begin::Sidebar toggle-->
@@ -69,8 +59,10 @@
                  data-kt-menu-expand="false">
                 @if (ViewBag.Menu != null)
                 {
+                    @* Iterate through menu list from database/middleware *@
                     foreach (var item1 in ViewBag.Menu)
                     {
+                        @* Level 1: Main Categories or Direct Links (MenuTypeId 1002) *@
                         if (item1.ParentId == 0 && item1.GroupId == 0 && item1.MenuTypeId == 1002)
                         {
                             var hasChild = 0;

@@ -1,0 +1,443 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+    ViewBag.Title = "Đăng nhập";
+    ViewBag.Menu = "Đăng nhập";
+	var appName = ViewBag.AppName as string;
+}
+
+<!DOCTYPE html>
+
+<html lang="en" data-bs-theme="light">
+<!--begin::Head-->
+<head>
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>@ViewBag.Title - @appName
+	</title>
+    <meta charset="utf-8" />
+    <meta name="description" content=" @appName
+     " />
+    <meta name="keywords" content=" @appName
+     " />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="GeneStory" />
+    <meta property="og:url" content="https://gs1.dion.vn/" />
+    <meta property="og:site_name" content="GeneStory" />
+    <link rel="canonical" href=/ />
+    <link rel="shortcut icon" href="~/favicon.ico" />
+
+
+    <!--begin::Fonts(mandatory for all pages)-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />        <!--end::Fonts-->
+    <!--begin::Vendor Stylesheets(used for this page only)-->
+    <link href="/admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin/assets/plugins/custom/jstree/jstree.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Vendor Stylesheets-->
+    <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
+    <link href="/admin/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin/assets/css/file-manager.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+    <link href="~/assets/css/pages/_layout.css" rel="stylesheet" />
+    <!--end::Global Stylesheets Bundle-->
+    <style>
+        .table.align-middle > tbody > tr > td {
+            vertical-align: middle !important;
+        }
+
+        body.swal2-height-auto {
+            min-height: 100% !important;
+        }
+
+        .page-loader {
+            transition: all linear .2s;
+        }
+
+            .page-loader.hide {
+                visibility: hidden;
+            }
+
+        #global_loader {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(0 0 0 / 70%);
+            visibility: hidden;
+            transition: all linear .2s;
+        }
+
+            #global_loader.show {
+                visibility: visible;
+            }
+
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+            .lds-ring div {
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                width: 64px;
+                height: 64px;
+                margin: 8px;
+                border: 8px solid var(--bs-primary);
+                border-radius: 50%;
+                animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                border-color: var(--bs-primary) transparent transparent transparent;
+            }
+
+                .lds-ring div:nth-child(1) {
+                    animation-delay: -0.45s;
+                }
+
+                .lds-ring div:nth-child(2) {
+                    animation-delay: -0.3s;
+                }
+
+                .lds-ring div:nth-child(3) {
+                    animation-delay: -0.15s;
+                }
+
+        /* them link Vneid*/
+
+        .custom-red-link {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            height: 40px;
+            color: #333;
+            border-radius: 33554400px;
+            border: 1px solid #333;
+            padding: 20px 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            width: 100%;
+        }
+
+            .custom-red-link img {
+                height: 34px;
+                width: auto;
+                object-fit: contain;
+            }
+
+        /* Overlay toàn màn hình */
+        #fullpage-loader {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 999999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+            #fullpage-loader.show {
+                display: flex;
+                opacity: 1;
+            }
+
+            #fullpage-loader .spinner {
+                width: 60px;
+                height: 60px;
+                border: 6px solid #fff;
+                border-top: 6px solid transparent;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+            }
+
+        @@keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #fullpage-loader .loading-text {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+
+
+
+
+        /*Xong phan Vneid*/
+
+        @@keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        [data-bs-theme=light] [data-kt-app-layout=dark-sidebar] #kt_app_sidebar .theme-light-show {
+            display: none !important;
+        }
+
+        [data-bs-theme=light] [data-kt-app-layout=dark-sidebar] #kt_app_sidebar .theme-dark-show {
+            display: block !important;
+        }
+
+        .spin {
+            animation: spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        }
+
+        @@keyframes spinner {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .cke_dialog_image_url .cke_dialog_ui_hbox_last a {
+            display: block !important;
+        }
+
+        .cke_dialog_body .cke_dialog_tabs a:nth-child(4) {
+            display: none;
+        }
+
+        .cke_dialog_contents .cke_dialog_contents_body div:nth-child(4) {
+            display: none;
+        }
+
+        .select2-container--bootstrap5 .select2-selection--single {
+            min-height: 43.56px;
+        }
+
+        .form-select.is-invalid:not([multiple]):not([size]),
+        .form-select.is-invalid:not([multiple])[size="1"],
+        .was-validated .form-select:invalid:not([multiple]):not([size]),
+        .was-validated .form-select:invalid:not([multiple])[size="1"] {
+            background-position: right calc(.375em + .3875rem) center !important;
+            background-size: calc(.75em + .775rem) calc(.75em + .775rem) !important;
+        }
+
+
+        .ps-30 {
+            padding-left: 7rem !important;
+        }
+
+        .ps-40 {
+            padding-left: 9rem !important;
+        }
+
+        .ps-50 {
+            padding-left: 11rem !important;
+        }
+
+        table thead tr,
+        table tfoot tr {
+            vertical-align: top !important;
+        }
+
+        table.dataTable > thead .dt-ordering-asc, table.dataTable > thead .dt-ordering-desc {
+            vertical-align: top !important;
+        }
+
+        table tbody tr {
+            vertical-align: top !important;
+        }
+    </style>
+   
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" class="app-blank">
+    <!--begin::Root-->
+    <div class="d-flex flex-column flex-root" id="kt_app_root">
+        <!--begin::Authentication - Sign-in -->
+        <div class="d-flex flex-column flex-lg-row flex-column-fluid">
+            <!--begin::Aside-->
+            <div class="d-flex flex-column flex-column-fluid flex-center w-lg-50 p-10 order-2 order-lg-1">
+                <!--begin::Wrapper-->
+                <div class="d-flex justify-content-center flex-column-fluid flex-column w-100 mw-450px">
+                    <!--begin::Header-->
+                    <div class="d-flex flex-stack py-2">
+                        <!--begin::Back link-->
+                        <div class="me-2">
+
+                        </div>
+                        <!--end::Back link-->
+
+                    </div>
+                    <!--end::Header-->
+                    <!--begin::Body-->
+                    <div class="py-20">
+
+                        <!--begin::Form-->
+                        <form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="/admin/index.html" action="#">
+                            <!--begin::Body-->
+                            <div class="card-body">
+                                <!--begin::Heading-->
+                                <div class="text-start mb-10">
+                                    <a href="@Url.Action("SignIn", "Client")" class="d-flex mb-12 mb-lg-12">
+                                        <img alt="Logo" src="/images/genestory/logos/Logo.png" class="h-70px h-lg-70px">
+                                    </a>
+                                    <!--begin::Title-->
+                                    <h1 class="text-gray-900 mb-3 fs-3x" data-kt-translate="sign-in-title">
+                                        Đăng nhập
+                                    </h1>
+                                    <!--end::Title-->
+                                </div>
+                                <!--begin::Heading-->
+                                <!--begin::Input group--->
+                                <div class="fv-row mb-8 fv-plugins-icon-container">
+                                    <!--begin::Email-->
+                                    <input type="text" placeholder="Tên đăng nhập" name="user_name" id="user_name" autocomplete="off"
+                                           data-kt-translate="sign-in-input-user-name"
+                                           class="form-control form-control-solid">
+                                    <!--end::Email-->
+                                    <div class="fv-plugins-message-container" id="error_user_name" style="color:red; font-size:0.875rem; display:none; margin-top:4px;"></div>
+                                </div>
+
+
+                                <!--end::Input group--->
+                                <div class="fv-row mb-7 fv-plugins-icon-container">
+                                    <input type="password" placeholder="Mật khẩu" name="password" id="password" autocomplete="off"
+                                           data-kt-translate="sign-in-input-password"
+                                           class="form-control form-control-solid">
+                                    <div class="fv-plugins-message-container" id="error_password" style="color:red; font-size:0.875rem; display:none; margin-top:4px;"></div>
+                                </div>
+
+                                <!--end::Input group--->
+                                <!--begin::Wrapper-->
+                                <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-10 d-none">
+                                    <div></div>
+                                    <!--begin::Link-->
+                                    <a href="@Url.Action("ForgotPassword","Client")" class="link-primary" data-kt-translate="sign-in-forgot-password">
+                                        Quên mật khẩu ?
+                                    </a>
+                                    <!--end::Link-->
+                                </div>
+                                <!--end::Wrapper-->
+                                <!--begin::Actions-->
+                                <div class="d-flex flex-column align-items-center gap-8">
+                                    <!--begin::Submit-->
+                                    <button id="kt_sign_in_submit" class="btn bg-dark-custom me-2 flex-shrink-0 w-100">
+                                        <!--begin::Indicator label-->
+                                        <span class="indicator-label" data-kt-translate="sign-in-submit">
+                                            Đăng nhập
+                                        </span>
+                                        <!--end::Indicator label-->
+                                        <!--begin::Indicator progress-->
+                                        <span class="indicator-progress">
+                                            <span data-kt-translate="general-progress">Đang tải...</span>
+                                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                        </span>
+                                        <!--end::Indicator progress-->
+                                    </button>
+                                    <!--end::Submit-->
+                                    <div class="text-center w-100">
+                                        <a id="vneid-login-btn" class="custom-red-link" style="cursor:pointer;">
+                                            <span class="indicator-label">Đăng nhập bằng tài khoản định danh điện tử</span>
+                                            <span class="indicator-progress" style="display:none;">
+                                                <span>Đang tải...</span>
+                                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                            </span>
+                                            <img src="~/assets/media/auth/logo-vneid.webp" alt="icon">
+                                        </a>
+                                    </div>
+                                    <!--begin::Sign Up link-->
+                                    <div class="m-0">
+                                        <span class="text-gray-500 fw-bold fs-5 me-2" data-kt-translate="sign-in-head-desc">
+                                            Bạn không có tài khoản?
+                                        </span>
+
+                                        <a href="@Url.Action("SignUp", "Client")" class="link-primary fw-bold fs-5" data-kt-translate="sign-in-head-link">
+                                            Đăng ký
+                                        </a>
+                                    </div>
+                                    <!--end::Sign Up link--->
+                                </div>
+                                <!-- 🔻 Thẻ a nằm riêng một dòng phía dưới -->
+                                <!-- 🔻 Thẻ a nằm riêng một dòng phía dưới -->
+                               
+
+
+
+
+                                <!--end::Actions-->
+                            </div>
+                            <!--begin::Body-->
+                        </form>
+                        <!--end::Form-->
+
+
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end::Wrapper-->
+            </div>
+
+
+            <!--end::Aside-->
+            <!--begin::Body-->
+            <div class="d-flex flex-lg-row-fluid w-lg-50 order-1 order-lg-1"
+                 style="
+        background-image: url('/assets/media/auth/anh-sign-in-up.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+     ">
+
+            </div>
+
+            <!--begin::Body-->
+        </div>
+        <!--end::Authentication - Sign-in-->
+    </div>
+    <!--end::Root-->
+    <!--begin::Javascript-->
+    <script>
+        var hostUrl = "../../../admin/assets/index.html";
+        var currentLang = "vi";
+    </script>
+
+    @* Script cũ đã được thay thế bởi sign-in.js *@
+    @* <script src="~/assets/js/custom/authentication/sign-in/sign-in-loi.js"></script> *@
+    <!--begin::Global Javascript Bundle(mandatory for all pages)-->
+    <script src="~/admin/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/admin/assets/js/scripts.bundle.js"></script>
+    <script src="~/admin/assets/js/shared/i18n.js"></script>
+    <script src="~/admin/assets/js/shared/i18n.common.js" asp-append-version="true"></script>
+    <script src="~/admin/assets/js/shared/form-validator.js" asp-append-version="true"></script>
+    <script src="/admin/assets/js/http-service.js"></script>
+    <!--end::Global Javascript Bundle-->
+    <script src="~/client/config.js"></script>
+    <script src="~/client/api-routes.js"></script>
+    <script src="~/client/pages/sign-in/sign-in.js"></script>
+    <!--end::Javascript-->
+    <!-- Overlay loader -->
+    <div id="fullpage-loader">
+        <div class="spinner"></div>
+        <div class="loading-text">Đang đăng nhập bằng VNeID...</div>
+    </div>
+
+
+</body><!--end::Body-->
+</html>

@@ -1,0 +1,621 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\BackEnd\\ManhwaDimension\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\models\\bookwormdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\models\\bookwormdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\repository\\interface\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\repository\\interface\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\repository\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\repository\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\repository\\authorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\repository\\authorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\repository\\comicrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\repository\\comicrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\repository\\interface\\iauthorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\repository\\interface\\iauthorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\models\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\models\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\models\\chapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\models\\chapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\repository\\interface\\icomicrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\repository\\interface\\icomicrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\repository\\rolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\repository\\rolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\repository\\genrerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\repository\\genrerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\repository\\interface\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\repository\\interface\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\repository\\interface\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\repository\\interface\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\ult\\dtparameters\\accountdtparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\ult\\dtparameters\\accountdtparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\ult\\dtparameters\\authordtparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\ult\\dtparameters\\authordtparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\controllers\\mw\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\controllers\\mw\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\controllers\\mw\\genrecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\controllers\\mw\\genrecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\controllers\\mw\\comiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\controllers\\mw\\comiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\controllers\\admin\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\controllers\\admin\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\shared\\admin\\frontend\\_admin_layout_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\shared\\admin\\frontend\\_admin_layout_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\shared\\_admin_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\shared\\_admin_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\shared\\admin\\frontend\\_admin_layout_sidebar_hospital.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\shared\\admin\\frontend\\_admin_layout_sidebar_hospital.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\shared\\admin\\frontend\\_admin_layout_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\shared\\admin\\frontend\\_admin_layout_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\shared\\admin\\frontend\\_admin_layout_main_content.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\shared\\admin\\frontend\\_admin_layout_main_content.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\shared\\admin\\frontend\\_admin_javascript.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\shared\\admin\\frontend\\_admin_javascript.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\client\\frontend\\partial\\_client_sidebar_details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\client\\frontend\\partial\\_client_sidebar_details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\client\\frontend\\partial\\_client_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\client\\frontend\\partial\\_client_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\client\\frontend\\dashboard\\_dashboard_map.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\client\\frontend\\dashboard\\_dashboard_map.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|d:\\backend\\manhwadimension\\manhwadimension\\firebase-key.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1251575A-357E-49B9-9432-0F0EAFF94E8B}|ManhwaDimension\\ManhwaDimension.csproj|solutionrelative:manhwadimension\\firebase-key.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookwormDbContext.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Models\\BookwormDbContext.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Models\\BookwormDbContext.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Models\\BookwormDbContext.cs",
+              "RelativeToolTip": "ManhwaDimension\\Models\\BookwormDbContext.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAIA6wDgCAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T16:23:42.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Program.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Program.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Program.cs",
+              "RelativeToolTip": "ManhwaDimension\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T16:23:08.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthorRepository.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\AuthorRepository.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Repository\\AuthorRepository.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\AuthorRepository.cs",
+              "RelativeToolTip": "ManhwaDimension\\Repository\\AuthorRepository.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwAoAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T06:27:25.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Models\\User.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Models\\User.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Models\\User.cs",
+              "RelativeToolTip": "ManhwaDimension\\Models\\User.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T06:26:53.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountRepository.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\AccountRepository.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Repository\\AccountRepository.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\AccountRepository.cs",
+              "RelativeToolTip": "ManhwaDimension\\Repository\\AccountRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T06:22:52.612Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IAccountRepository.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\Interface\\IAccountRepository.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Repository\\Interface\\IAccountRepository.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\Interface\\IAccountRepository.cs",
+              "RelativeToolTip": "ManhwaDimension\\Repository\\Interface\\IAccountRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:56:57.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IAuthorRepository.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\Interface\\IAuthorRepository.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Repository\\Interface\\IAuthorRepository.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\Interface\\IAuthorRepository.cs",
+              "RelativeToolTip": "ManhwaDimension\\Repository\\Interface\\IAuthorRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:57:32.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ComicRepository.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\ComicRepository.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Repository\\ComicRepository.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\ComicRepository.cs",
+              "RelativeToolTip": "ManhwaDimension\\Repository\\ComicRepository.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAAwH4AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T16:01:51.087Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserProfile.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Models\\UserProfile.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Models\\UserProfile.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Models\\UserProfile.cs",
+              "RelativeToolTip": "ManhwaDimension\\Models\\UserProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T16:08:29.344Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Mapper\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Mapper\\MappingProfile.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Mapper\\MappingProfile.cs",
+              "RelativeToolTip": "ManhwaDimension\\Mapper\\MappingProfile.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:53:25.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Role.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Models\\Role.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Models\\Role.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Models\\Role.cs",
+              "RelativeToolTip": "ManhwaDimension\\Models\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T16:02:40.002Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GenreRepository.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\GenreRepository.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Repository\\GenreRepository.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\GenreRepository.cs",
+              "RelativeToolTip": "ManhwaDimension\\Repository\\GenreRepository.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T16:01:36.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RoleRepository.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\RoleRepository.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Repository\\RoleRepository.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\RoleRepository.cs",
+              "RelativeToolTip": "ManhwaDimension\\Repository\\RoleRepository.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T16:01:40.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Chapter.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Models\\Chapter.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Models\\Chapter.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Models\\Chapter.cs",
+              "RelativeToolTip": "ManhwaDimension\\Models\\Chapter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T16:02:37.039Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IComicRepository.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\Interface\\IComicRepository.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Repository\\Interface\\IComicRepository.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\Interface\\IComicRepository.cs",
+              "RelativeToolTip": "ManhwaDimension\\Repository\\Interface\\IComicRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:59:03.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\Interface\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Repository\\Interface\\IUnitOfWork.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\Interface\\IUnitOfWork.cs",
+              "RelativeToolTip": "ManhwaDimension\\Repository\\Interface\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:59:09.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AccountDTParameters.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\ULT\\DTParameters\\AccountDTParameters.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\ULT\\DTParameters\\AccountDTParameters.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\ULT\\DTParameters\\AccountDTParameters.cs",
+              "RelativeToolTip": "ManhwaDimension\\ULT\\DTParameters\\AccountDTParameters.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:58:18.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IBaseRepository.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\Interface\\IBaseRepository.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Repository\\Interface\\IBaseRepository.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Repository\\Interface\\IBaseRepository.cs",
+              "RelativeToolTip": "ManhwaDimension\\Repository\\Interface\\IBaseRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:57:46.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AuthorDTParameters.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\ULT\\DTParameters\\AuthorDTParameters.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\ULT\\DTParameters\\AuthorDTParameters.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\ULT\\DTParameters\\AuthorDTParameters.cs",
+              "RelativeToolTip": "ManhwaDimension\\ULT\\DTParameters\\AuthorDTParameters.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:58:57.279Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "GenreController.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Controllers\\Mw\\GenreController.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Controllers\\Mw\\GenreController.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Controllers\\Mw\\GenreController.cs",
+              "RelativeToolTip": "ManhwaDimension\\Controllers\\Mw\\GenreController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:42:46.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ComicController.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Controllers\\Mw\\ComicController.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Controllers\\Mw\\ComicController.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Controllers\\Mw\\ComicController.cs",
+              "RelativeToolTip": "ManhwaDimension\\Controllers\\Mw\\ComicController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:42:43.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AuthorController.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Controllers\\Mw\\AuthorController.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Controllers\\Mw\\AuthorController.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Controllers\\Mw\\AuthorController.cs",
+              "RelativeToolTip": "ManhwaDimension\\Controllers\\Mw\\AuthorController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:42:40.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Controllers\\Admin\\AdminController.cs",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Controllers\\Admin\\AdminController.cs",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Controllers\\Admin\\AdminController.cs",
+              "RelativeToolTip": "ManhwaDimension\\Controllers\\Admin\\AdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T15:10:15.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "_Admin_Layout_Sidebar_Hospital.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Sidebar_Hospital.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Sidebar_Hospital.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Sidebar_Hospital.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Sidebar_Hospital.cshtml",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAAAFEAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:59:49.834Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "_Admin_Layout_Sidebar.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Sidebar.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Sidebar.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Sidebar.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Sidebar.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:58:15.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "_Admin_Layout_Main_Content.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Main_Content.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Main_Content.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Main_Content.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Main_Content.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:55:17.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "_Admin_Layout.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\_Admin_Layout.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Shared\\_Admin_Layout.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\_Admin_Layout.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Shared\\_Admin_Layout.cshtml",
+              "ViewState": "AgIAAHIAAAAAAAAAAAApwIMAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:50:53.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "_Admin_Layout_Header.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Header.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Header.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Header.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Layout_Header.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB0AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:52:32.535Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "_Admin_Javascript.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Javascript.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Javascript.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Javascript.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Shared\\Admin\\FrontEnd\\_Admin_Javascript.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:56:34.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:54:56.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:51:23.08Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "_Client_Sidebar_Details.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Client\\FrontEnd\\Partial\\_Client_Sidebar_Details.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Client\\FrontEnd\\Partial\\_Client_Sidebar_Details.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Client\\FrontEnd\\Partial\\_Client_Sidebar_Details.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Client\\FrontEnd\\Partial\\_Client_Sidebar_Details.cshtml",
+              "ViewState": "AgIAAC0EAAAAAAAAAAAAAMIEAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:51:36.502Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "_Dashboard_Map.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Client\\FrontEnd\\Dashboard\\_Dashboard_Map.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Client\\FrontEnd\\Dashboard\\_Dashboard_Map.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Client\\FrontEnd\\Dashboard\\_Dashboard_Map.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Client\\FrontEnd\\Dashboard\\_Dashboard_Map.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:52:17.319Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "_Client_Sidebar.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Client\\FrontEnd\\Partial\\_Client_Sidebar.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Client\\FrontEnd\\Partial\\_Client_Sidebar.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Client\\FrontEnd\\Partial\\_Client_Sidebar.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Client\\FrontEnd\\Partial\\_Client_Sidebar.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:51:31.819Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ManhwaDimension\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ManhwaDimension\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-27T05:51:29.926Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "firebase-key.json",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\firebase-key.json",
+              "RelativeDocumentMoniker": "ManhwaDimension\\firebase-key.json",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\firebase-key.json",
+              "RelativeToolTip": "ManhwaDimension\\firebase-key.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-27T05:48:03.727Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\appsettings.json",
+              "RelativeDocumentMoniker": "ManhwaDimension\\appsettings.json",
+              "ToolTip": "D:\\BackEnd\\ManhwaDimension\\ManhwaDimension\\appsettings.json",
+              "RelativeToolTip": "ManhwaDimension\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-27T05:48:02.438Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

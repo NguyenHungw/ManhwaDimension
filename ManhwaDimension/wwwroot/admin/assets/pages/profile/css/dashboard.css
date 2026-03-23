@@ -1,0 +1,433 @@
+﻿
+.client-add-btn {
+    background-color: #FCC960;
+}
+@media (max-width: 768px) {
+    #ageChart, #ageOverlay {
+        width: 100% !important;
+        height: 300px !important;
+    }
+
+    .card-body {
+        padding: 10px !important;
+    }
+
+    .card-title {
+        font-size: 14px !important;
+    }
+    #provinceModal .modal-dialog {
+        margin: 1rem;
+    }
+
+    #provinceModal .modal-body {
+        padding: 1rem;
+    }
+
+    #provinceModal .modal-footer {
+        padding: 1rem;
+    }
+}
+
+/* Transparent Cards */
+.card {
+    border-radius: 10px;
+    border: 1px solid #FFF;
+    background: rgba(255, 255, 255, 0.40);
+    backdrop-filter: blur(2.5px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 14px 20px !important;
+}
+
+.legend-color {
+    border-radius: 4px;
+    background: linear-gradient(81deg, #509FE3 5.54%, #4174D1 50%);
+    display: flex;
+    width: 20px;
+    height: 20px;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    aspect-ratio: 1/1;
+}
+
+.svg-container {
+    position: absolute;
+    width: 100%;
+    background: #C1E3E2;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    pointer-events: auto;
+}
+
+svg path:hover,
+svg circle:hover,
+svg polygon:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+/* Province Modal Styling */
+#provinceModal .modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+#provinceModal .modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px 15px 0 0;
+    border-bottom: none;
+}
+
+#provinceModal .modal-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+#provinceModal .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+#provinceModal .modal-body {
+    padding: 2rem;
+}
+
+#provinceModal .fw-bold {
+    color: #495057;
+}
+
+#provinceModal .text-primary {
+    color: #667eea !important;
+}
+
+#provinceModal .text-success {
+    color: #28a745 !important;
+}
+
+#provinceModal .text-info {
+    color: #17a2b8 !important;
+}
+
+#provinceModal .modal-footer {
+    border-top: 1px solid #e9ecef;
+    padding: 1rem 2rem;
+}
+
+/* SVG Path Hover Effects */
+.svg-interactive-container svg .province {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    fill: rgba(94, 186, 207, 0.2);
+    stroke: #5EBACF;
+    stroke-width: 1;
+}
+
+.svg-interactive-container svg .province:hover {
+    fill: rgba(94, 186, 207, 0.4);
+    stroke: #5EBACF;
+    stroke-width: 2;
+    transform: scale(1.02);
+}
+
+.svg-interactive-container svg .province.active {
+    fill: rgba(94, 186, 207, 0.6);
+    stroke: #5EBACF;
+    stroke-width: 2;
+}
+
+.province-tooltip {
+    position: fixed;
+    background: white;
+    color: #333;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1000;
+    pointer-events: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e0e0e0;
+    min-width: 200px;
+    max-width: 250px;
+}
+
+    .province-tooltip::before {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: white;
+    }
+
+.tooltip-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.tooltip-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+    .tooltip-info:last-child {
+        margin-bottom: 0;
+    }
+
+.tooltip-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.tooltip-label {
+    color: #666;
+    margin-right: 8px;
+}
+
+.tooltip-value {
+    color: #333;
+    font-weight: 600;
+    margin-left: auto;
+}
+.client-toolbar {
+    padding-top: 10px;
+}
+
+    .client-toolbar .client-tab-btn {
+        background-color: #E6F4F3;
+        color: #1A1A1A;
+        border: none;
+        font-weight: 600;
+    }
+        .client-toolbar .client-tab-btn.is-active {
+            background-color: #FCC960;
+            border-color: #FCC960;
+            color: #1A1A1A;
+        }
+        .client-toolbar .client-tab-btn + .client-tab-btn {
+            margin-left: 8px;
+        }
+.client-tab-btn:hover {
+    background-color: #FCC960;
+}
+
+/* Variant Search Box */
+.variant-search-box {
+    display: flex;
+    align-items: center;
+    background: #f5f8fa;
+    border: 1px solid #e1e3ea;
+    border-radius: 8px;
+    padding: 8px 12px;
+    gap: 8px;
+    min-width: 280px;
+}
+
+.variant-search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
+    color: #5e6278;
+    padding: 0;
+}
+
+.variant-search-box input::placeholder {
+    color: #a1a5b7;
+}
+
+.variant-filter-btn {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #5e6278;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.variant-filter-btn:hover {
+    color: #009ef7;
+}
+
+.variant-export-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* Variant Table Styling */
+#variant_table thead {
+    background-color: #c8e6e3;
+}
+
+#variant_table thead th {
+    color: #666;
+    font-weight: 600;
+    border-bottom: none;
+    padding: 12px 10px;
+}
+
+#variant_table tbody tr:nth-child(odd) {
+    background-color: #f0faf9;
+}
+
+#variant_table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+#variant_table tbody td {
+    vertical-align: middle;
+    padding: 10px;
+}
+
+.variant-class-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--bs-text-success) !important;
+    border: 1px solid var(--bs-text-success) !important;
+}
+
+.variant-subjects-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 120px;
+}
+
+.variant-subjects-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.variant-subjects-count {
+    color: #F00;
+    font-weight: 600;
+}
+
+.variant-subjects-percent {
+    color: #4278D2;
+    font-size: 13px;
+}
+
+.variant-progress-bar {
+    width: 100%;
+    height: 4px;
+    background-color: #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.variant-progress-fill {
+    height: 100%;
+    background: var(--Gradient-Blue, linear-gradient(81deg, #509FE3 5.54%, #4174D1 50%));
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.variant-impact-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    padding: 4px 12px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 10px;
+    background: var(--Gradient-Green, linear-gradient(127deg, #3D9C6F 8.34%, #69EC9F 89.68%));
+}
+.variant-clinical-significance {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    padding: 4px 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #fff;
+    background: var(--Gradient-Blue, linear-gradient(81deg, #509FE3 5.54%, #4174D1 50%));
+}
+.variant-clinical-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #17a2b8;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.variant-dbsnp-link i {
+    color: #17a2b8;
+}
+
+.form-control-solid {
+    background-color: #f5f8fa;
+    border-color: #e1e3ea;
+    color: #5e6278;
+}
+
+    @media (max-width: 768px) {
+        .client-toolbar {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+        }
+    }
+
+    @media (max-width: 991.98px) { /* md */
+        .client-toolbar {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+            .client-toolbar .client-tab-btn {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+    }
+
+    @media (max-width: 767.98px) { /* sm */
+        .client-toolbar {
+            gap: 8px;
+        }
+
+            .client-toolbar .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .client-toolbar .client-tab-btn {
+                width: 100%;
+                border-radius: 8px;
+            }
+    }

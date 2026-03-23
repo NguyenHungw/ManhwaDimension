@@ -1,0 +1,81 @@
+﻿using Amazon;
+using Amazon.S3;
+using ManhwaDimension.Models;
+using ManhwaDimension.ULT.Email;
+using ManhwaDimension.ULT.Extentions;
+using ManhwaDimension.Util;
+using Microsoft.EntityFrameworkCore;
+using System;
+
+using ManhwaDimension.Util.Extentions;
+using ManhwaDimension;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+builder.Services
+       .AddInfrastructure(builder.Configuration)
+       .AddInfrastructureServices(builder.Configuration)
+       //.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"))
+       .AddSignalR();
+// ===== Swagger config =====
+// Add config AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<BookwormDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(10),
+                errorNumbersToAdd: null);
+        }
+    ));
+
+
+
+// ==========================
+
+var app = builder.Build();
+
+// cau hinh firebase
+//FirebaseApp.Create(new AppOptions
+//{
+//    Credential = GoogleCredential.FromFile(
+//        builder.Configuration["Firebase:CredentialPath"]
+//    )
+//});
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    // ===== Enable Swagger =====
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        c.RoutePrefix = "swagger"; // vào /swagger
+    });
+}
+else
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();

@@ -1,11 +1,11 @@
-﻿using ManhwaDimension.Util.Entities;
+using ManhwaDimension.Util.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ManhwaDimension.Models
 {
-    public partial class Tag : IEntityBase
+    public partial class Tag : IEntityFull
     {
         public Tag()
         {

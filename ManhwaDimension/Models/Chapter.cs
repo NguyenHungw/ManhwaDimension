@@ -1,9 +1,10 @@
-﻿using System;
+using ManhwaDimension.Util.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace ManhwaDimension.Models
 {
-    public partial class Chapter
+    public partial class Chapter : IEntityBase
     {
         public Chapter()
         {

@@ -1,11 +1,11 @@
-﻿using ManhwaDimension.ULT.Entities;
+using ManhwaDimension.ULT.Entities;
 using ManhwaDimension.Util.Entities;
 using System;
 using System.Collections.Generic;
 
 namespace ManhwaDimension.Models
 {
-    public partial class Genre : IEntityBase
+    public partial class Genre : IEntityFull
     {
         public Genre()
         {

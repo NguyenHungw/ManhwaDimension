@@ -1,4 +1,4 @@
-﻿using ManhwaDimension.Models;
+using ManhwaDimension.Models;
 using ManhwaDimension.Repository.Interface;
 using ManhwaDimension.ULT.Entities;
 using ManhwaDimension.Util.Entities;
@@ -28,7 +28,12 @@ namespace ManhwaDimension.Repository
         {
             if (db != null)
             {
-                return db.Set<T>().Where(x => x.Active).Count();
+                // Nếu entity có Active → đếm theo Active, không thì đếm tất cả
+                if (typeof(IHasActive).IsAssignableFrom(typeof(T)))
+                {
+                    return db.Set<T>().Cast<IHasActive>().Count(x => x.Active);
+                }
+                return db.Set<T>().Count();
             }
             return 0;
         }
@@ -37,9 +42,19 @@ namespace ManhwaDimension.Repository
         {
             if (db != null)
             {
-                db.Set<T>().Attach(obj);
-                db.Entry(obj).Property(x => x.Active).IsModified = true;
-                await db.SaveChangesAsync();
+                // Nếu entity có Active → soft delete, không thì hard delete
+                if (obj is IHasActive)
+                {
+                    db.Set<T>().Attach(obj);
+                    ((IHasActive)obj).Active = false;
+                    db.Entry(obj).Property("Active").IsModified = true;
+                    await db.SaveChangesAsync();
+                }
+                else
+                {
+                    db.Set<T>().Remove(obj);
+                    await db.SaveChangesAsync();
+                }
             }
         }
 
@@ -59,7 +74,7 @@ namespace ManhwaDimension.Repository
         {
             if (db != null)
             {
-               return await db.Set<T>().AsNoTracking().FirstOrDefaultAsync(x => x.Active && x.Id == id);
+                return await db.Set<T>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
             }
             return null;
         }
@@ -68,11 +83,15 @@ namespace ManhwaDimension.Repository
         {
             if (db != null)
             {
-                return await db.Set<T>()
-                    .AsNoTracking()
-                    .Where(x => x.Active)
-                    .OrderByDescending(x => x.Id)
-                    .ToListAsync();
+                IQueryable<T> query = db.Set<T>().AsNoTracking();
+
+                // Filter Active nếu entity có
+                if (typeof(IHasActive).IsAssignableFrom(typeof(T)))
+                {
+                    query = query.Where(x => ((IHasActive)x).Active);
+                }
+
+                return await query.OrderByDescending(x => x.Id).ToListAsync();
             }
             return new List<T>();
         }
@@ -83,9 +102,14 @@ namespace ManhwaDimension.Repository
             offSet = (pageIndex - 1) * pageSize;
             if (db != null)
             {
-                return await db.Set<T>()
-                    .AsNoTracking()
-                    .Where(x => x.Active)
+                IQueryable<T> query = db.Set<T>().AsNoTracking();
+
+                if (typeof(IHasActive).IsAssignableFrom(typeof(T)))
+                {
+                    query = query.Where(x => ((IHasActive)x).Active);
+                }
+
+                return await query
                     .OrderByDescending(x => x.Id)
                     .Skip(offSet).Take(pageSize)
                     .ToListAsync();
@@ -93,26 +117,26 @@ namespace ManhwaDimension.Repository
             return new List<T>();
         }
 
-        //public async Task<List<T>> Search(string keyword)
-        //{
-        //    if (db != null)
-        //    {
-        //        return await db.Set<T>()
-        //                       .Where(x => x.ToString().ToLower().Trim().Contains(keyword.ToLower().Trim()) && x.Active)
-        //                       .ToListAsync();
-        //    }
-        //    return new List<T>();
-        //}
         public async Task<List<T>> Search(string keyword)
         {
             if (db != null)
             {
                 var lower = keyword.ToLower().Trim();
+                IQueryable<T> query = db.Set<T>();
 
-                return await db.Set<T>()
-                               .Where(x => x.Active &&
-                                           x.Name.ToLower().Contains(lower))
-                               .ToListAsync();
+                // Chỉ search theo Name nếu entity có Name
+                if (typeof(IHasName).IsAssignableFrom(typeof(T)))
+                {
+                    query = query.Where(x => ((IHasName)x).Name.ToLower().Contains(lower));
+                }
+
+                // Filter Active nếu có
+                if (typeof(IHasActive).IsAssignableFrom(typeof(T)))
+                {
+                    query = query.Where(x => ((IHasActive)x).Active);
+                }
+
+                return await query.ToListAsync();
             }
             return new List<T>();
         }

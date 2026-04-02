@@ -1,4 +1,4 @@
-﻿using Amazon;
+using Amazon;
 using Amazon.S3;
 using ManhwaDimension;
 using ManhwaDimension.Models;
@@ -54,6 +54,8 @@ namespace ManhwaDimension.Util
             services.AddScoped<IComicService, ComicService>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IChapterRepository, ChapterRepository>();
+            services.AddScoped<IChapterService, ChapterService>();
 
             //services.Configure<CloudflareR2ClientOptions>(configuration.GetSection("CloudflareR2"));
             // Program.cs (.NET 6+)

@@ -1,10 +1,10 @@
-﻿using ManhwaDimension.Util.Entities;
+using ManhwaDimension.Util.Entities;
 using System;
 using System.Collections.Generic;
 
 namespace ManhwaDimension.Models
 {
-    public partial class Role : IEntityBase
+    public partial class Role : IEntityFull
     {
         public Role()
         {
@@ -23,7 +23,9 @@ namespace ManhwaDimension.Models
         public virtual ICollection<RoleMenu> RoleMenus { get; set; }
         public virtual ICollection<RoleRight> RoleRights { get; set; }
         public virtual ICollection<User> Users { get; set; }
-        int IEntityBase.Id { get => throw new NotImplementedException(); set => Id = value; }
-        DateTimeOffset IEntityBase.CreatedAt { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        // Explicit mapping vì Role.Id là long, IEntityBase.Id là int
+        int IEntityBase.Id { get => (int)Id; set => Id = value; }
+        DateTimeOffset IEntityBase.CreatedAt { get => CreatedAt.HasValue ? new DateTimeOffset(CreatedAt.Value) : DateTimeOffset.MinValue; set => CreatedAt = value.DateTime; }
     }
 }

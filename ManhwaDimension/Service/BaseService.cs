@@ -1,4 +1,4 @@
-﻿using ManhwaDimension.Repository.Interface;
+using ManhwaDimension.Repository.Interface;
 using ManhwaDimension.Util.Entities;
 
 namespace ManhwaDimension.Service
@@ -12,7 +12,8 @@ namespace ManhwaDimension.Service
         }
         public virtual async Task Add(T obj)
         {
-            obj.Active = true;
+            if (obj is IHasActive activatable)
+                activatable.Active = true;
             obj.CreatedAt = DateTime.Now;
             await repository.Add(obj);
         }
@@ -24,7 +25,8 @@ namespace ManhwaDimension.Service
 
         public virtual async Task Delete(T obj)
         {
-            obj.Active = false;
+            if (obj is IHasActive activatable)
+                activatable.Active = false;
             await repository.Delete(obj);
         }
 

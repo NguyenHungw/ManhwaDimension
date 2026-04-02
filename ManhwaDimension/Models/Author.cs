@@ -1,10 +1,10 @@
-﻿using ManhwaDimension.Util.Entities;
+using ManhwaDimension.Util.Entities;
 using System;
 using System.Collections.Generic;
 
 namespace ManhwaDimension.Models
 {
-    public partial class Author : IEntityBase
+    public partial class Author : IEntityFull
     {
         public Author()
         {

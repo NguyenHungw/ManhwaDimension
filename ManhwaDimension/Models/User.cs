@@ -1,10 +1,10 @@
-﻿using ManhwaDimension.Util.Entities;
+using ManhwaDimension.Util.Entities;
 using System;
 using System.Collections.Generic;
 
 namespace ManhwaDimension.Models
 {
-    public partial class User : IEntityBase
+    public partial class User : IEntityFull
     {
         public User()
         {
@@ -20,7 +20,7 @@ namespace ManhwaDimension.Models
             Wallets = new HashSet<Wallet>();
         }
 
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string? Email { get; set; }
         public string? Name { get; set; }
         public string? PasswordHash { get; set; }
@@ -44,5 +44,9 @@ namespace ManhwaDimension.Models
         public virtual ICollection<Report> Reports { get; set; }
         public virtual ICollection<Subscription> Subscriptions { get; set; }
         public virtual ICollection<Wallet> Wallets { get; set; }
+
+        // Explicit mapping vì User.Id là long, IEntityBase.Id là int
+        int IEntityBase.Id { get => (int)Id; set => Id = value; }
+        string IHasName.Name { get => Name ?? string.Empty; set => Name = value; }
     }
 }

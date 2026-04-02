@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ManhwaDimension.Controllers.ManhwaDimension
 {
-    public class AuthorController : Controller
+    public class ChapterController : Controller
     {
-        IAuthorService service;
-        public AuthorController(IAuthorService _service)
+        IChapterService service;
+        public ChapterController(IChapterService _service)
         {
             service = _service;
         }
@@ -22,7 +22,7 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
         //}
 
         [HttpGet]
-        [Route("api/author/List")]
+        [Route("api/Chapter/List")]
         public async Task<IActionResult> List()
         {
             try
@@ -35,13 +35,13 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
                 var geneStoryResponse = ManhwaDimensionResponse.SUCCESS(dataList.Cast<object>().ToList());
                 return Ok(geneStoryResponse);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return BadRequest(ex);
+                return BadRequest();
             }
         }
         [HttpGet]
-        [Route("api/author/Detail/{Id}")]
+        [Route("api/Chapter/Detail/{Id}")]
         public async Task<IActionResult> Detail(long Id)
         {
             if (Id == null || Id == 0)
@@ -65,7 +65,7 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
             }
         }
         [HttpGet]
-        [Route("api/author/Search")]
+        [Route("api/Chapter/Search")]
         public async Task<IActionResult> Search(string keyword)
         {
             try
@@ -86,7 +86,7 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
 
 
         [HttpGet]
-        [Route("api/author/ListPaging")]
+        [Route("api/Chapter/ListPaging")]
         public async Task<IActionResult> ListPaging(int pageIndex, int pageSize)
         {
             if (pageIndex < 0 || pageSize < 0) return BadRequest();
@@ -108,8 +108,8 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
             }
         }
         [HttpPost]
-        [Route("api/author/add")]
-        public async Task<IActionResult> Add([FromBody] Author model)
+        [Route("api/Chapter/add")]
+        public async Task<IActionResult> Add([FromBody] Chapter model)
         {
             if (ModelState.IsValid)
             {
@@ -128,8 +128,8 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
             return BadRequest();
         }
         [HttpPut]
-        [Route("api/author/update")]
-        public async Task<IActionResult> Update([FromBody] Author model)
+        [Route("api/Chapter/update")]
+        public async Task<IActionResult> Update([FromBody] Chapter model)
         {
             if (ModelState.IsValid)
             {
@@ -153,8 +153,8 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
         }
 
         [HttpPost]
-        [Route("api/author/ListServerSide")]
-        public async Task<IActionResult> ListServerSide([FromBody] AuthorDTParameters parameters)
+        [Route("api/Chapter/ListServerSide")]
+        public async Task<IActionResult> ListServerSide([FromBody] ChapterDTParameters parameters)
         {
             try
             {
@@ -167,7 +167,7 @@ namespace ManhwaDimension.Controllers.ManhwaDimension
             }
         }
         [HttpDelete]
-        [Route("api/author/DeletePermanently")]
+        [Route("api/Chapter/DeletePermanently")]
         public async Task<IActionResult> Delete(int id)
         {
             if (ModelState.IsValid)
